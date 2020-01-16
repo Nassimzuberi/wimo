@@ -76196,11 +76196,8 @@ var SelectQuantity = function SelectQuantity(_ref) {
     return element.id === id;
   };
 
-  var tempo = cart.some(inCart) ? quantity - cart.some(function (t) {
-    return t.id === id;
-  }) ? t.quantityCart : 0 : quantity;
+  var tempo = cart.some(inCart) ? quantity - cart[id - 1].quantityCart : quantity;
   var select = [];
-  console.log(tempo);
   tempo == 0 ? select.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "0"
   }, "Plus de stock")) : '';
@@ -76233,7 +76230,7 @@ function (_React$Component) {
         return element.id === _this.sell.id;
       };
 
-      _this.props.cart[0] ? _this.props.cart.every(inCart) ? _this.props.AddQuantity(_this.sell.id - 1, _this.input.current.value) : _this.props.addProduct(_objectSpread({}, _this.sell), _this.input.current.value) : _this.props.addProduct(_objectSpread({}, _this.sell), _this.input.current.value);
+      _this.props.cart.some(inCart) ? _this.props.AddQuantity(_this.sell.id - 1, _this.input.current.value) : _this.props.addProduct(_objectSpread({}, _this.sell), _this.input.current.value);
     };
 
     return _this;

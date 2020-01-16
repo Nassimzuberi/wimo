@@ -8,10 +8,9 @@ const SelectQuantity = ({quantity,cart,id}) => {
     let inCart = (element) => element.id === id;
 
     let tempo = cart.some(inCart) ? 
-            (quantity - cart.some(t => t.id === id ) ? t.quantityCart : 0) 
+            (quantity - cart[id-1].quantityCart) 
             : quantity;
     const select = [];
-    console.log(tempo);
     tempo == 0 ? select.push(<option value="0">Plus de stock</option>): '';
     for (let i=1;i<= tempo;i++){
            select.push(<option value={i}>{i}</option>)
@@ -26,10 +25,9 @@ class Sell extends React.Component {
         this.sell = this.props.sell;
         this.add = () => {
             let inCart = (element) => element.id === this.sell.id;
-            this.props.cart[0] ? this.props.cart.every(inCart) ? 
+            this.props.cart.some(inCart) ? 
                 (this.props.AddQuantity(this.sell.id - 1, this.input.current.value ))
-                :  (this.props.addProduct({...this.sell},this.input.current.value))
-            : (this.props.addProduct({...this.sell},this.input.current.value));
+                :  (this.props.addProduct({...this.sell},this.input.current.value));
         }
     }
     
