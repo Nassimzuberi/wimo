@@ -4,6 +4,7 @@ import Header from './components/Header/Header'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import Loadable from 'react-loadable';
+import '../../features/cart/store';
 
 const LazyProduct = Loadable({
   loader: () => import('./features/product'),
