@@ -80146,8 +80146,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_loadable__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-loadable */ "./node_modules/react-loadable/lib/index.js");
-/* harmony import */ var react_loadable__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_loadable__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_loadable__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-loadable */ "./node_modules/react-loadable/lib/index.js");
+/* harmony import */ var react_loadable__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_loadable__WEBPACK_IMPORTED_MODULE_6__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -80174,7 +80174,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var LazyProduct = react_loadable__WEBPACK_IMPORTED_MODULE_5___default()({
+var LazyProduct = react_loadable__WEBPACK_IMPORTED_MODULE_6___default()({
   loader: function loader() {
     return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ./features/product */ "./resources/js/features/product/index.js"));
   },
@@ -81069,9 +81069,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "injectReducer", function() { return injectReducer; });
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reducers */ "./resources/js/store/reducers.js");
-/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux-thunk */ "./node_modules/redux-thunk/es/index.js");
-/* harmony import */ var redux_devtools_extension_logOnlyInProduction__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux-devtools-extension/logOnlyInProduction */ "./node_modules/redux-devtools-extension/logOnlyInProduction.js");
-/* harmony import */ var redux_devtools_extension_logOnlyInProduction__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(redux_devtools_extension_logOnlyInProduction__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux-thunk */ "./node_modules/redux-thunk/es/index.js");
+/* harmony import */ var redux_devtools_extension_logOnlyInProduction__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux-devtools-extension/logOnlyInProduction */ "./node_modules/redux-devtools-extension/logOnlyInProduction.js");
+/* harmony import */ var redux_devtools_extension_logOnlyInProduction__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(redux_devtools_extension_logOnlyInProduction__WEBPACK_IMPORTED_MODULE_4__);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -81085,10 +81085,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  // instancier le store
 
 var appReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(_reducers__WEBPACK_IMPORTED_MODULE_1__);
-var middleware = [redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"]]; //composeWithDevTools pour utiliser l'extension du navigateur redux devtools et voir l'etat de l'application
+var middleware = [redux_thunk__WEBPACK_IMPORTED_MODULE_3__["default"]]; //composeWithDevTools pour utiliser l'extension du navigateur redux devtools et voir l'etat de l'application
 // Nécessite installation de l'extension sur navigateur
 
-var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(appReducer, Object(redux_devtools_extension_logOnlyInProduction__WEBPACK_IMPORTED_MODULE_3__["composeWithDevTools"])(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"].apply(void 0, middleware))); //fonction pour injecter des reducers
+var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(appReducer, Object(redux_devtools_extension_logOnlyInProduction__WEBPACK_IMPORTED_MODULE_4__["composeWithDevTools"])(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"].apply(void 0, middleware))); //fonction pour injecter des reducers
 
 store.asyncReducers = {};
 
@@ -81115,8 +81115,8 @@ var injectReducer = createInjectReducer(store);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "auth", function() { return auth; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "session", function() { return session; });
-/* harmony import */ var redux_react_session__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux-react-session */ "./node_modules/redux-react-session/dist/index.js");
-/* harmony import */ var redux_react_session__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux_react_session__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var redux_react_session__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux-react-session */ "./node_modules/redux-react-session/dist/index.js");
+/* harmony import */ var redux_react_session__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(redux_react_session__WEBPACK_IMPORTED_MODULE_1__);
 
 var auth = function auth() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
@@ -81125,7 +81125,7 @@ var auth = function auth() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
   return state;
 };
-var session = redux_react_session__WEBPACK_IMPORTED_MODULE_0__["sessionReducer"];
+var session = redux_react_session__WEBPACK_IMPORTED_MODULE_1__["sessionReducer"];
 
 /***/ }),
 
@@ -81147,8 +81147,8 @@ var session = redux_react_session__WEBPACK_IMPORTED_MODULE_0__["sessionReducer"]
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\product\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\product\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/anis/Documents/BTS/Code/wimo/wimo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/anis/Documents/BTS/Code/wimo/wimo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
