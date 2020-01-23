@@ -3,10 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Commande;
 use Illuminate\Http\Request;
+
+
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -83,6 +92,7 @@ class UserController extends Controller
         //
     }
     public function commandes(User $user){
-        return $user->commandes;
+        $commandes = Commande::with('produit')->where('user_id',$user->id)->orderBy('created_at','desc')->get();
+        return view('user.commandes',compact('commandes'));
     }
 }
