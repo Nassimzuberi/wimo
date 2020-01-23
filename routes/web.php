@@ -11,15 +11,14 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/product', function () {
     return view('welcome');
 });
 
-Route::get('users/{user}/commandes','UserController@commandes');
+Route::get('users/{user}/commandes','UserController@commandes')->name('user.commandes');
 
-Route::get('user/{user}/commandes','UserController@commandes');
 Route::resource('produit','ProduitController');
 Route::resource('user','UserController');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
