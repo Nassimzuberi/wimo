@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/product', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 
@@ -21,4 +21,4 @@ Route::resource('produit','ProduitController');
 Route::resource('user','UserController');
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
