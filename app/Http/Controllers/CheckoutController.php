@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
-use App\Produit;
+use Stripe\Stripe;
+use Stripe\PaymentIntent;
+use Illuminate\Support\Arr;
+use App\Commande;
 use Auth;
 
-class ProduitController extends Controller
+class CheckoutController extends Controller
 {
+  public function __construct(){
+    $this->middleware('auth');
+  }
     /**
      * Display a listing of the resource.
      *
@@ -15,9 +22,20 @@ class ProduitController extends Controller
      */
     public function index()
     {
-        $produits = Produit::with('user','tags')->get();
+      if(Cart::count() <= 0){
+        return redirect()->route('produit.index');
+      }
+      Stripe::setApiKey('sk_test_Chg88zyjWqUPJj8tpCDHLDwe00oyIXMrCg');
 
-        return view('produit.index',compact('produits'));
+      $intent = PaymentIntent::create([
+      'amount' => round(Cart::subtotal()) * 100,
+      'currency' => 'eur',
+      ]);
+
+      $clientSecret = Arr::get($intent, 'client_secret');
+        return view('checkout.index',[
+          'clientSecret' => $clientSecret,
+        ]);
     }
 
     /**
@@ -38,7 +56,21 @@ class ProduitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      foreach(Cart::content() as $produit){
+        Auth::user()->commandes()->create([
+          'produit_id' => $produit->id,
+          'quantity' => $produit->qty,
+          'total' => $produit->subtotal,
+          'payement_option' => 2,
+        ]);
+        $produit->model->update([
+          'quantity' => $produit->model->quantity - $produit->qty,
+        ]);
+      }
+      Cart::destroy();
+
+      $data = $request->json()->all();
+      return $data['paymentIntent'];
     }
 
     /**
@@ -47,10 +79,9 @@ class ProduitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Produit $produit)
+    public function show($id)
     {
-      $data = $produit;
-        return view('produit.show',compact('data'));
+        //
     }
 
     /**

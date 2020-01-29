@@ -22,6 +22,7 @@ class CreateCommandesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->float('total');
             $table->integer('payement_option')->nullable();
+            $table->integer('state')->default(0);
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Commande;
 use Illuminate\Http\Request;
+use Auth;
 
 class CommandeController extends Controller
 {
@@ -14,7 +15,7 @@ class CommandeController extends Controller
      */
     public function index()
     {
-        return Commande::all();
+        //
     }
 
     /**
@@ -35,16 +36,7 @@ class CommandeController extends Controller
      */
     public function store(Request $request)
     {
-        $commande = Commande::create([
-            'user_id' => $request->user_id,
-            'produit_id' => $request->produit_id,
-            'quantity' => $request->quantity,
-            'total' => $request->total,
-            'payement_option' => $request->payement_option,
-        ]);
-        $quantity = $commande->produit->quantity - $request->quantity;
-        $commande->produit->update(['quantity' => $quantity]);
-        return response()->json(201);
+      //
     }
 
     /**
@@ -55,7 +47,7 @@ class CommandeController extends Controller
      */
     public function show(Commande $commande)
     {
-        return $commande;
+        return view('commande.show',compact('commande'));
     }
 
     /**
@@ -78,8 +70,7 @@ class CommandeController extends Controller
      */
     public function update(Request $request, Commande $commande)
     {
-        $commande->update($request->all());
-        return response()->json($commande,200);
+      //
     }
 
     /**
@@ -90,9 +81,13 @@ class CommandeController extends Controller
      */
     public function destroy(Commande $commande)
     {
-        $commande->delete();
-        return response()->json($commande,204);
+      //
     }
 
+    public function reception(Request $request,Commande $commande){
+
+      $commande->update(['state' => 1]);
+      return redirect()->route('user.commandes',Auth::id())->with('success',"Vous avez confirmer avoir réceptionner la commande n° $commande->id");
+    }
 
 }
