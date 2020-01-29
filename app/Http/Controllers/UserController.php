@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Commande;
 use Illuminate\Http\Request;
-
+use Auth;
 
 
 class UserController extends Controller
@@ -91,8 +91,19 @@ class UserController extends Controller
     {
         //
     }
-    public function commandes(User $user){
-        $commandes = Commande::with('produit')->where('user_id',$user->id)->orderBy('created_at','desc')->get();
-        return view('user.commandes',compact('commandes'));
+    public function commandes(User $user,Request $request){
+      $id = Auth::id();
+      switch($request->filter){
+        case 1 :
+          $commandes =Commande::with('produit')->where('user_id',$user->id)->where('state',0)->orderBy('created_at','desc')->get();
+          break;
+        case 2 :
+          $commandes =Commande::with('produit')->where('user_id',$user->id)->where('state',1)->orderBy('created_at','desc')->get();
+          break;
+        default :
+          $commandes = Commande::with('produit')->where('user_id',$user->id)->orderBy('state','asc')->orderBy('created_at','desc')->get();
+          break;
+      }
+        return view('user.commandes',compact('commandes','id'));
     }
 }
