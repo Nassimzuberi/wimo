@@ -33,7 +33,7 @@
         <button type="submit" class="btn btn-sm btn-success">Avez vous récupérer le produit ?</button>
       </form>
     @else
-      <div class="text-success"> Le produit a été récupéré le {{$commande->updated_at}} </div>
+      <div class="text-success"> Le produit a été récupéré le {{$commande->updated_at->format('d-m-Y')}} </div>
     @endif
 </div>
 @endsection

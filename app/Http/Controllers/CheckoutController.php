@@ -24,9 +24,11 @@ class CheckoutController extends Controller
      */
     public function index()
     {
+      // si le panier est vide il redirige vers la liste des produits
       if(Cart::count() <= 0){
         return redirect()->route('produit.index');
       }
+      // Panier non vide => affichage du formulaire de paiement Stripe
       Stripe::setApiKey('sk_test_Chg88zyjWqUPJj8tpCDHLDwe00oyIXMrCg');
 
       $intent = PaymentIntent::create([
@@ -58,6 +60,8 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
+
+      // créer la commande dans la bdd et enlève la quantité acheté dans le produit
       foreach(Cart::content() as $produit){
         Auth::user()->commandes()->create([
           'produit_id' => $produit->id,
@@ -69,9 +73,12 @@ class CheckoutController extends Controller
           'quantity' => $produit->model->quantity - $produit->qty,
         ]);
       }
+      // envoie le mail de validation de commande
       Mail::to(Auth::user()->email)->send(new CommandeValidation(Cart::content(),Auth::user()));
 
+      //détruit le panier
       Cart::destroy();
+      
       $data = $request->json()->all();
       return $data['paymentIntent'];
     }
