@@ -9,6 +9,9 @@
       <h3 class="">{{$data->name}}</h3>
       <div>{{$data->description}} </div>
       <div>Vendu par {{$data->user->name}}</div>
+      @if($data->quantity <= 0)
+      <small class="text-danger">Rupture de stock </small>
+      @else
       <div> Quantité : {{$data->quantity}}</div>
       <form action="{{route('cart.add')}}" method="post">
         @csrf
@@ -21,7 +24,9 @@
             @endfor
           </select>
         </div>
+
         <button type="submit" class="btn btn-primary">Ajouter au panier </button>
+        @endif
       </form>
     </div>
   </div>

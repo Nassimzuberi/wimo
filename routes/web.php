@@ -19,6 +19,8 @@ Route::get('/', function () {
 Route::delete('/cart/delete/{rowId}','CartController@deleteToCart')->name('cart.delete');
 Route::post('/cart/add','CartController@addToCart')->name('cart.add');
 Route::get('/cart','CartController@show')->name('cart');
+Route::get('/cart/delete/quantity/{rowId}','CartController@deleteQuantity')->name('cart.delete.quantity');
+Route::get('/cart/add/quantity/{rowId}','CartController@addQuantity')->name('cart.add.quantity');
 
 // Route pour le paiement
 

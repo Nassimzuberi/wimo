@@ -14,6 +14,16 @@
           <div class="col m-2">
             <div>{{$cart->model->name}}</div>
             <div>Quantité : {{$cart->qty}} </div>
+            <div class="row m-2">
+              <form method="GET" action='{{route('cart.delete.quantity',$cart->rowId)}}' class="mr-2">
+                <input type="hidden" name="quantity" value="{{$cart->qty}}">
+                <button type="submit" class="btn btn-sm btn-outline-dark" @if($cart->qty <= 1) disabled @endif> - </button>
+              </form>
+              <form method="GET" action='{{route('cart.add.quantity',$cart->rowId)}}'>
+                <input type="hidden" name="quantity" value="{{$cart->qty}}">
+                <button type="submit" class="btn btn-sm btn-outline-dark" @if($cart->qty >= $cart->model->quantity) disabled @endif> + </button>
+              </form>
+            </div>
             <div>Prix : {{$cart->subtotal}} €</div>
           </div>
           <div class="ml-auto mr-2">

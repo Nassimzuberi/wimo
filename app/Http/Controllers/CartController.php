@@ -15,15 +15,21 @@ class CartController extends Controller
   public function __construct(){
     //
   }
-
-
+  public function deleteQuantity(Request $request,$rowId){
+    Cart::update($rowId,$request->quantity - 1);
+    return back();
+  }
+  public function addQuantity($rowId,Request $request){
+    Cart::update($rowId,$request->quantity + 1);
+    return back();
+  }
   public function deleteToCart($rowId){
     Cart::remove($rowId);
     return back()->with('success','Le produit a bien été supprimé.');
 
   }
 
-  
+
   public function addToCart(Request $request){
       $duplicata = Cart::search(function($cartItem, $rowId) use ($request) {
         return $cartItem->id == $request->produit_id;

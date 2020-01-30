@@ -8,6 +8,8 @@ use Stripe\Stripe;
 use Stripe\PaymentIntent;
 use Illuminate\Support\Arr;
 use App\Commande;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\CommandeValidation;
 use Auth;
 
 class CheckoutController extends Controller
@@ -67,8 +69,9 @@ class CheckoutController extends Controller
           'quantity' => $produit->model->quantity - $produit->qty,
         ]);
       }
-      Cart::destroy();
+      Mail::to(Auth::user()->email)->send(new CommandeValidation(Cart::content(),Auth::user()));
 
+      Cart::destroy();
       $data = $request->json()->all();
       return $data['paymentIntent'];
     }

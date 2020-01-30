@@ -95,15 +95,16 @@ class UserController extends Controller
       $id = Auth::id();
       switch($request->filter){
         case 1 :
-          $commandes =Commande::with('produit')->where('user_id',$user->id)->where('state',0)->orderBy('created_at','desc')->get();
+          $commande =Commande::with('produit')->where('user_id',$user->id)->where('state',0)->orderBy('created_at','desc');
           break;
         case 2 :
-          $commandes =Commande::with('produit')->where('user_id',$user->id)->where('state',1)->orderBy('created_at','desc')->get();
+          $commande =Commande::with('produit')->where('user_id',$user->id)->where('state',1)->orderBy('created_at','desc');
           break;
         default :
-          $commandes = Commande::with('produit')->where('user_id',$user->id)->orderBy('state','asc')->orderBy('created_at','desc')->get();
+          $commande = Commande::with('produit')->where('user_id',$user->id)->orderBy('state','asc')->orderBy('created_at','desc');
           break;
       }
+      $commandes = $commande->paginate(5);
         return view('user.commandes',compact('commandes','id'));
     }
 }

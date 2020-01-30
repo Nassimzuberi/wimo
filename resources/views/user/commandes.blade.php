@@ -39,4 +39,6 @@
   </div>
 
     @endforeach
+
+    {{$commandes->links()}}
 @endsection
