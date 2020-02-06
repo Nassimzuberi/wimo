@@ -17,8 +17,6 @@ class CreateProduitsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('img');
-            $table->float('lat');
-            $table->float('long');
             $table->text('description');
             $table->float('prix_unit')->nullable();
             $table->float('prix_poids')->nullable();
