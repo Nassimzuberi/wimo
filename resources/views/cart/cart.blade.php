@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title') Panier | @endsection
+
 @section('content')
 <div class="d-flex flex-column flex-sm-row">
   <div class="m-sm-2 border col col-sm-9 shadow">

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title') Mes commandes | @endsection
+
 @section('content')
 @if(session('success'))
   <div class="alert alert-success"> {{session('success')}} </div>
@@ -42,5 +44,5 @@
 
     @endforeach
 
-    <div class="row justify-content-center"> {{$commandes->links()}} </div>
+    <div class="row justify-content-center"> {{$commandes->appends(request()->input())->links()}} </div>
 @endsection

@@ -1,4 +1,7 @@
 @extends('layouts.app')
+
+@section('title') Paiement | @endsection
+
 @section('extra-script')
   <script src="https://js.stripe.com/v3/"></script>
 @endsection
