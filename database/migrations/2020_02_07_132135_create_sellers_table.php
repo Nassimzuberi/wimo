@@ -17,6 +17,7 @@ class CreateSellersTable extends Migration
             $table->bigIncrements('id');
             $table->json('address');
             $table->json('position')->nullable(true);
+            $table->string('phone_number',10);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
