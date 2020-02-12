@@ -7,6 +7,7 @@
 @endsection
 
 @section('content')
+<div class="container">
   <div class="row p-3 border shadow text-center">
     <div class="col-md-4 py-3 text-left bg-dark text-white">
       <h4> Récapitulatif commande </h4>
@@ -34,6 +35,7 @@
       </form>
     </div>
   </div>
+</div>
 @endsection
 
 @section('extra-js')

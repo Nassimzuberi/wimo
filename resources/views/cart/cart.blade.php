@@ -1,51 +1,71 @@
 @extends('layouts.app')
 
-@section('title') Panier | @endsection
+@section('title') Panier - @endsection
 
 @section('content')
 <div class="d-flex flex-column flex-sm-row">
   <div class="m-sm-2 border col col-sm-9 shadow">
-    <h3 class="m-2">Panier</h3>
-    <div class="col">
-      @if(Cart::count() == 0)
-        <div class="my-3"> Le panier est vide </div>
-      @endif
-      @foreach(Cart::content() as $cart)
-        <div class="row align-items-center my-2">
+    <div class="table-responsive">
+    <table class="table text-center">
+      <thead>
+        <th></th>
+        <th>Nom du produit</th>
+        <th>Prix unité</th>
+        <th>Quantité</th>
+        <th>Total</th>
+        <th>Supprimer</th>
+      </thead>
+      <tbody class="my-3">
+      @forelse(Cart::content() as $cart)
+      <tr>
+        <td class="align-middle">
           <img src='{{$cart->model->img}}' width="100" class="m-2"/>
-          <div class="col m-2">
+        </td>
+        <td class="align-middle">
             <div>{{$cart->model->name}}</div>
-            <div>Quantité : {{$cart->qty}} </div>
-            <div class="row m-2">
-              <form method="GET" action='{{route('cart.delete.quantity',$cart->rowId)}}' class="mr-2">
-                <input type="hidden" name="quantity" value="{{$cart->qty}}">
-                <button type="submit" class="btn btn-sm btn-outline-dark" @if($cart->qty <= 1) disabled @endif> - </button>
-              </form>
-              <form method="GET" action='{{route('cart.add.quantity',$cart->rowId)}}'>
-                <input type="hidden" name="quantity" value="{{$cart->qty}}">
-                <button type="submit" class="btn btn-sm btn-outline-dark" @if($cart->qty >= $cart->model->quantity) disabled @endif> + </button>
-              </form>
-            </div>
-            <div>Prix : {{$cart->subtotal}} €</div>
-          </div>
-          <div class="ml-auto mr-2">
-            <form method="post" action="{{route('cart.delete',$cart->rowId)}}">
-              @csrf
-              @method('DELETE')
-              <button type="submit" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
+        </td>
+        <td class="align-middle">
+          {{$cart->model->prix_unit}} €
+        </td>
+        <td class="align-middle">
+          <div class="row justify-content-center">
+            <form method="GET" action='{{route('cart.delete.quantity',$cart->rowId)}}'>
+              <input type="hidden" name="quantity" value="{{$cart->qty}}">
+              <button type="submit" class="btn btn-sm btn-outline-dark" @if($cart->qty <= 1) disabled @endif> - </button>
+            </form>
+            <div class="mx-2">{{$cart->qty}} </div>
+            <form method="GET" action='{{route('cart.add.quantity',$cart->rowId)}}'>
+              <input type="hidden" name="quantity" value="{{$cart->qty}}">
+              <button type="submit" class="btn btn-sm btn-outline-dark" @if($cart->qty >= $cart->model->quantity) disabled @endif> + </button>
             </form>
           </div>
-        </div>
-      @endforeach
-    </div>
+        </td>
+        <td class="align-middle">
+          {{$cart->subtotal}} €
+        </td>
+        <td class="align-middle">
+          <form method="post" action="{{route('cart.delete',$cart->rowId)}}">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
+          </form>
+        </td>
+      </tr>
+      @empty
+        <tr class="table-secondary" ><td colspan="6">Panier vide</td></tr>
+      @endforelse
+      </tbody>
+      <caption class="text-right">
+        Sous total ({{Cart::count() == 1 ? Cart::count(). " article" : Cart::count(). " articles"}}) : <span style="color:#780404;font-weight:bold">{{Cart::subtotal()}} €</span>
+      </caption>
+    </table>
   </div>
-    <div class="col align-self-start my-2 p-3 border text-center text-md-left shadow">
-      <div>Sous total : {{Cart::subtotal()}} €</div>
-      <div>Taxe : {{Cart::tax()}} €</div>
-      <div>Total : {{Cart::total()}} €</div>
+  </div>
+    <div class="col align-self-start my-2 p-3 border text-center shadow">
+      <h4>Sous-total ({{Cart::count() == 1 ? Cart::count(). " article" : Cart::count(). " articles"}}) : <span style="color:#780404;font-weight:bold">{{Cart::subtotal()}} €</span></h4>
       <hr class="w-100">
       <div class="mt-2">
-        <a href='{{route('checkout.index')}}' class="btn btn-warning">Procéder au paiement</a>
+        <a href='{{route('checkout.index')}}' class="btn btn-warning">Passer la commande</a>
       </form>
     </div>
   </div>

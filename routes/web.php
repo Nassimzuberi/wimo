@@ -26,7 +26,7 @@ Route::get('/cart/add/quantity/{rowId}','CartController@addQuantity')->name('car
 
 Route::get('/paiement','CheckoutController@index')->name('checkout.index');
 Route::post('/paiement','CheckoutController@store')->name('checkout.store');
-Route::view('/merci','checkout.confirm');
+Route::get('/merci','CheckoutController@confirm');
 
 //Route des commandes
 Route::get('commande/{commande}','CommandeController@show')->name('commande.show');
@@ -35,6 +35,7 @@ Route::post('commande/{commande}/reception','CommandeController@reception')->nam
 
 Route::resource('produit','ProduitController');
 Route::resource('user','UserController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

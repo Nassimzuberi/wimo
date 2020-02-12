@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title') Commande n°{{$commande->id}} | @endsection
+@section('title') Commande n°{{$commande->id}} - @endsection
 
 @section('content')
 <a href="{{route('user.commandes',Auth::id())}}"> Retour à mes commandes </a>
@@ -32,7 +32,8 @@
     @if($commande->state == 0)
       <form method="POST" action="{{route('commande.validate',$commande->id)}}">
          @csrf
-        <button type="submit" class="btn btn-sm btn-success">Avez vous récupérer le produit ?</button>
+         <label>Avez vous récupérer le produit ?</label>
+        <button type="submit" class="btn btn-sm btn-success">Confirmer</button>
       </form>
     @else
       <div class="text-success"> Le produit a été récupéré le {{$commande->updated_at->format('d-m-Y')}} </div>

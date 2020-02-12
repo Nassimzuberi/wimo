@@ -9,6 +9,7 @@ use Stripe\PaymentIntent;
 use Illuminate\Support\Arr;
 use App\Commande;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use App\Mail\CommandeValidation;
 use Auth;
 
@@ -73,14 +74,22 @@ class CheckoutController extends Controller
           'quantity' => $produit->model->quantity - $produit->qty,
         ]);
       }
-      // envoie le mail de validation de commande
-      Mail::to(Auth::user()->email)->send(new CommandeValidation(Cart::content(),Auth::user()));
 
-      //détruit le panier
-      Cart::destroy();
-      
       $data = $request->json()->all();
-      return $data['paymentIntent'];
+      if($data['paymentIntent']['status'] === 'succeeded'){
+        // envoie le mail de validation de commande
+        Mail::to(Auth::user()->email)->send(new CommandeValidation(Cart::content(),Auth::user()));
+        //détruit le panier
+        Cart::destroy();
+        Session::flash('success','Votre commande a bien été traitée');
+        return response()->json(['success'=> 'Paimement traité']);
+      } else {
+        return response()->json(['error'=> 'Paimement non traité']);
+      }
+    }
+
+    public function confirm(){
+      return Session::has('success') ? view('checkout.confirm') : redirect()->route('produit.index');
     }
 
     /**
