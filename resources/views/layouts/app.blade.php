@@ -67,6 +67,9 @@
                 <a class="dropdown-item" href="{{ route('user.commandes',Auth::id()) }}">
                     Mes commandes
                 </a>
+                <a class="dropdown-item" href="{{ url('/compte') }}">
+                    Mon compte
+                </a>
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
