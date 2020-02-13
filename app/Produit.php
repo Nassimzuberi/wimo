@@ -17,4 +17,7 @@ class Produit extends Model
     public function commandes(){
       return $this->hasMany('App\Commande');
     }
+    public function avis(){
+      return $this->hasMany('App\Avis');
+    }
 }

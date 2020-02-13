@@ -90,4 +90,21 @@ class CommandeController extends Controller
       return redirect()->route('user.commandes',Auth::id())->with('success',"Vous avez confirmer avoir réceptionner la commande n° $commande->id");
     }
 
-}
+    //public static function isBought($id_product) {
+
+        //$user = auth()->user();
+        //$user_id = $user->id;
+        //$commande = Commande::where('produit_id','=', $id_product)->where('user_id', '=', $user_id)->get();
+        //print_r($commande);
+        //$res = (array($commande));
+        //print_r($res);
+        //die();
+        //print_r(isset($commande));
+       // if (isset($commande)) {
+       //     return false;
+       // } else {
+       //     return true;
+        //}
+    }
+
+

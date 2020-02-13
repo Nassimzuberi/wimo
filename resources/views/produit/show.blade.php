@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+<?php
+use App\Http\Controllers\CommandeController; 
+?>
 @section('content')
   <div class="mt-5">
     @if(session('message'))
@@ -8,6 +10,7 @@
     <div class="d-flex flex-column border text-center">
       <h3 class="">{{$data->name}}</h3>
       <div>{{$data->description}} </div>
+      <p>coucou</p>
       <div>Vendu par {{$data->user->name}}</div>
       @if($data->quantity <= 0)
       <small class="text-danger">Rupture de stock </small>
@@ -26,8 +29,33 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Ajouter au panier </button>
-        @endif
       </form>
+      <br>
+      <br>
+
+      <form class ="avis" action="{{route('avis.store', $data->id)}}" method="post">
+        @csrf
+        <textarea class="form-control" id="text_avis" name="text_avis" rows="4"></textarea>
+        <div>
+          <input type="radio" name="like" id="like" value="1">
+          <label for="like">J'aime</label>
+          <input type="radio" name="like" id="dislike" value="0">
+          <label for="dislike">Je n'aime pas</label>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Enregistrer">
+      </form>
+      <br>
+      
+
+      <div>
+        @foreach($data->avis as $avis)
+        {{$avis->text_avis}}
+        @endforeach
+
+      </div>
+    
+      @endif
+      
     </div>
   </div>
 @endsection
