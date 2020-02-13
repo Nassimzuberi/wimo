@@ -16,7 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedTinyInteger('quantity')->nullable(true);
-            $table->unsignedDecimal('weight',5,3);
+            $table->unsignedDecimal('weight',5,3)->nullable(true);
             $table->unsignedBigInteger('sale_id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('sale_id')->references('id')->on('sales');
