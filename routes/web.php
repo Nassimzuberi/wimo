@@ -39,9 +39,17 @@ Route::get('/compte','AccountController@index');
 Route::get('/compte/modifier/profil/','AccountController@edit_profil');
 /* Routage vers la fonction qui met à jour la modification du profil */
 Route::post('/compte/modifier/profil/','AccountController@update_profil')->name('update_profil');
+/* Routage vers le formulaire d'inscription de vendeur */
+Route::get('/devenir/vendeur','SellerController@create');
+/* Routage vers la fonction qui enregistre le nouveau vendeur */
+Route::post('/devenir/vendeur','SellerController@store')->name('register_seller');
+/* Routage vers la page du magasin du vendeur */
+Route::get('/compte/magasin','SellerController@index');
+/* Routage vers la page des annonces du vendeur */
+Route::get('/compte/magasin/annonces','SaleController@index');
+/* à terminer*/
+Route::post('/compte/magasin/annonces','SaleController@store')->name('add_announce');
 Route::resource('produit','ProduitController');
-
-
 Route::resource('product','ProduitController');
 
 Route::resource('user','UserController');
