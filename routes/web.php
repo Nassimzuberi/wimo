@@ -32,6 +32,8 @@ Route::get('/merci','CheckoutController@confirm');
 Route::get('commande/{commande}','CommandeController@show')->name('commande.show');
 Route::get('users/{user}/commandes','UserController@commandes')->name('user.commandes');
 Route::post('commande/{commande}/reception','CommandeController@reception')->name('commande.validate');
+/* Routage vers la page mon compte */
+Route::get('/compte','AccountController@index');
 
 Route::resource('product','ProduitController');
 Route::resource('user','UserController');
