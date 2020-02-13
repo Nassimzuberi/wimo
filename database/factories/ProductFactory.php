@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Produit;
+use App\Product;
 use Faker\Generator as Faker;
 
-$factory->define(Produit::class, function (Faker $faker) {
+$factory->define(Product::class, function (Faker $faker) {
     return [
         'name' => $faker->word,
         'lat' => $faker->numberBetween(50,60),
