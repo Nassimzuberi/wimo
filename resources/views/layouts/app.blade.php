@@ -84,11 +84,11 @@
         </div>
       </nav>
 
-  <!--    <header>
+    <!--<header>
 
         <div id="header-left">
           <a href="{{route('cart')}}"> Panier <span class="badge badge-info">{{Cart::count()}}</span> </A>
-        </div>
+        </div>-->
         <!-- Logo --> <!--
         <a href="/"> <img src="{{asset('images/wimo-logo.png')}}" alt="" style="height:43px; filter: drop-shadow(4px 4px 0px #1CE6BE);"></a>
 
