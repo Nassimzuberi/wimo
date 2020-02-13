@@ -33,8 +33,12 @@ Route::get('commande/{commande}','CommandeController@show')->name('commande.show
 Route::get('users/{user}/commandes','UserController@commandes')->name('user.commandes');
 Route::post('commande/{commande}/reception','CommandeController@reception')->name('commande.validate');
 
-Route::resource('produit','ProduitController');
+Route::resource('product','ProduitController');
 Route::resource('user','UserController');
+
+//Routes de la carte
+Route::get('map','MapController@show')->name('map.index');
+
 
 Auth::routes();
 

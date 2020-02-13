@@ -11,7 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-<script src="https://kit.fontawesome.com/0a9da0bbd4.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/0a9da0bbd4.js" crossorigin="anonymous"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -46,10 +46,7 @@
               <a class="nav-link" href="{{url('/')}}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{route('produit.index')}}"> Les produits </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{route('produit.index')}}"> Carte </a>
+              <a class="nav-link" href="{{route('map.index')}}"> Carte </a>
             </li>
   
 
