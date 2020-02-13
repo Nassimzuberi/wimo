@@ -34,7 +34,10 @@ Route::get('users/{user}/commandes','UserController@commandes')->name('user.comm
 Route::post('commande/{commande}/reception','CommandeController@reception')->name('commande.validate');
 /* Routage vers la page mon compte */
 Route::get('/compte','AccountController@index');
-
+/* Routage vers le formulaire de modification du profil */
+Route::get('/compte/modifier/profil/','AccountController@edit_profil');
+/* Routage vers la fonction qui met à jour la modification du profil */
+Route::post('/compte/modifier/profil/','AccountController@update_profil')->name('update_profil');
 Route::resource('produit','ProduitController');
 Route::resource('user','UserController');
 
