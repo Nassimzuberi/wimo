@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title') {{ config('app.name', 'Wimo') }}</title>
+    <title>{{ config('app.name', 'Wimo') }} | @yield('title') </title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -49,7 +49,9 @@
               <a class="nav-link" href="{{route('produit.index')}}"> Les produits </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{{route('produit.index')}}"> Carte </a>
             </li>
+  
 
           </ul>
           <ul class="navbar-nav align-items-center">
