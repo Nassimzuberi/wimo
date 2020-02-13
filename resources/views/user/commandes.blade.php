@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title') Mes commandes - @endsection
+@section('title') Mes commandes @endsection
 
 @section('content')
 @if(session('success'))

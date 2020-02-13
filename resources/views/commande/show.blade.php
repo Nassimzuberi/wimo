@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title') Commande n°{{$commande->id}} - @endsection
+@section('title') Commande n°{{$commande->id}} @endsection
 
 @section('content')
 <a href="{{route('user.commandes',Auth::id())}}"> Retour à mes commandes </a>
