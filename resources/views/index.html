@@ -1,20 +1,45 @@
-    @extends('layouts.app')
-@section('title')
-    Map
-@endsection
-@section('extra-script')
-    <!-- LEAFLET -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-          integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-          crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-            integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-            crossorigin=""></script>
-@endsection
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 
-@section('content')
+<head>
+  <meta charset="utf-8">
+  <title>Wimo</title>
+  <!-- Feuille de style perso -->
+  <link rel="stylesheet" href="css/styles.css">
 
-<div class="wrapper">
+  <!-- Import de Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+  <script src="http://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+  <script src="js/leaflet-providers.js"></script>
+
+  <!-- Polices Google Font -->
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+
+    <div id="header-left">
+
+    </div>
+    <!-- Logo -->
+    <img src="images/wimo-logo.png" alt="" style="height:43px; filter: drop-shadow(4px 4px 0px #1CE6BE);">
+
+    <div id="header-right">
+      <div id="user-icon-wrapper">
+        <img src="images/user.png" alt="user-icon" id="user-icon">
+      </div>
+    </div>
+
+  </header>
+
+  <!-- Contenu -->
+  <div class="wrapper">
 
     <!-- Bloc de gauche servant à effectuer les recherches -->
     <div id="left-block">
@@ -134,7 +159,7 @@
     </div>
 
     <!-- Affichage de la carte -->
-
+    <div id="map">
       <div id="mapid">
         <script type="text/javascript">
           var mymap = L.map('mapid').setView([48.873, 2.356], 16);
@@ -175,15 +200,14 @@
           var marker3 = L.marker([48.8725, 2.35], {icon: greenIcon}).addTo(mymap);
           var marker4 = L.marker([48.871, 2.359], {icon: greenIcon}).addTo(mymap);
           var marker5 = L.marker([48.873, 2.359], {icon: greenIcon}).addTo(mymap);
-          var marker6 = L.marker([35.751203, 0,551528], {icon: greenIcon}).addTo(mymap);
 
 
 
 
         </script>
       </div>
-
+    </div>
   </div>
+</body>
 
-
-@endsection
+</html>

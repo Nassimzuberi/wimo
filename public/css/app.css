@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+
 
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
@@ -212,6 +212,7 @@ img {
   vertical-align: middle;
   border-style: none;
 }
+
 
 svg {
   overflow: hidden;
@@ -5690,7 +5691,7 @@ a.badge-success.focus {
 }
 
 .badge-info {
-  color: #212529;
+  color: #1CE6BE;
   background-color: #6cb2eb;
 }
 
