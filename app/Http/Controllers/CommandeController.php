@@ -105,6 +105,17 @@ class CommandeController extends Controller
        // } else {
        //     return true;
         //}
+
+    public static function isSaled($id_produit, $id_user)
+    {
+        $commande = Commande::where('produit_id', '=',$id_produit)->where('user_id','=',$id_user)->get();
+        if($commande->isEmpty()) {
+            return false;
+        } else{
+            return true;
+        }
+
+    }
     }
 
 
