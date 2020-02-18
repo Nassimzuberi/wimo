@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
+
+
 ::selection {
   background: #1CE6BE; /* WebKit/Blink Browsers */
 }
@@ -86,7 +89,6 @@ header{
   background-color: rgba(254,254,254  ,0.00001);
   height:100%;
   width:100%;
-  margin-top:60px;
   overflow-y:scroll;
   overflow-x: hidden;
 }
@@ -140,9 +142,19 @@ header{
 }
 
 .navbar-brand {
-  transform: translateX(-50%);
-  left: 50%;
+  width:53px;
   position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+.logged-user-icon{
+  transition:0.2s;
+}
+.logged-user-icon:hover{
+  filter:brightness(120%);
 }
 
 .round{
@@ -154,4 +166,46 @@ header{
     border-radius:10000px;
 }
 
+.wimo-logo{
+  transition: 0.2s;
+}
+
+.wimo-logo:hover{
+  filter:contrast(140%) blur(1px);
+}
+.text-shadow-pop-br {
+  color:black;
+  font-family: 'Comfortaa';
+}
+
+.text-shadow-pop-br:hover {
+	-webkit-animation: text-shadow-pop-br 0.3s forwards;
+          animation: text-shadow-pop-br 0.3s forwards;
+  font-weight: bolder;
+}
+
+ @-webkit-keyframes text-shadow-pop-br {
+  0% {
+    text-shadow: 0 0 #1CE6BE, 0 0 #1CE6BE, 0 0 #1CE6BE, 0 0 #1CE6BE, 0 0 #1CE6BE, 0 0 #1CE6BE, 0 0 #1CE6BE, 0 0 #1CE6BE;
+    -webkit-transform: translateX(0) translateY(0);
+            transform: translateX(0) translateY(0);
+  }
+  100% {
+    text-shadow: 1px 1px #1CE6BE, 2px 2px #1CE6BE;
+    -webkit-transform: translateX(-2px) translateY(-2px);
+            transform: translateX(-2px) translateY(-2px);
+  }
+}
+@keyframes text-shadow-pop-br {
+  0% {
+    text-shadow: 0 0 #1CE6BE, 0 0 #1CE6BE, 0 0 #1CE6BE, 0 0 #1CE6BE, 0 0 #1CE6BE, 0 0 #1CE6BE, 0 0 #1CE6BE, 0 0 #1CE6BE;
+    -webkit-transform: translateX(0) translateY(0);
+            transform: translateX(0) translateY(0);
+  }
+  100% {
+    text-shadow: 1px 1px #1CE6BE, 2px 2px #1CE6BE;
+    -webkit-transform: translateX(-2px) translateY(-2px);
+            transform: translateX(-2px) translateY(-2px);
+  }
+}
 

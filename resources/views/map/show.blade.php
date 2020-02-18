@@ -175,7 +175,7 @@
           var marker3 = L.marker([48.8725, 2.35], {icon: greenIcon}).addTo(mymap);
           var marker4 = L.marker([48.871, 2.359], {icon: greenIcon}).addTo(mymap);
           var marker5 = L.marker([48.873, 2.359], {icon: greenIcon}).addTo(mymap);
-          var marker6 = L.marker([35.751203, 0,551528], {icon: greenIcon}).addTo(mymap);
+          var marker6 = L.marker([35.751203, 0,551528], {icon: greenIcon}).addTo(mymap); //Relizane
 
 
 
