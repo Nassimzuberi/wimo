@@ -54,7 +54,7 @@
 
     <div id="app">
       <header>
-      <nav class="navbar navbar-expand navbar-light bg-white " style="height:70px;" >
+      <nav class="navbar navbar-expand navbar-light bg-white " style="height:60px;" >
 
           
           <ul class="navbar-nav mr-auto mt-lg-0">
@@ -63,7 +63,7 @@
             </li>
           </ul>
           <a class="navbar-brand  wimo-logo " href="{{url('/')}}">
-            <img class="" src="{{asset('images/wimo-logo.png')}}" alt="" style="height:43px; filter: drop-shadow(4px 4px 0px #1CE6BE);">
+            <img class="" src="{{asset('images/wimo-logo.png')}}" alt="" style="height:33px; filter: drop-shadow(4px 4px 0px #1CE6BE);">
         </a>
           <ul class="navbar-nav align-items-center" style="flex-direction:row;">
             
@@ -72,7 +72,7 @@
             <a class="nav-link" href="{{route('cart')}}"> <i class="fas fa-shopping-cart" style="transition: 0.2s"></i> <span class="badge badge-info round-border" style="background-color:#1CE6BE;filter: drop-shadow(0px 0px 1px #1CE6BE);">{{Cart::count()}}</span> </A>
           </li>
           <li class="nav-item">
-                <a id="navbarDropdown" class="nav-link dropdown logged-user-icon" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <a id="navbarDropdown" class="nav-link dropdown logged-user-icon floating" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     <img src="{{asset('images/user.png')}}" alt="user-icon" id="user-icon" width='50'> <span class="caret"></span>
                 </a>
             <div class="dropdown-menu dropdown-menu-right user-commands" aria-labelledby="navbarDropdown">
@@ -92,49 +92,17 @@
 
           @else
           <li class="nav-item">
-            <a class="nav-link" href="{{route('login')}}">Connexion </a>
+            <a class="nav-link text-shadow-pop-br" href="{{route('login')}}">connexion </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('register')}}">Inscription </a>
+            <a class="nav-link text-shadow-pop-br" href="{{route('register')}}">inscription </a>
           </li>
           @endauth
         </div>
       </nav>
     </header>
 
-    <!--<header>
-
-        <div id="header-left">
-          <a href="{{route('cart')}}"> Panier <span class="badge badge-info">{{Cart::count()}}</span> </A>
-        </div>-->
-        <!-- Logo --> <!--
-        <a href="/"> <img src="{{asset('images/wimo-logo.png')}}" alt="" style="height:43px; filter: drop-shadow(4px 4px 0px #1CE6BE);"></a>
-
-        <div id="header-right">
-
-          <div id="user-icon-wrapper">
-            @auth
-                  <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                      <img src="{{asset('images/user.png')}}" alt="user-icon" id="user-icon"> <span class="caret"></span>
-                  </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ route('user.commandes',Auth::id()) }}">
-                      Mes commandes
-                  </a>
-                  <a class="dropdown-item" href="{{ route('logout') }}"
-                     onclick="event.preventDefault();
-                                   document.getElementById('logout-form').submit();">
-                      {{ __('Logout') }}
-                      <form method="post" id="logout-form" action="{{route('logout')}}"> @csrf </form>
-                  </a>
-
-                @endauth
-          </div>
-        </div>
-
-
-      </header>
--->
+   
 
         <main>
             @yield('content')
