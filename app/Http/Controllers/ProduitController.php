@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Produit;
+use App\Product;
 use Auth;
 
 class ProduitController extends Controller
@@ -15,9 +15,9 @@ class ProduitController extends Controller
      */
     public function index()
     {
-        $produits = Produit::with('user','tags')->get();
+        $produits = Product::with('user','tags')->get();
 
-        return view('produit.index',compact('produits'));
+        return view('product.index',compact('produits'));
     }
 
     /**
