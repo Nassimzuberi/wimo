@@ -142,3 +142,4 @@ class SaleController extends Controller
         return back()->with('status','Annonce supprimée');
     }
 }
+
