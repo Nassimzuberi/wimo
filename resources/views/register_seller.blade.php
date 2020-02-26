@@ -3,7 +3,7 @@
 <h1>Devenir vendeur</h1>
 <h2>Information du magasin</h2>
 <h3>Adresse du point de vente</h3>
-<form method="POST" action="{{route('register_seller')}}">
+<form method="POST" action="{{route('vendeurs.store')}}">
 	@csrf
 	<label for="num">Numéro de la voie</label>
 	<input type="text" id="num" name="num" required class="form-control @error('num') is-invalid @enderror" value="{{old('num')}}">
