@@ -79,7 +79,7 @@
                 <a class="dropdown-item" href="{{ route('user.commandes',Auth::id()) }}">
                     Mes commandes
                 </a>
-                <a class="dropdown-item" href="{{ url('/compte') }}">
+                <a class="dropdown-item" href="{{ url('/comptes') }}">
                     Mon compte
                 </a>
                 <a class="dropdown-item" href="{{ route('logout') }}"
