@@ -14,7 +14,7 @@
         </li>
     @else
         <li>
-            <a href="">Devenir vendeur</a>
+            <a href="{{route('vendeurs.create')}}">Devenir vendeur</a>
         </li>
     @endisset
     <li>
