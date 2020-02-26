@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 
 class AccountController extends Controller
 {
@@ -17,12 +17,12 @@ class AccountController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($message=NULL)
+    public function index()
     {
-        /* Si un message flash est défini */
-        if($message)
-            return redirect('/compte')->with($message);
-        return view('account',['seller' => Auth::user()->seller]);
+        return view('account',[
+            'seller' => Auth::user()->seller,
+            'compte' => Auth::user()->first_name.'_'.Auth::user()->last_name,
+        ]);
     }
 
     /**
@@ -63,20 +63,13 @@ class AccountController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit_profil()
+    public function edit()
     {
-        return view('edit_profil',['user'=> Auth::user()]);
+        return view('edit_profil',[
+            'compte'=> Auth::user(),
+        ]);
     }
-/**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function edit_password(User $user)
-    {
-        //
-    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -84,27 +77,15 @@ class AccountController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update_profil(Request $request)
+    public function update(Request $request)
     {
         Auth::user()->first_name = $request["first_name"];
         Auth::user()->last_name = $request["last_name"];
         Auth::user()->birthday = $request["birthday"];
         Auth::user()->save();
-        $status = "profil mis à jour";
-        return $this->index(compact("status"));
+        return redirect('/comptes')->with(['status'=>'Profil mis à jour']);
     }
-
- /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, User $user)
-    {
-        //
-    }   
+   
 
     /**
      * Remove the specified resource from storage.
