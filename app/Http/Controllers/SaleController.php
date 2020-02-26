@@ -136,6 +136,7 @@ class SaleController extends Controller
         /* Appel au controlleur concerné pour la suppression 
             de l'inventaire de l'annonce concerné
         */
+
         $inventory = new InventaireController();
         $inventory->destroy($sale->inventaire->id);
         $sale->delete();        
