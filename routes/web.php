@@ -11,10 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+/* Routage vers la page d'accueil */
+Route::view('/','welcome');
+Route::view('magasin','my_store');
 //Route pour le panier
 Route::delete('/cart/delete/{rowId}','CartController@deleteToCart')->name('cart.delete');
 Route::post('/cart/add','CartController@addToCart')->name('cart.add');
@@ -59,5 +58,4 @@ Route::get('map','MapController@show')->name('map.index');
 
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
