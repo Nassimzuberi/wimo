@@ -27,7 +27,7 @@ class CheckoutController extends Controller
     {
       // si le panier est vide il redirige vers la liste des produits
       if(Cart::count() <= 0){
-        return redirect()->route('produit.index');
+        return redirect()->route('map.index');
       }
       // Panier non vide => affichage du formulaire de paiement Stripe
       Stripe::setApiKey('sk_test_Chg88zyjWqUPJj8tpCDHLDwe00oyIXMrCg');
@@ -62,23 +62,24 @@ class CheckoutController extends Controller
     public function store(Request $request)
     {
 
-      // créer la commande dans la bdd et enlève la quantité acheté dans le produit
-      foreach(Cart::content() as $produit){
-        Auth::user()->commandes()->create([
-          'produit_id' => $produit->id,
-          'quantity' => $produit->qty,
-          'total' => $produit->subtotal,
-          'payement_option' => 2,
-        ]);
-        $produit->model->update([
-          'quantity' => $produit->model->quantity - $produit->qty,
-        ]);
-      }
+
 
       $data = $request->json()->all();
       if($data['paymentIntent']['status'] === 'succeeded'){
+        // créer la commande dans la bdd et enlève la quantité acheté dans le produit
+        foreach(Cart::content() as $produit){
+          Auth::user()->commandes()->create([
+            'sales_id' => $produit->id,
+            'quantity' => $produit->qty,
+            'total' => $produit->subtotal,
+            'payement_option' => 2,
+          ]);
+          $produit->model->inventaire->update([
+            'quantity' => $produit->model->inventaire->quantity - $produit->qty,
+          ]);
+        }
         // envoie le mail de validation de commande
-        Mail::to(Auth::user()->email)->send(new CommandeValidation(Cart::content(),Auth::user()));
+        //Mail::to(Auth::user()->email)->send(new CommandeValidation(Cart::content(),Auth::user()));
         //détruit le panier
         Cart::destroy();
         Session::flash('success','Votre commande a bien été traitée');
@@ -89,7 +90,7 @@ class CheckoutController extends Controller
     }
 
     public function confirm(){
-      return Session::has('success') ? view('checkout.confirm') : redirect()->route('produit.index');
+      return Session::has('success') ? view('checkout.confirm') : redirect()->route('map.index');
     }
 
     /**
