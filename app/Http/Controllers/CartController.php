@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
+use App\Sales;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Auth;
@@ -36,15 +36,16 @@ class CartController extends Controller
   public function addToCart(Request $request){
       // cherche si le produit est déja dans le panier
       $duplicata = Cart::search(function($cartItem, $rowId) use ($request) {
-        return $cartItem->id == $request->product_id;
+        return $cartItem->id == $request->sales_id;
       });
       if($duplicata->isNotEmpty()){
-        return redirect()->route('product.index')->with('warning','Le produit a déjà été ajouté.');
+        return redirect()->route('map.index')->with('warning','Le produit a déjà été ajouté.');
       }
       // il n'est pas dans le panier du coup le code ci-dessous est enclenché
-      $product = Product::find($request->product_id);
-      Cart::add($product->id,$product->name,$request->quantity,$product->prix_unit)->associate('App\Product');
-      return  redirect()->route('product.index')->with('success','Le produit a bien été ajouté');
+      $sales = Sales::find($request->sales_id);
+      $sales->price_unit == null ? $sales->price = $sales->price_weight : $sales->price = $sales->price_unit;
+      Cart::add($sales->id,$sales->product->name,$request->quantity,$sales->price)->associate('App\Sales');
+      return  redirect()->route('map.index')->with('success','Le produit a bien été ajouté');
     }
 
 // -- Affiche le panier

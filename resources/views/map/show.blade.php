@@ -35,101 +35,17 @@
           </div>
         </div>
 
+@foreach($sales as $sale)
         <!-- Résultat -->
         <div class="result">
           <div class="result-user-icon-wrapper">
           <img src="images/user-icons/image-1.png" alt="user-icon" class="result-user-icon">
           </div>
-        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-2.png" alt="user-icon" class="result-user-icon">
-          </div>
-         </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-3.png" alt="user-icon" class="result-user-icon">
+          <div>
+            <a href="{{route('annonces.show',$sale->id)}}">{{$sale->product->name}}</a>
           </div>
         </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-4.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-5.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-6.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-7.png" alt="user-icon" class="result-user-icon">
-          </div>        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-8.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-9.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-10.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-11.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-12.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-13.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-14.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-
+@endforeach
       </div>
     </div>
 

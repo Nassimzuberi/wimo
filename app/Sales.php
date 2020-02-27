@@ -10,7 +10,10 @@ class Sales extends Pivot
     protected $fillable = [
    		'price_weight','price_unit','seller_id','product_id',
    	];
-   	
+
+		public function seller(){
+			return $this->belongsTo('App\Seller');
+		}
    	public function product(){
    		return $this->belongsTo('App\Product');
    	}

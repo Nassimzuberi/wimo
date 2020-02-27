@@ -31,7 +31,7 @@
 	function disable_enable_input_inventory(input_disable,input_enable){
 		document.querySelector(`input[name='${input_disable}']`).disabled=true;
 		document.querySelector(`input[name='${input_enable}']`).disabled=false;
-	} 
+	}
 </script>
 <h1>Mes annonces</h1>
 <form method="post" action="{{route('annonces.store')}}" style="display:inline">
@@ -46,6 +46,10 @@
 		</select>
 		<label for="product">Produits:</label>
 		<select id="product" name="product_id">
+			<option value="NULL" selected></option>
+			@foreach($products as $product)
+				<option value="{{$product->id}}">{{$product->name}}</option>
+			@endforeach
 		</select><br>
 		<label>Prix à l'unite ou poids:</label>
 		<input id="unit" type="radio" name="type" value="price_unit" oninput="disable_enable_input_inventory('weight','quantity')">
@@ -53,15 +57,15 @@
 		<input id="poids" type="radio" name="type" value="price_weight" oninput="disable_enable_input_inventory('quantity','weight')">
 		<label for="poids">Poids au kilogramme</label><br>
 		<label for="prix">Prix:</label>
-		<input id="prix" type="text" name="price">		
+		<input id="prix" type="text" name="price">
 	</div>
 	<div style="display: inline-block;padding-left:10px ;margin-left:10px;border-left: solid black 3px;">
 		<span id="inventaire">L'inventaire:</span><br>
 		<label for="quantity">La quantité:</label>
 		<input type="text" name="quantity"><br>
 		<label for="weight">Le poids total:</label>
-		<input type="text" name="weight">	
-		<input type="submit">		
+		<input type="text" name="weight">
+		<input type="submit">
 	</div>
 </form>
 @if(session('status'))
