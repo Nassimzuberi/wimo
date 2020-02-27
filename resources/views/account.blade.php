@@ -6,6 +6,11 @@
             document.getElementById('destroy_seller').submit();
         }
     }
+    function ma_fct_2(){
+        if(confirm('Voulez-vous désactiver votre compte wimo?')){
+            document.getElementById('destroy_user').submit();
+        }
+    }    
 </script>
 <h1>Gestion de compte</h1>
 <ul>
@@ -32,8 +37,8 @@
         </li>
     @endisset
     <li>
-        <a href="javascript:ma_fct()">Désactiver mon compte</a>
-        <form method="post" id="destroy_user" action="{{route('user.destroy',Auth::id())}}">
+        <a href="javascript:ma_fct_2()">Désactiver mon compte</a>
+        <form method="post" id="destroy_user" action="{{route('user.destroy',Auth::user())}}">
             @csrf
             @method('DELETE')
         </form>

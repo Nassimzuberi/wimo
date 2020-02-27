@@ -96,10 +96,10 @@ class SellerController extends Controller
      */
     public function destroy($id)
     {
-        $sale_controleur = new SaleController();
+        $controleur = new SaleController();
         $annonces = Auth::user()->seller->sales;
         foreach($annonces as $annonce){
-            $sale_controleur->destroy($annonce->id,false);
+            $controleur->destroy($annonce->id,false);
         }
         Auth::user()->seller->delete();
         return back()->with('status','Votre compte est désactivé');
