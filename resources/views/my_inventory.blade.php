@@ -1,5 +1,6 @@
 @extends("layouts.app")
 @section("content")
+<a href="{{url('magasin')}}">Mon magasin</a>
 <h1>Inventaire de mes produits</h1>
 @if(session('status'))
     <div class="alert alert-success">

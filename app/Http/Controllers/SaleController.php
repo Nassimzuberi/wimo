@@ -23,10 +23,9 @@ class SaleController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
         $annonces = Auth::user()->seller->sales;
         $products = Product::all();
-        return view('my_announcement',compact('categories','annonces','products'));
+        return view('my_announcement',compact('annonces','products'));
     }
     /*
         Retourne les produits que le vendeur peut vendre
@@ -50,7 +49,8 @@ class SaleController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('add_announcement',compact('categories'));
     }
 
     /**
@@ -66,7 +66,8 @@ class SaleController extends Controller
         *   afin de créer l'inventaire de l'annonce.
         **/
         $id_announce = Sales::create([
-            $request["type"]=>$request["price"],
+            $request["type"]=> $request["price"],
+            "description" => $request["description"],
             "seller_id"=>Auth::user()->seller->id,
             "product_id"=>$request["product_id"],
         ])->where([
@@ -122,17 +123,20 @@ class SaleController extends Controller
            $annonce->price_weight = $request["price"];
            $annonce->price_unit = NULL;
         }
+        $annonce->description = $request["description"] ? $request["description"] : NULL;
         $annonce->save();
         return redirect('/annonces')->with('status','Annonce modifiée');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Supprime l'annonce du vendeur.
+     * Retour sur la page des annonces si c'est vrai
      *
      * @param  int  $id
+     * @param  bool $response
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,$response=true)
     {
         $sale = Sales::find($id);
         /* Appel au controlleur concerné pour la suppression
@@ -142,6 +146,7 @@ class SaleController extends Controller
         $inventory = new InventaireController();
         $inventory->destroy($sale->inventaire->id);
         $sale->delete();
-        return back()->with('status','Annonce supprimée');
+        if($response)
+            return back()->with('status','Annonce supprimée');
     }
 }
