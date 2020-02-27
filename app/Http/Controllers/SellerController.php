@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Seller;
+use App\Http\Controllers\SaleController;
 
 class SellerController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('create');
     }
     /**
      * Display a listing of the resource.
@@ -88,13 +89,19 @@ class SellerController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Désactivation du compte de vendeur et suppression de ces annonces
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $sale_controleur = new SaleController();
+        $annonces = Auth::user()->seller->sales;
+        foreach($annonces as $annonce){
+            $sale_controleur->destroy($annonce->id,false);
+        }
+        Auth::user()->seller->delete();
+        return back()->with('status','Votre compte est désactivé');
     }
 }
