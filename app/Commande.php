@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Commande extends Model
 {
-    protected $fillable=['product_id','user_id','total','quantity','payement_option','state'];
+    protected $fillable=['sales_id','user_id','total','quantity','payement_option','state'];
 
-    public function produit(){
-        return $this->belongsTo('App\Product');
+    public function sales(){
+        return $this->belongsTo('App\Sales');
     }
     public function user(){
         return $this->belongsTo('App\User');

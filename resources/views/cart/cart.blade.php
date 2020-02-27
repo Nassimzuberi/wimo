@@ -28,17 +28,13 @@
           {{$cart->price}} €
         </td>
         <td class="align-middle">
-          <div class="row justify-content-center">
-            <form method="GET" action='{{route('cart.delete.quantity',$cart->rowId)}}'>
-              <input type="hidden" name="quantity" value="{{$cart->qty}}">
-              <button type="submit" class="btn btn-sm btn-outline-dark" @if($cart->qty <= 1) disabled @endif> - </button>
-            </form>
-            <div class="mx-2">{{$cart->qty}} </div>
-            <form method="GET" action='{{route('cart.add.quantity',$cart->rowId)}}'>
-              <input type="hidden" name="quantity" value="{{$cart->qty}}">
-              <button type="submit" class="btn btn-sm btn-outline-dark" @if($cart->qty >= $cart->model->inventaire->quantity) disabled @endif> + </button>
-            </form>
-          </div>
+            <select name="qty" id="qty" data-id="{{$cart->rowId}}" class="form-control">
+              @for($i=1; $i <= $cart->model->inventaire->quantity ; $i++)
+                  <option value="{{$i}}" {{$cart->qty  == $i ? 'selected' : '' }}  >
+                    {{$i}}
+                  </option>
+              @endfor
+            </select>
         </td>
         <td class="align-middle">
           {{$cart->subtotal}} €
@@ -70,4 +66,43 @@
     </div>
   </div>
 </div>
+@endsection
+
+
+@section('extra-js')
+  <script>
+    var qty = document.querySelectorAll('#qty');
+    Array.from(qty).forEach(element => {
+
+      element.addEventListener("change", function(){
+        var rowId = element.getAttribute('data-id');
+        var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        var url = "/cart/quantity/" + rowId
+        console.log(url);
+        fetch(
+          url,
+          {
+            headers : {
+              'Content-Type' : "application/json",
+              "Accept" : "application/json,text-plain, */*",
+              "X-Requested-with" : "XMLHttpRequest",
+              "X-CSRF-TOKEN" : token
+            },
+            method:'post',
+            body: JSON.stringify({
+              quantity: this.value
+            })
+          }
+        ).then((data) => {
+          console.log(data)
+          location.reload()
+
+        }).catch((error) => {
+          console.log(error)
+        })
+      })
+    });
+
+
+  </script>
 @endsection

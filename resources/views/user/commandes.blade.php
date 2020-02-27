@@ -35,10 +35,10 @@
          @endif
        </div>
        <div class="d-flex flex-sm-row flex-column text-center text-sm-left">
-         <div><img src="{{$commande->produit->img}}" width="150"></div>
+         <div><img src="{{$commande->sales->img}}" width="150"></div>
          <div class="col">
            <small>Commande effectué le {{$commande->created_at->format('d-m-Y')}}</small>
-           <h4>{{$commande->quantity}} {{$commande->produit->name}}</h4>
+           <h4>{{$commande->quantity}} {{$commande->sales->product->name}}</h4>
            <div>
              @if($commande->payement_option == 1)
                A réglé sur place
@@ -48,7 +48,7 @@
              : {{$commande->total}} €
            </div>
            <small>
-             Produit vendu par : {{$commande->produit->user->name}}
+             Produit vendu par : {{$commande->sales->seller->user->name}}
            </small>
          </div>
          <div class="ml-sm-auto my-2 my-sm-0 text-center">
