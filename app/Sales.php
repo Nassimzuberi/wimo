@@ -8,7 +8,7 @@ class Sales extends Pivot
 {
 	protected $table = "sales";
     protected $fillable = [
-   		'price_weight','price_unit','seller_id','product_id',
+   		'description','price_weight','price_unit','seller_id','product_id',
    	];
 
 		public function seller(){
