@@ -58,11 +58,10 @@
   </div>
   </div>
     <div class="col align-self-start my-2 p-3 border text-center shadow">
-      <h4>Sous-total ({{Cart::count() == 1 ? Cart::count(). " article" : Cart::count(). " articles"}}) : <span style="color:#780404;font-weight:bold">{{Cart::subtotal()}} €</span></h4>
-      <hr class="w-100">
-      <div class="mt-2">
-        <a href='{{route('checkout.index')}}' class="btn btn-warning">Passer la commande</a>
-      </form>
+        <h4>Sous-total ({{Cart::count() == 1 ? Cart::count(). " article" : Cart::count(). " articles"}}) : <span style="color:#780404;font-weight:bold">{{Cart::subtotal()}} €</span></h4>
+        <hr class="w-100">
+        <div class="mt-2">
+            <a href='{{route('checkout.index')}}' class="btn btn-warning">Passer la commande</a>
     </div>
   </div>
 </div>
