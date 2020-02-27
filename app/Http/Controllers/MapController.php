@@ -8,8 +8,8 @@ use App\Sales;
 class MapController extends Controller
 {
     public function show(){
-      $sales = Sales::all();
-        return view('map.show',compact('sales'));
+      $sales = Sales::paginate(8);
+      return view('map.show',compact('sales'));
     }
 
 }
