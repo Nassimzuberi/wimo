@@ -1,4 +1,4 @@
-    @extends('layouts.app')
+@extends('layouts.app')
 @section('title')
     Map
 @endsection
@@ -14,11 +14,16 @@
 
 @section('content')
 
-<div class="wrapper">
+<div chttps://twitter.com/musdebxl/status/1230172484969861120tlass="wrapper">
 
     <!-- Bloc de gauche servant à effectuer les recherches -->
     <div id="left-block">
 
+      <!-- Formulaire de recherche -->
+      <form action="" method="post" class="search-form">
+        <input type="text" name="search" placeholder="ex : bananas, eggs...">
+        <input type="range" name="distance" id="distance-range"> 
+      </form>
 
 
       <!-- Affichage des produits recherchés -->
@@ -116,19 +121,87 @@
           </div>
         </div>
 
-        <!-- Résultat -->
+                <!-- Résultat -->
         <div class="result">
           <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-13.png" alt="user-icon" class="result-user-icon">
+          <img src="images/user-icons/image-1.png" alt="user-icon" class="result-user-icon">
           </div>
         </div>
 
         <!-- Résultat -->
         <div class="result">
           <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-14.png" alt="user-icon" class="result-user-icon">
+          <img src="images/user-icons/image-2.png" alt="user-icon" class="result-user-icon">
+          </div>
+         </div>
+
+        <!-- Résultat -->
+        <div class="result">
+          <div class="result-user-icon-wrapper">
+          <img src="images/user-icons/image-3.png" alt="user-icon" class="result-user-icon">
           </div>
         </div>
+
+        <!-- Résultat -->
+        <div class="result">
+          <div class="result-user-icon-wrapper">
+          <img src="images/user-icons/image-4.png" alt="user-icon" class="result-user-icon">
+          </div>
+        </div>
+
+        <!-- Résultat -->
+        <div class="result">
+          <div class="result-user-icon-wrapper">
+          <img src="images/user-icons/image-5.png" alt="user-icon" class="result-user-icon">
+          </div>
+        </div>
+        <!-- Résultat -->
+        <div class="result">
+          <div class="result-user-icon-wrapper">
+          <img src="images/user-icons/image-6.png" alt="user-icon" class="result-user-icon">
+          </div>
+        </div>
+
+        <!-- Résultat -->
+        <div class="result">
+          <div class="result-user-icon-wrapper">
+          <img src="images/user-icons/image-7.png" alt="user-icon" class="result-user-icon">
+          </div>        </div>
+
+        <!-- Résultat -->
+        <div class="result">
+          <div class="result-user-icon-wrapper">
+          <img src="images/user-icons/image-8.png" alt="user-icon" class="result-user-icon">
+          </div>
+        </div>
+
+        <!-- Résultat -->
+        <div class="result">
+          <div class="result-user-icon-wrapper">
+          <img src="images/user-icons/image-9.png" alt="user-icon" class="result-user-icon">
+          </div>
+        </div>
+
+        <!-- Résultat -->
+        <div class="result">
+          <div class="result-user-icon-wrapper">
+          <img src="images/user-icons/image-10.png" alt="user-icon" class="result-user-icon">
+          </div>
+        </div>
+        <!-- Résultat -->
+        <div class="result">
+          <div class="result-user-icon-wrapper">
+          <img src="images/user-icons/image-11.png" alt="user-icon" class="result-user-icon">
+          </div>
+        </div>
+
+        <!-- Résultat -->
+        <div class="result">
+          <div class="result-user-icon-wrapper">
+          <img src="images/user-icons/image-12.png" alt="user-icon" class="result-user-icon">
+          </div>
+        </div>
+
 
       </div>
     </div>

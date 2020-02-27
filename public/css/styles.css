@@ -85,6 +85,11 @@ header{
   z-index:99;
 }
 
+.search-form{
+  display:flex;
+  flex-direction:column;
+}
+
 #search-name-block{
   display:flex;
   flex-direction: column;
@@ -164,18 +169,15 @@ header{
 
 .logged-user-icon{
   transition:0.2s;
+  filter: drop-shadow(0px 2px 1px rgba(0, 0, 0, 0.5));
 }
 .logged-user-icon:hover{
-  filter:brightness(120%) drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.2));
+  filter:brightness(120%) drop-shadow(0px 2px 1px rgba(0, 0, 0, 0.5)) ;
 }
 
 .round{
     clip-path: circle(50% at 50% 50%);
     -webkit-clip-path: circle(50% at 50% 50%);
-}
-
-.round-border{
-    border-radius:10000px;
 }
 
 .wimo-logo{
@@ -186,6 +188,17 @@ header{
 .wimo-logo:hover{
   filter:contrast(140%)  ;
 }
+
+.basket-number{
+  height:5px;
+  width:5px;
+  border-radius: 50%;
+  color:white;
+  background-color:#1CE6BE;
+  display:inline-block;
+  filter: drop-shadow(0px 2px 1px rgba(0, 0, 0, 0.5));
+}
+
 .text-shadow-pop-br {
   color:black;
   font-family: 'Comfortaa';

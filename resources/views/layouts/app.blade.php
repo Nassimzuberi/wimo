@@ -23,7 +23,10 @@
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:600&display=swap" rel="stylesheet">
+
     @yield('extra-script')
+    
 
     <!-- Favicon --> 
 
@@ -69,7 +72,7 @@
             
           @auth
           <li class="nav-item" >
-            <a class="nav-link" href="{{route('cart')}}"> <i class="fas fa-shopping-cart" style="transition: 0.2s"></i> <span class="badge badge-info round-border" style="background-color:#1CE6BE;filter: drop-shadow(0px 0px 1px #1CE6BE);">{{Cart::count()}}</span> </A>
+            <a class="nav-link" href="{{route('cart')}}">  <span class="basket-numer" style="font-family: 'Montserrat', sans-serif; font-weight:300;">{{Cart::count()}}</span> <i class="fas fa-shopping-basket" style="transition: 0.2s"></i></A>
           </li>
           <li class="nav-item">
                 <a id="navbarDropdown" class="nav-link dropdown logged-user-icon floating" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -92,7 +95,7 @@
 
           @else
           <li class="nav-item">
-            <a class="nav-link text-shadow-pop-br" href="{{route('login')}}">connexion </a>
+            <a class="nav-link text-shadow-pop-br" href="{{route('login')}}">connexion</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-shadow-pop-br" href="{{route('register')}}">inscription </a>
