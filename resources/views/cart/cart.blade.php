@@ -22,10 +22,10 @@
           <img src='{{$cart->model->img}}' width="100" class="m-2"/>
         </td>
         <td class="align-middle">
-            <div>{{$cart->model->name}}</div>
+            <div>{{$cart->name}}</div>
         </td>
         <td class="align-middle">
-          {{$cart->model->prix_unit}} €
+          {{$cart->price}} €
         </td>
         <td class="align-middle">
           <div class="row justify-content-center">
@@ -36,7 +36,7 @@
             <div class="mx-2">{{$cart->qty}} </div>
             <form method="GET" action='{{route('cart.add.quantity',$cart->rowId)}}'>
               <input type="hidden" name="quantity" value="{{$cart->qty}}">
-              <button type="submit" class="btn btn-sm btn-outline-dark" @if($cart->qty >= $cart->model->quantity) disabled @endif> + </button>
+              <button type="submit" class="btn btn-sm btn-outline-dark" @if($cart->qty >= $cart->model->inventaire->quantity) disabled @endif> + </button>
             </form>
           </div>
         </td>

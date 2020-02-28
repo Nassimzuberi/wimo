@@ -3,21 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Produit;
 use Auth;
+use App\Inventaire;
 
-class ProduitController extends Controller
+class InventaireController extends Controller
 {
+    
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $produits = Produit::with('user','tags')->get();
-
-        return view('produit.index',compact('produits'));
+    {   
+        $products = Auth::user()->seller->sales;
+        return view('my_inventory',compact('products'));
     }
 
     /**
@@ -36,9 +39,13 @@ class ProduitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id_announce)
     {
-        //
+        Inventaire::create([
+            "quantity" => $request["quantity"] ?? NULL,
+            "weight" => $request["weight"] ?? NULL,
+            "sale_id" => $id_announce, 
+        ]);
     }
 
     /**
@@ -47,10 +54,9 @@ class ProduitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Produit $produit)
+    public function show($id)
     {
-      $data = $produit;
-        return view('produit.show',compact('data'));
+        //
     }
 
     /**
@@ -61,7 +67,8 @@ class ProduitController extends Controller
      */
     public function edit($id)
     {
-        //
+        $inventory = Inventaire::find($id);
+        return view('edit_inventory',compact("inventory"));
     }
 
     /**
@@ -73,7 +80,17 @@ class ProduitController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $inventory = Inventaire::find($id);
+        if($request["type"]=="weight"){
+            $inventory->weight = $request->weight;
+            $inventory->quantity = NULL;
+        }
+        else{
+            $inventory->quantity = $request->quantity;
+            $inventory->weight = NULL;
+        }
+        $inventory->save();
+        return redirect('inventaires')->with('status','inventaire mis à jour');
     }
 
     /**
@@ -84,14 +101,6 @@ class ProduitController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
-
-    public function all(){
-      return response()->json(Produit::all(),201);
-    }
-
-    public function find($id) {
-      return response()->json(Produit::find($id),201);
+        Inventaire::destroy($id);
     }
 }

@@ -20,189 +20,27 @@
     <div id="left-block">
 
       <!-- Formulaire de recherche -->
-      <form action="" method="post" class="search-form">
+      <form action="" method="post" class="map-form">
         <input type="text" name="search" placeholder="ex : bananas, eggs...">
         <input type="range" name="distance" id="distance-range"> 
+        <input type="submit" value="search">
       </form>
 
 
       <!-- Affichage des produits recherchés -->
       <div id="search-results">
-        <!-- Nom de la recherche -->
-        <div id="search-name-block">
-          <!-- Image SVG de loupe -->
-          <div id="magnifying-glass">
-            <img src="images/magnifying-glass.svg" alt="">
-          </div>
+@foreach($sales as $sale)
 
-          <div id="search-name">
-            <p><i>Search results for "banana"</i></p>
+        <!-- Résultat -->
+        <div class="result">
+          <div class="result-user-icon-wrapper">
+          <img src="{{ asset('images/user-icons/'.$sale->seller_id.'.png')}}" alt="user-icon" class="result-user-icon">
+          </div>
+          <div>
+            <a href="{{route('annonces.show',$sale->id)}}">{{$sale->product->name}}</a>
           </div>
         </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-1.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-2.png" alt="user-icon" class="result-user-icon">
-          </div>
-         </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-3.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-4.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-5.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-6.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-7.png" alt="user-icon" class="result-user-icon">
-          </div>        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-8.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-9.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-10.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-11.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-12.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-
-                <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-1.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-2.png" alt="user-icon" class="result-user-icon">
-          </div>
-         </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-3.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-4.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-5.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-6.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-7.png" alt="user-icon" class="result-user-icon">
-          </div>        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-8.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-9.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-10.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-11.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-
-        <!-- Résultat -->
-        <div class="result">
-          <div class="result-user-icon-wrapper">
-          <img src="images/user-icons/image-12.png" alt="user-icon" class="result-user-icon">
-          </div>
-        </div>
-
-
+@endforeach
       </div>
     </div>
 
