@@ -76,7 +76,7 @@
           </li>
           <li class="nav-item">
                 <a id="navbarDropdown" class="nav-link dropdown logged-user-icon floating" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    <img src="{{asset('images/user.png')}}" alt="user-icon" id="user-icon" width='50'> <span class="caret"></span>
+                    <img src="{{ asset('/images/user-icons/'.Auth::id().'.png') }}" alt="user-icon" id="user-icon" width='50'> <span class="caret"></span>
                 </a>
             <div class="dropdown-menu dropdown-menu-right user-commands" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{{ route('user.commandes',Auth::id()) }}">
