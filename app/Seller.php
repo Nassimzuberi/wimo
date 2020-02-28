@@ -10,6 +10,11 @@ class Seller extends Model
    		'address','phone_number','user_id',
    	];
 
+   	public function address(){
+   	    $data = json_decode($this->address);
+   	    $full = $data->num." ".$data->voie. ", ". $data->cp." ". $data->commune;
+   	    return $full;
+    }
     public function user(){
       return $this->belongsTo('App\User');
     }

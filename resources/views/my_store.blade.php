@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<a href="{{url('comptes')}}">Mon compte</a>
 <h1>Mon magasin</h1>
 <ul>
 	<li>

@@ -16,12 +16,8 @@ class CartController extends Controller
 
   // --  Modifier la quantité des produits du paniers
 
-  public function deleteQuantity(Request $request,$rowId){
-    Cart::update($rowId,$request->quantity - 1);
-    return back();
-  }
-  public function addQuantity($rowId,Request $request){
-    Cart::update($rowId,$request->quantity + 1);
+  public function selectQuantity($rowId,Request $request){
+    Cart::update($rowId,$request->quantity);
     return back();
   }
 

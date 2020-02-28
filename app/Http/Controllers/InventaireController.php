@@ -42,8 +42,8 @@ class InventaireController extends Controller
     public function store(Request $request,$id_announce)
     {
         Inventaire::create([
-            "quantity" => $request["quantity"] ?? NULL,
-            "weight" => $request["weight"] ?? NULL,
+            "quantity" => $request["type"] == "price_unit" ? $request["inventory"] : NULL,
+            "weight" => $request["type"] == "price_weight" ? $request["inventory"] : NULL,
             "sale_id" => $id_announce, 
         ]);
     }

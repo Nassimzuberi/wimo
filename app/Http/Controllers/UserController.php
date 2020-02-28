@@ -6,6 +6,7 @@ use App\User;
 use App\Commande;
 use Illuminate\Http\Request;
 use Auth;
+use App\Http\Controllers\SellerController;
 
 
 class UserController extends Controller
@@ -89,7 +90,16 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        /* 
+        *   Si l'utilisateur possède un compte vendeur 
+        *   On supprime ses données.
+        */
+        if(Auth::user()->seller){
+            $controleur = new SellerController();
+            $controleur->destroy(Auth::user()->seller->id);
+        }
+        Auth::user()->delete();
+        return redirect('/');
     }
     public function commandes(User $user,Request $request){
       $id = $user->id;
