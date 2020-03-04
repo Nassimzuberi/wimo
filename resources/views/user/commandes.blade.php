@@ -48,7 +48,7 @@
              : {{$commande->total}} €
            </div>
            <small>
-             Produit vendu par : {{$commande->sales->seller->user->name}}
+             Produit vendu par : {{$commande->sales->seller->user->fullname()}}
            </small>
          </div>
          <div class="ml-sm-auto my-2 my-sm-0 text-center">

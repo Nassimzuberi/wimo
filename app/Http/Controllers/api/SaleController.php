@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Sale;
+use \App\Sales;
 use Illuminate\Http\Request;
 use \App\Http\Resources\Sale as SaleResource;
 
@@ -16,7 +16,7 @@ class SaleController extends Controller
      */
     public function index()
     {
-        return SaleResource::collection(Sale::all());
+        return SaleResource::collection(Sales::all());
     }
 
     /**
@@ -27,7 +27,7 @@ class SaleController extends Controller
      */
     public function store(Request $request)
     {
-        Sale::create($request->all());
+        Sales::create($request->all());
     }
 
     /**
@@ -36,7 +36,7 @@ class SaleController extends Controller
      * @param  \App\Sale  $sale
      * @return \Illuminate\Http\Response
      */
-    public function show(Sale $sale)
+    public function show(Sales $sale)
     {
         return new SaleResource($sale);
     }
@@ -48,7 +48,7 @@ class SaleController extends Controller
      * @param  \App\Sale  $sale
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sale $sale)
+    public function update(Request $request, Sales $sale)
     {
         $sale->update($request->all());
     }
@@ -59,7 +59,7 @@ class SaleController extends Controller
      * @param  \App\Sale  $sale
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sale $sale)
+    public function destroy(Sales $sale)
     {
         //
     }

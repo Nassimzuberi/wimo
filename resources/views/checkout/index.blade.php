@@ -41,10 +41,10 @@
         </div>
 
 
-        <div class="col-md paiement" hidden>
-            <h4>2. Veullez saisir vos coordonnées bancaires</h4>
+        <div class="col-md">
+            <h4>2. Moyen de paiement</h4>
             <hr class="w-100">
-            <form action='{{ route('checkout.store') }}' method="POST" class="my-4" id="payment-form">
+            <form action='{{ route('checkout.store') }}' method="POST" class="my-4 paiement" hidden id="payment-form">
                 <div class="border p-4" id="card-element">
                     <label class="">Numéro de carte :</label>
                     <div class="border p-3" id="card-number"></div>
