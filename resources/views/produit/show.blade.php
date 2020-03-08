@@ -4,8 +4,8 @@ use App\Http\Controllers\CommandeController;
 ?>
 <script src="{{ asset('js/app.js') }}"></script>
 @section('content')
-  <div class="mt-5">
-    @if(session('message'))
+    <div class="mt-5">
+      @if(session('message'))
       <div class="alert alert-success"> {{session('message')}} </div>
     @endif
     <div class="d-flex flex-column border text-center">
@@ -23,9 +23,9 @@ use App\Http\Controllers\CommandeController;
         <div class='d-flex flex-row  justify-content-center align-items-center m-3'>
           <label>Quantité : </label>
           <select name="quantity" class="custom-select mx-3 w-25">
-            @for ( $i = 1 ; $i <= $data->quantity ; $i++)
-            <option value="{{$i}}">{{$i}} </option>
-            @endfor
+             @for ( $i = 1 ; $i <= $data->quantity ; $i++)
+             <option value="{{$i}}">{{$i}} </option>
+             @endfor
           </select>
         </div>
 
@@ -41,7 +41,8 @@ use App\Http\Controllers\CommandeController;
           }
           
         ?>
-        @if(isset($commande))
+
+        @if(!empty($commande))
 
       <div>
         <button onclick="myFunction()" class="btn btn-primary">avis</button>
@@ -51,7 +52,7 @@ use App\Http\Controllers\CommandeController;
       <div id="mydiv" style="display: none;">
         <form class ="avis" id="form_avis" action="{{route('avis.store', $data->id)}}" method="post">
           @csrf
-          <textarea class="form-control" id="text_avis" name="text_avis" rows="4"></textarea>
+          <textarea class="form-control" id="text_avis" name="text_avis" rows="4" required></textarea>
           <div>
             <input type="radio" name="like" id="like" class='like' value="1">
             <label for="like">J'aime</label>
@@ -61,7 +62,7 @@ use App\Http\Controllers\CommandeController;
           <input type="submit" id="submit-avis" class="btn btn-primary" value="Enregistrer">
         </form>
       </div>
-      <script>
+      <script> 
 function myFunction() {
   var x = document.getElementById("mydiv");
   if (x.style.display === "none") {
