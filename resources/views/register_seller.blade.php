@@ -1,8 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.register.app')
 @section('content')
 <h1>Devenir vendeur</h1>
-<h2>Information du magasin</h2>
-<h3>Adresse du point de vente</h3>
+<p style="text-align: center;">
+    Renseignez l'adresse de votre point de vente <br>
+    et un numéro afin que les acheteurs puissent vous joindre
+</p>
 <form method="POST" action="{{route('vendeurs.store')}}">
 	@csrf
 	<label for="num">Numéro de la voie</label>
