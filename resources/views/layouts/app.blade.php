@@ -48,7 +48,8 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-
+    <script type="text/javascript" src="{{asset('js/register.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="{{asset('css/register.css')}}">
 </head>
 
 
@@ -69,7 +70,6 @@
             <img class="" src="{{asset('images/wimo-logo.png')}}" alt="" style="height:33px; filter: drop-shadow(4px 4px 0px #1CE6BE);">
         </a>
           <ul class="navbar-nav align-items-center" style="flex-direction:row;">
-            
           @auth
           <li class="nav-item" >
             <a class="nav-link" href="{{route('cart')}}">  <span class="basket-numer" style="font-family: 'Montserrat', sans-serif; font-weight:300;">{{Cart::count()}}</span> <i class="fas fa-shopping-basket" style="transition: 0.2s"></i></A>
@@ -82,7 +82,7 @@
                 <a class="dropdown-item" href="{{ route('user.commandes',Auth::id()) }}">
                     Mes commandes
                 </a>
-                <a class="dropdown-item" href="{{ url('/comptes') }}">
+                <a class="dropdown-item" href="{{ route('comptes.show',Auth::user())}}">
                     Mon compte
                 </a>
                 <a class="dropdown-item" href="{{ route('logout') }}"
@@ -98,7 +98,7 @@
             <a class="nav-link text-shadow-pop-br" href="{{route('login')}}">connexion</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-shadow-pop-br" href="{{route('register')}}">inscription </a>
+            <a class="nav-link text-shadow-pop-br" href="{{route('comptes.create')}}">inscription </a>
           </li>
           @endauth
         </div>

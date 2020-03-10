@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <script type="text/javascript">
-	const url = "http://localhost/wimo/public/";
+	let url = "http://localhost/wimo/public/";
 	function load_product(category_id){
 		let ajax = new XMLHttpRequest();
 		let select = document.getElementById('product');

@@ -2,10 +2,6 @@
 @section('content')
 <!-- Fct qui affiche une alert avant de supprimer une annonce -->
 <script type="text/javascript">
-<<<<<<< HEAD
-	const url = "http://wimo.test/";
-=======
->>>>>>> 90d98ee293dd80401710051d0a1ec08028a8797c
 	/*Affiche un pop up si le vendeur veut supprimer une annonce */
 	function ma_fct(id){
 		if(confirm('Supprimer cette annonce ?')){

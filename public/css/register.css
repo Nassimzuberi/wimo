@@ -1,0 +1,74 @@
+.init{
+    display:inline-block;
+    position:relative;
+    transition:left 1s, opacity 1s;        
+}
+.step{
+    width: 20px;
+    height: 20px;
+    border:solid black 1px;
+    border-radius: 50%;
+    display:inline-block;
+    margin:0px 5px;
+}
+.actual_step{
+    background-color:orange;
+}
+.step_succes{
+    background-color:green;
+}
+#previous_step,#skip_step{
+    visibility:hidden;
+}
+#user{
+    left:35%;
+    opacity:1;
+    vertical-align:top;
+}
+#seller{
+    left:55%;
+    opacity:0;  
+}
+#buttons , #steps{
+    text-align:center;
+}
+#steps{
+    margin:10px 0px;
+}
+#consigne{
+    text-align: center;
+}
+#final{
+    position:absolute;
+    background-color:lightgreen;
+    text-align:center;
+    left:70%;
+    top:15%;
+    opacity:0;
+}
+.pas_bon{
+    border-color:red;
+}
+.message_error{
+    color:red;
+}
+.animate_loader{
+  border: 5px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 5px solid #3498db;
+  width: 35px;
+  height: 35px;
+  -webkit-animation: spin 1.5s linear infinite; /* Safari */
+  animation: spin 1.5s linear infinite;
+  margin: 0 auto;
+}
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

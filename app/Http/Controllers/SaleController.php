@@ -37,7 +37,8 @@ class SaleController extends Controller
         foreach(Auth::user()->seller->sales as $sale){
             $products_id[]=$sale->product_id;
         }
-        return Category::find($id)->products->reject(function($product)use($products_id){
+        return Category::find($id)->products->reject(
+                function($product)use($products_id){
             return in_array($product->id,$products_id);
         });
     }

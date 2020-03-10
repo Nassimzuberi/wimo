@@ -38,7 +38,7 @@
     @endisset
     <li>
         <a href="javascript:ma_fct_2()">Désactiver mon compte</a>
-        <form method="post" id="destroy_user" action="{{route('user.destroy',Auth::user())}}">
+        <form method="post" id="destroy_user" action="{{route('comptes.destroy',Auth::user())}}">
             @csrf
             @method('DELETE')
         </form>

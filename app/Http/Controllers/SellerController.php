@@ -11,7 +11,7 @@ class SellerController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('create');
+        $this->middleware('auth')->except('create','phone_seller');
     }
     /**
      * Display a listing of the resource.
@@ -30,7 +30,11 @@ class SellerController extends Controller
      */
     public function create()
     {
-        return view('register_seller');
+        //return view('register_seller');
+    }
+
+    public function phone_seller($phone){
+        return Seller::where('phone_number',$phone)->get();
     }
 
     /**
@@ -51,7 +55,7 @@ class SellerController extends Controller
         'user_id' => Auth::id(),
         'phone_number'=> $request["telephone"]
         ]);
-        return redirect('/comptes')->with('status','Inscription réussie');
+        return redirect()->route('comptes.show',Auth::user())->with('status','Inscription réussie');
     }
 
     /**

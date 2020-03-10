@@ -18,8 +18,15 @@ Route::resource('comptes','AccountController');
 Route::resource('vendeurs','SellerController');
 Route::resource('annonces','SaleController');
 Route::resource('inventaires','InventaireController');
+Route::resource('user','UserController');
+
 /*Les produits disponibles pour le vendeur */
 Route::get('/product/available/category/{id}','SaleController@products_available');
+/*Interroge la base de donnée si une adresse mail existe*/
+Route::get('/mail_account/{mail}','AccountController@mail_account');
+/*Interroge la base de donnée si un téléphone portable existe*/
+Route::get('/phone_seller/{phone}','SellerController@phone_seller');
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -39,7 +46,6 @@ Route::get('/merci','CheckoutController@confirm');
 Route::get('commande/{commande}','CommandeController@show')->name('commande.show');
 Route::get('users/{user}/commandes','UserController@commandes')->name('user.commandes');
 Route::post('commande/{commande}/reception','CommandeController@reception')->name('commande.validate');
-Route::resource('user','UserController');
 
 //Routes de la carte
 Route::get('map','MapController@show')->name('map.index');

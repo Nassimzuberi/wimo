@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Http\Request;
+use App\Http\Controllers\SellerController;
+use App\Http\Controllers\Auth\RegisterController;
 
 class AccountController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('mail_account','create','store');
     }
     /**
      * Display a listing of the resource.
@@ -19,10 +21,7 @@ class AccountController extends Controller
      */
     public function index()
     {
-        return view('account',[
-            'seller' => Auth::user()->seller,
-            'compte' => Auth::user()->first_name.'_'.Auth::user()->last_name,
-        ]);
+
     }
 
     /**
@@ -32,7 +31,7 @@ class AccountController extends Controller
      */
     public function create()
     {
-        //
+        return view('auth.register');
     }
 
     /**
@@ -43,7 +42,17 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $controleur = new RegisterController();
+        $controleur->register($request);
+        if(isset($request->register_seller)){
+            $controleur = new SellerController();
+            return $controleur->store($request);
+        }
+        return redirect()->route('comptes.show',Auth::user())->with('status','Inscription réussie');
+    }
+
+    public function mail_account($mail){
+        return User::where('email',$mail)->get();
     }
 
     /**
@@ -54,7 +63,10 @@ class AccountController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('account',[
+            'seller' => Auth::user()->seller,
+            'compte' => Auth::user()->first_name.'_'.Auth::user()->last_name,
+        ]);
     }
 
     /**
@@ -95,6 +107,15 @@ class AccountController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        /* 
+        *   Si l'utilisateur possède un compte vendeur 
+        *   On supprime ses données.
+        */
+        if(Auth::user()->seller){
+            $controleur = new SellerController();
+            $controleur->destroy(Auth::user()->seller->id);
+        }
+        Auth::user()->delete();
+        return redirect('/');
     }
 }
