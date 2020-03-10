@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.register.app')
 @section('content')
 
 <h2 id="header_consigne">Mes informations</h2>
