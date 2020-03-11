@@ -11,7 +11,7 @@ class SellerController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('create','phone_seller');
+        $this->middleware('auth')->except('phone_seller');
     }
     /**
      * Display a listing of the resource.
@@ -30,9 +30,9 @@ class SellerController extends Controller
      */
     public function create()
     {
-        //return view('register_seller');
+        return view('register_seller');
     }
-
+    /* Retourne le vendeur en fonction de son numéro de téléphone */
     public function phone_seller($phone){
         return Seller::where('phone_number',$phone)->get();
     }

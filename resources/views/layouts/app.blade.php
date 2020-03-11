@@ -9,25 +9,9 @@
 
     <!-- Titre -->
     <title>{{ config('app.name', 'Wimo') }} | @yield('title') </title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://kit.fontawesome.com/0a9da0bbd4.js" crossorigin="anonymous"></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:600&display=swap" rel="stylesheet">
-
+    @include('layouts.head.default')
     @yield('extra-script')
     
-
     <!-- Favicon --> 
 
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('/images/apple-icon-57x57.png')}}">
@@ -47,9 +31,6 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-
-    <script type="text/javascript" src="{{asset('js/register.js')}}"></script>
-    <link rel="stylesheet" type="text/css" href="{{asset('css/register.css')}}">
 </head>
 
 
@@ -59,8 +40,6 @@
     <div id="app">
       <header>
       <nav class="navbar navbar-expand navbar-light bg-white " style="height:60px;" >
-
-          
           <ul class="navbar-nav mr-auto mt-lg-0">
             <li class="nav-item dark">
               <a class="nav-link text-shadow-pop-br" href="{{route('map.index')}}"> map </a>
@@ -68,7 +47,7 @@
           </ul>
           <a class="navbar-brand  wimo-logo " href="{{url('/')}}">
             <img class="" src="{{asset('images/wimo-logo.png')}}" alt="" style="height:33px; filter: drop-shadow(4px 4px 0px #1CE6BE);">
-        </a>
+          </a>
           <ul class="navbar-nav align-items-center" style="flex-direction:row;">
           @auth
           <li class="nav-item" >
