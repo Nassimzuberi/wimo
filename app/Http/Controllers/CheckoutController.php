@@ -61,9 +61,6 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-
-
-
       $data = $request->json()->all();
       if($data['paymentIntent']['status'] === 'succeeded'){
         // créer la commande dans la bdd et enlève la quantité acheté dans le produit
