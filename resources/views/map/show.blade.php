@@ -1,4 +1,4 @@
-@extends('layouts.register.app',['additional_head'=>'maps'])
+@extends('layouts.app',['additional_head'=>'maps'])
 @section('title')
     Map
 @endsection
