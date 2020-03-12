@@ -16,7 +16,8 @@
             @include('layouts.head.'.$additional_head)
         @endisset
         <!-- Favicon -->
-        @include('layouts.head.favicon')
+        <!--
+        @include('layouts.head.favicon')-->
     </head>
 <body>  
     <div id="app">

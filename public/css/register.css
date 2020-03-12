@@ -1,7 +1,9 @@
 .init{
-    display:inline-block;
-    position:relative;
-    transition:left 1s, opacity 1s;        
+	position:absolute;
+  transition:left 1s, opacity 1s;        
+}
+form{
+	height:55vh;
 }
 .step{
     width: 20px;
@@ -21,29 +23,29 @@
     visibility:hidden;
 }
 #user{
-    left:35%;
-    opacity:1;
-    vertical-align:top;
+	left:calc(50% - 204.945px);
 }
 #seller{
-    left:55%;
-    opacity:0;  
+	left:calc(99.5% - 407.82px);
+    opacity:0;
+}
+
+#seller p{
+	text-align: center;
 }
 #buttons , #steps{
     text-align:center;
 }
 #steps{
     margin:10px 0px;
+    position:relative;
 }
-#consigne{
+#instruction_step{
     text-align: center;
 }
 #final{
-    position:absolute;
-    background-color:lightgreen;
+	left:calc(99.5% - 449.96px);
     text-align:center;
-    left:70%;
-    top:15%;
     opacity:0;
 }
 .pas_bon{
