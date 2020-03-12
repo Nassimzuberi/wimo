@@ -37,6 +37,10 @@ class SellerController extends Controller
         return Seller::where('phone_number',$phone)->get();
     }
 
+    public function my_store(){
+        return view('account.seller.my_store');
+    }
+
     /**
      * Store a newly created resource in storage.
      *

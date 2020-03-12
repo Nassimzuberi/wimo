@@ -1,14 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.app',['additional_head'=>'account.seller'])
 @section('content')
-<!-- Fct qui affiche une alert avant de supprimer une annonce -->
-<script type="text/javascript">
-	/*Affiche un pop up si le vendeur veut supprimer une annonce */
-	function ma_fct(id){
-		if(confirm('Supprimer cette annonce ?')){
-			document.getElementById(`delete_announce_${id}_form`).submit();
-		}
-	}
-</script>
 <a href="{{url('magasin')}}">Mon magasin</a>
 <h1>Mes annonces</h1>
 <a href="{{route('annonces.create')}}">Ajouter une annonce</a>
@@ -34,7 +25,7 @@
 				<td>{{$annonce->price_unit ? $annonce->price_unit." €" : NULL}}</td>
 				<td><a href="{{url('/annonces/'.$annonce->id.'/edit')}}">Modifier</a></td>
 				<td>
-					<a href="javascript:ma_fct({{$annonce->id}})">Supprimer</a>
+					<a href="javascript:delete_announce({{$annonce->id}})">Supprimer</a>
 					<!-- Formulaire pour supprimer une annonce -->
 					<form method="post" id="delete_announce_{{$annonce->id}}_form" action="{{route('annonces.destroy',$annonce->id)}}">
 						@csrf
