@@ -11,10 +11,11 @@
 html,body{
   height:100vh;
   font-family: 'Comfortaa';
+  outline:none;
 }
 
 main{
-  position:fixed;
+  position:relative;
   height:calc(100vh - 60px);
   width:100vw;
   top:60px;
@@ -51,6 +52,15 @@ header{
     margin-right:0;
     background-color: white;
   }
+  .dropdown-item{
+    font-family:'Comfortaa';
+    font-size:15px;
+
+  }
+  .dropdown-item:active{
+    background-color:rgba(0,255,205,0.85)
+  }
+
     #user-icon-wrapper{
       display:flex;
       align-items: center;
@@ -86,6 +96,7 @@ header{
   background-color:white;
   box-shadow: 0px 1px 5px lightgray;
   z-index:99;
+  
 }
 
 .search-form{
@@ -125,6 +136,7 @@ header{
 
     .result{
       display:flex;
+      flex-direction:row;
       align-items: center;
       margin-top:10px;
       margin-bottom:10px;
@@ -132,7 +144,8 @@ header{
       width:100%;
       background-color:white;
       padding-left:13px;
-      filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.2))
+      filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.2));
+      font-family:'Comfortaa';
     }
         .result:hover{
           background-color: #1CE6BE;
@@ -167,7 +180,15 @@ header{
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  outline:none;
 
+
+}
+
+.seach-line{
+  display:flex;
+  transition: 0.2s;
+  margin-left:35px; 
 }
 
 .map-form input[type=text]{
@@ -178,29 +199,47 @@ header{
   border:none;
   filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.2));
   padding-left:10px;
-  padding-right:10px;
-  color:gray
+  padding-right:45px;
+  color:gray;
 
 }
-.map-form input[type=text]::placeholder{
-  color:lightgray;
-  font-style: italic;
+    .map-form input[type=text]::placeholder{
+      color:lightgray;
+      font-style: italic;
 
-}
+    }
 
 
-.map-form input[type=submit]{
-  height:30px;
-  width: 5em;
+.map-form button[type=submit]{
+  transition:all 0.2s ease;
+    -webkit-transition:all 0.2s ease;
+    -moz-transition:all 0.2s ease;
+  position:relative;
+  right:35px;
+  height:35px;
+  width: 35px;
   font-size: 15px;
   border-radius:30px;
   border:none;
-  background: rgba(0,255,205,1);
+  background: rgb(28,230,190);
+    background: linear-gradient(28deg, rgba(28,230,190,1) 38%, rgba(63,215,251,1) 100%);
   color:white;
+  filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.2));
+    -webkit-filter:drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.2));
+    -moz-filter:drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.2));
+  outline:none;
+}
+
+.map-form button[type=submit]:hover{
+  filter:brightness(105%) drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.2));
+    -webkit-filter: brightness(105%) drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.2));
+    -moz-filter: brightness(105%) drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.2));
 }
 
 .map-form input[type=range]{
-  width:17em;
+  width:221px;
+  outline:none;
+  -moz-outline:none;
 }
 
 

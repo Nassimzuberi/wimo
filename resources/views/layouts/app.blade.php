@@ -76,19 +76,19 @@
           </li>
           <li class="nav-item">
                 <a id="navbarDropdown" class="nav-link dropdown logged-user-icon floating" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    <img src="{{ asset('/images/user-icons/'.Auth::id().'.png') }}" alt="user-icon" id="user-icon" width='50'> <span class="caret"></span>
+                    <img src="{{ asset('/images/user-icons/'.Auth::id().'.jpg') }}" alt="user-icon" id="user-icon" width='50'> <span class="caret"></span>
                 </a>
             <div class="dropdown-menu dropdown-menu-right user-commands" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{{ route('user.commandes',Auth::id()) }}">
-                    Mes commandes
+                    commandes
                 </a>
                 <a class="dropdown-item" href="{{ url('/comptes') }}">
-                    Mon compte
+                    compte
                 </a>
-                <a class="dropdown-item" href="{{ route('logout') }}"
+                <a style="color:tomato" class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
+                    {{ __('déconnexion') }}
                     <form method="post" id="logout-form" action="{{route('logout')}}"> @csrf </form>
                 </a>
               </li>

@@ -42,4 +42,5 @@ Route::post('commande/{commande}/reception','CommandeController@reception')->nam
 Route::resource('user','UserController');
 
 //Routes de la carte
-Route::get('map','MapController@show')->name('map.index');
+Route::get('map','MapController@index')->name('map.index');
+Route::post('map','MapController@search')->name('map.index');

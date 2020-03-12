@@ -21,21 +21,34 @@
 
       <!-- Formulaire de recherche -->
       <form action="" method="post" class="map-form">
-        <input type="text" name="search" placeholder="ex : bananas, eggs...">
-        <input type="range" name="distance" id="distance-range"> 
-        <input type="submit" value="search">
+        @csrf
+        <div class="seach-line">
+        <input type="text" name="search-string" value="{{old('search-string')}}" placeholder="ex : bananas, eggs...">
+        <button type="submit" value="search">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </div>
+        </button>
+        <input 
+          type="range" 
+          name="distance" 
+          id="distance-range"
+          min=""
+          max=""
+          > 
+        
       </form>
 
 
       <!-- Affichage des produits recherchés -->
       <div id="search-results">
 @foreach($sales as $sale)
-
         <!-- Résultat -->
         <div class="result">
           <div class="result-user-icon-wrapper">
-          <img src="{{ asset('images/user-icons/'.$sale->seller_id.'.png')}}" alt="user-icon" class="result-user-icon">
+         
+          <img src="{{ asset('images/user-icons/'.$sale->seller->user->id.'.jpg')}}" alt="user-icon" class="result-user-icon">
           </div>
+          <p>{{$sale->seller->user->first_name}} {{$sale->seller->user->last_name}}</p>
           <div>
             <a href="{{route('annonces.show',$sale->id)}}">{{$sale->product->name}}</a>
           </div>
@@ -80,13 +93,15 @@
             shadowAnchor: [4, 62],  // the same for the shadow
             popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
           });
-
+    
           var marker = L.marker([48.873, 2.359], {icon: greenIcon}).addTo(mymap);
           var marker2 = L.marker([48.874, 2.3597], {icon: greenIcon}).addTo(mymap);
           var marker3 = L.marker([48.8725, 2.35], {icon: greenIcon}).addTo(mymap);
           var marker4 = L.marker([48.871, 2.359], {icon: greenIcon}).addTo(mymap);
           var marker5 = L.marker([48.873, 2.359], {icon: greenIcon}).addTo(mymap);
           var marker6 = L.marker([35.751203, 0,551528], {icon: greenIcon}).addTo(mymap); //Relizane
+
+        
 
 
 
