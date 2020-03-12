@@ -25,7 +25,7 @@ class SaleController extends Controller
     {
         $annonces = Auth::user()->seller->sales;
         $products = Product::all();
-        return view('my_announcement',compact('annonces','products'));
+        return view('account.seller.my_announcement',compact('annonces','products'));
     }
     /*
         Retourne les produits que le vendeur peut vendre
@@ -51,7 +51,7 @@ class SaleController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('add_announcement',compact('categories'));
+        return view('account.seller.add_announcement',compact('categories'));
     }
 
     /**
@@ -103,7 +103,7 @@ class SaleController extends Controller
     public function edit($id)
     {
         $annonce = Sales::find($id);
-        return view('edit_announcement',compact('annonce','id'));
+        return view('account.seller.edit_announcement',compact('annonce','id'));
     }
 
     /**

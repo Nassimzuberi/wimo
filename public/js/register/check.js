@@ -102,7 +102,7 @@ function check_form_seller(){
         check_unique_phone();
         if(!JSON.parse(document.getElementById('telephone').dataset.unique_phone)){
             document.getElementById('telephone').classList.toggle('pas_bon');
-            document.getElementById('error_telephone').innerHTML = 'Ce télépone appartient déjà à un autre vendeur.';
+            document.getElementById('error_telephone').innerHTML = 'Ce numéro de télépone appartient déjà à un autre vendeur.';
             result = false;
         }
     }

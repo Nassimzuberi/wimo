@@ -44,6 +44,10 @@ class AccountController extends Controller
     {
         $controleur = new RegisterController();
         $controleur->register($request);
+        /* 
+            Si l'utilisateur s'est inscrit pour devenir vendeur,
+            on appelle le controlleur Seller.
+        */
         if(isset($request->register_seller)){
             $controleur = new SellerController();
             return $controleur->store($request);
@@ -61,11 +65,10 @@ class AccountController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show()
     {
-        return view('account',[
+        return view('account.account',[
             'seller' => Auth::user()->seller,
-            'compte' => Auth::user()->first_name.'_'.Auth::user()->last_name,
         ]);
     }
 

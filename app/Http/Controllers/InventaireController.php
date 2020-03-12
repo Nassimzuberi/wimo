@@ -20,7 +20,7 @@ class InventaireController extends Controller
     public function index()
     {   
         $products = Auth::user()->seller->sales;
-        return view('my_inventory',compact('products'));
+        return view('account.seller.my_inventory',compact('products'));
     }
 
     /**
@@ -68,7 +68,7 @@ class InventaireController extends Controller
     public function edit($id)
     {
         $inventory = Inventaire::find($id);
-        return view('edit_inventory',compact("inventory"));
+        return view('account.seller.edit_inventory',compact("inventory"));
     }
 
     /**

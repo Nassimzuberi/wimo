@@ -11,24 +11,41 @@
 |
 */
 
+
 /* Routage vers la page d'accueil */
 Route::view('/','welcome');
-Route::view('magasin','my_store');
-Route::resource('comptes','AccountController');
-Route::resource('vendeurs','SellerController');
-Route::resource('annonces','SaleController');
-Route::resource('inventaires','InventaireController');
-Route::resource('user','UserController');
+Route::get('/home', 'HomeController@index')->name('home');
 
-/*Les produits disponibles pour le vendeur */
-Route::get('/product/available/category/{id}','SaleController@products_available');
-/*Interroge la base de donnée si une adresse mail existe*/
-Route::get('/mail_account/{mail}','AccountController@mail_account');
+/***** Vendeurs ******/
+
+Route::resource('vendeurs','SellerController');
+Route::get('magasin','SellerController@my_store');
 /*Interroge la base de donnée si un téléphone portable existe*/
 Route::get('/phone_seller/{phone}','SellerController@phone_seller');
 
+/****** Comptes ******/
+
+Route::resource('comptes','AccountController');
+/*Interroge la base de donnée si une adresse mail existe*/
+Route::get('/mail_account/{mail}','AccountController@mail_account');
+
+/****** Inventaires */
+
+Route::resource('inventaires','InventaireController');
+
+/****** Annonces ******/
+
+Route::resource('annonces','SaleController');
+/*Les produits disponibles pour le vendeur */
+Route::get('/product/available/category/{id}','SaleController@products_available');
+
+/**** Utilisateurs ****/
+
+Route::resource('user','UserController');
+
+/**** Authentification *****/
+
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
 
 //Route pour le panier
 Route::delete('/cart/delete/{rowId}','CartController@deleteToCart')->name('cart.delete');
