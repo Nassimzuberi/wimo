@@ -97,7 +97,7 @@ class AccountController extends Controller
         Auth::user()->save();
         return redirect('/comptes')->with(['status'=>'Profil mis à jour']);
     }
-   
+
 
     /**
      * Remove the specified resource from storage.
@@ -107,8 +107,8 @@ class AccountController extends Controller
      */
     public function destroy(User $user)
     {
-        /* 
-        *   Si l'utilisateur possède un compte vendeur 
+        /*
+        *   Si l'utilisateur possède un compte vendeur
         *   On supprime ses données.
         */
         if(Auth::user()->seller){
@@ -117,5 +117,21 @@ class AccountController extends Controller
         }
         Auth::user()->delete();
         return redirect('/');
+    }
+    public function commandes(User $user,Request $request){
+      $id = $user->id;
+      switch($request->filter){
+        case 1 :
+          $commande =$user->commandes()->where('state',0)->orderBy('created_at','desc');
+          break;
+        case 2 :
+          $commande =$user->commandes()->where('state',1)->orderBy('created_at','desc');
+          break;
+        default :
+          $commande = $user->commandes()->orderBy('created_at','desc');
+          break;
+      }
+      $commandes = $commande->paginate(5);
+        return view('user.commandes',compact('commandes','id'));
     }
 }

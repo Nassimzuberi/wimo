@@ -44,7 +44,7 @@ Route::get('/merci','CheckoutController@confirm');
 
 //Route des commandes
 Route::get('commande/{commande}','CommandeController@show')->name('commande.show');
-Route::get('users/{user}/commandes','UserController@commandes')->name('user.commandes');
+Route::get('users/{user}/commandes','AccountController@commandes')->name('user.commandes');
 Route::post('commande/{commande}/reception','CommandeController@reception')->name('commande.validate');
 
 //Routes de la carte

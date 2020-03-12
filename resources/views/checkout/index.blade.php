@@ -1,15 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.app',['additional_head'=>'paiement.checkout'])
 
 @section('title') Paiement @endsection
 
-@section('extra-script')
-  <script src="https://js.stripe.com/v3/"></script>
-    <style>
-        main{
-            background:rgba(0,0,0,0.8);
-        }
-    </style>
-@endsection
 
 @section('content')
 <div class="container ">
