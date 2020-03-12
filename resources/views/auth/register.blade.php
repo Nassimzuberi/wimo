@@ -1,7 +1,7 @@
 <!-- 
     register est le blade qui contient les links et scripts supplémentaires 
 -->
-@extends('layouts.app',['additional_head'=>'register'])
+@extends('layouts.app',['additional_head'=>'register.register'])
 @section('content')
 
 <h2 id="header_step">Mes informations</h2>

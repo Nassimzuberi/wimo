@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.app',['additional_head'=>'register.seller'])
 @section('content')
 <h1>Devenir vendeur</h1>
 <p style="text-align: center;">
     Renseignez l'adresse de votre point de vente <br>
     et un numéro afin que les acheteurs puissent vous joindre
 </p>
-<form method="POST" action="{{route('vendeurs.store')}}">
+<form method="POST" action="{{route('vendeurs.store')}}" id="register_seller">
 	@csrf
     <label for="num">Numéro de la voie</label>
     <input type="text" id="num" name="num" placeholder="ex:1" oninput="clear_error(this)">
@@ -32,6 +32,6 @@
     <div class="message_error">
         <span id="error_telephone"></span>
     </div>
-	<input type="submit">
 </form>
+<button onclick="register()">Valider</button>
 @endsection
