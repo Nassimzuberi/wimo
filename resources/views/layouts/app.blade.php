@@ -6,7 +6,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- Titre -->
-        <title>{{ config('app.name', 'Wimo') }}</title>
+        <title>{{ config('app.name', 'Wimo') }} | @yield('title')</title>
         <!-- Les balises de scripts, link par défaut -->
         @include('layouts.head.default')
         <!--
@@ -19,7 +19,7 @@
         <!--
         @include('layouts.head.favicon')-->
     </head>
-<body>  
+<body>
     <div id="app">
         <header>
             @include('layouts.header.nav')
@@ -28,5 +28,6 @@
             @yield('content')
         </main>
     </div>
+    @yield('extra-js')
   </body>
 </html>

@@ -16,10 +16,10 @@ class CreateCommandesTable extends Migration
         Schema::create('commandes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('sales_id');
-            $table->foreign('sales_id')->references('id')->on('sales');
+            $table->foreign('sales_id')->references('id')->on('sales')->onDelete('cascade');
             $table->integer('quantity');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->float('total');
             $table->integer('payement_option')->nullable();
             $table->integer('state')->default(0);
