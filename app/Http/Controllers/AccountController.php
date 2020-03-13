@@ -80,9 +80,7 @@ class AccountController extends Controller
      */
     public function edit()
     {
-        return view('edit_profil',[
-            'compte'=> Auth::user(),
-        ]);
+        return view('account.edit_profil');
     }
 
     /**

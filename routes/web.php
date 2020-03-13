@@ -45,7 +45,7 @@ Route::resource('user','UserController');
 
 /**** Authentification *****/
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 //Route pour le panier
 Route::delete('/cart/delete/{rowId}','CartController@deleteToCart')->name('cart.delete');

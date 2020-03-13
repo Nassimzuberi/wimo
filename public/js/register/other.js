@@ -74,5 +74,5 @@ function final_step(){
     document.getElementById('loader').classList.toggle('animate_loader');
     window.setTimeout(function(){
         document.getElementById("register").submit();
-    },2500);    
+    },2500);  
 }
