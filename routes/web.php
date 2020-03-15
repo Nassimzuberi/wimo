@@ -49,3 +49,5 @@ Route::post('commande/{commande}/reception','CommandeController@reception')->nam
 
 //Routes de la carte
 Route::get('map','MapController@show')->name('map.index');
+//Route pour les avis
+Route::post('/sales/{sales_id}', ['uses' => 'CommentController@store', 'as' => 'comment.store']);
