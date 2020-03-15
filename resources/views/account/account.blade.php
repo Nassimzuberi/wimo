@@ -1,31 +1,21 @@
-@extends('layouts.app')
+@extends('layouts.app',['additional_head'=>'account.head'])
 @section('content')
-<script type="text/javascript">
-    function ma_fct(){
-        if(confirm('Voulez-vous désactiver votre compte de vendeur ?')){
-            document.getElementById('destroy_seller').submit();
-        }
-    }
-    function ma_fct_2(){
-        if(confirm('Voulez-vous désactiver votre compte wimo?')){
-            document.getElementById('destroy_user').submit();
-        }
-    }    
-</script>
+
 <h1>Gestion de compte</h1>
 <ul>
     <li>
-        <a href="{{route('comptes.edit',compact('compte'))}}">Modifier mon profil</a>
+        <a href="{{route('comptes.edit',Auth::user())}}">Modifier mon profil</a>
     </li>
     <li>
         <a href="">Modifier mon mot de passe</a>
     </li>
     @isset($seller)
         <li>
-            <a href="magasin">Mon magasin</a>
+            <a href="{{url('magasin')}}">Mon magasin</a>
         </li>
         <li>
-            <a href="javascript:ma_fct()">Désactiver mon compte de vendeur</a>
+            <!-- Lien qui désactive le compte du vendeur -->
+            <a href="javascript:close_account('seller')">Désactiver mon compte de vendeur</a>
             <form method="post" id="destroy_seller" action="{{route('vendeurs.destroy',$seller->id)}}">
                 @csrf
                 @method('DELETE')
@@ -37,7 +27,8 @@
         </li>
     @endisset
     <li>
-        <a href="javascript:ma_fct_2()">Désactiver mon compte</a>
+        <!-- Lien qui désactive le compte de l'utilisateur -->
+        <a href="javascript:desactiver_compte_wimo()">Désactiver mon compte</a>
         <form method="post" id="destroy_user" action="{{route('comptes.destroy',Auth::user())}}">
             @csrf
             @method('DELETE')

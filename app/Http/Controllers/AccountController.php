@@ -44,6 +44,10 @@ class AccountController extends Controller
     {
         $controleur = new RegisterController();
         $controleur->register($request);
+        /* 
+            Si l'utilisateur s'est inscrit pour devenir vendeur,
+            on appelle le controlleur Seller.
+        */
         if(isset($request->register_seller)){
             $controleur = new SellerController();
             return $controleur->store($request);
@@ -61,11 +65,10 @@ class AccountController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show()
     {
-        return view('account',[
+        return view('account.account',[
             'seller' => Auth::user()->seller,
-            'compte' => Auth::user()->first_name.'_'.Auth::user()->last_name,
         ]);
     }
 
@@ -77,9 +80,7 @@ class AccountController extends Controller
      */
     public function edit()
     {
-        return view('edit_profil',[
-            'compte'=> Auth::user(),
-        ]);
+        return view('account.edit_profil');
     }
 
     /**
@@ -97,7 +98,7 @@ class AccountController extends Controller
         Auth::user()->save();
         return redirect('/comptes')->with(['status'=>'Profil mis à jour']);
     }
-   
+
 
     /**
      * Remove the specified resource from storage.
@@ -107,8 +108,8 @@ class AccountController extends Controller
      */
     public function destroy(User $user)
     {
-        /* 
-        *   Si l'utilisateur possède un compte vendeur 
+        /*
+        *   Si l'utilisateur possède un compte vendeur
         *   On supprime ses données.
         */
         if(Auth::user()->seller){
@@ -117,5 +118,21 @@ class AccountController extends Controller
         }
         Auth::user()->delete();
         return redirect('/');
+    }
+    public function commandes(User $user,Request $request){
+      $id = $user->id;
+      switch($request->filter){
+        case 1 :
+          $commande =$user->commandes()->where('state',0)->orderBy('created_at','desc');
+          break;
+        case 2 :
+          $commande =$user->commandes()->where('state',1)->orderBy('created_at','desc');
+          break;
+        default :
+          $commande = $user->commandes()->orderBy('created_at','desc');
+          break;
+      }
+      $commandes = $commande->paginate(5);
+        return view('user.commandes',compact('commandes','id'));
     }
 }

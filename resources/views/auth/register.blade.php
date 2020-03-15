@@ -1,13 +1,14 @@
 <!-- 
     register est le blade qui contient les links et scripts supplémentaires 
 -->
-@extends('layouts.app',['additional_head'=>'register'])
+@extends('layouts.app',['additional_head'=>'register.register'])
 @section('content')
 
-<h2 id="header_consigne">Mes informations</h2>
-<p id="consigne">
-    
+<h2 id="header_step">Mes informations</h2>
+<p id="instruction_step">
+    Formulaire où vous devez remplir votre profil.
 </p>
+
 <form method="post" action="{{route('comptes.store')}}" id="register">
     @csrf
     <div id="user" class="init">
@@ -40,7 +41,7 @@
             <span id="error_email"></span>
         </div>
         <label for="password">Mot de passe</label>
-        <input type="password" name="password" id="password" oninput=""><br>
+        <input type="password" name="password" id="password" oninput="clear_error(this)"><br>
         <label for="password_confirmation">Mot de passe de confirmation</label>
         <input type="password" name="password_confirmation" id="password_confirmation" oninput="clear_error(this)">
         <div class="message_error">
@@ -48,32 +49,32 @@
         </div>       
     </div>
     <div id="seller" class="init">
-        <p style="text-align: center;">
+        <p>
             Adresse de votre point de vente <br>
             et un numéro afin que les acheteurs puissent vous joindre
         </p>
         <label for="num">Numéro de la voie</label>
-        <input type="text" id="num" name="num" placeholder="ex:1" oninput="clear_error(this)">
+        <input type="text" id="num" name="num" placeholder="ex:1" oninput="clear_error(this)" disabled="disabled">
         <div class="message_error">
             <span id="error_num"></span>
         </div> 
         <label for="voie">Nom de la voie</label>
-        <input id="voie" type="text" name="voie" placeholder="ex:rue du chemin vert" oninput="clear_error(this)">
+        <input id="voie" type="text" name="voie" placeholder="ex:rue du chemin vert" oninput="clear_error(this)" disabled="disabled">
         <div class="message_error">
             <span id="error_voie"></span>
         </div>    
         <label for="cp">Code postal</label>
-        <input id="cp" type="text" name="cp" maxlength="5" placeholder="ex:94380" oninput="clear_error(this)">
+        <input id="cp" type="text" name="cp" maxlength="5" placeholder="ex:94380" oninput="clear_error(this)" disabled="disabled">
         <div class="message_error">
             <span id="error_cp"></span>        
         </div>
         <label for="commune">Commune / Ville</label>
-        <input type="text" id="commune" name="commune" placeholder="ex:Bonneuil-sur-Marne" oninput="clear_error(this)">
+        <input type="text" id="commune" name="commune" placeholder="ex:Bonneuil-sur-Marne" oninput="clear_error(this)" disabled="disabled">
         <div class="message_error">
             <span id="error_commune"></span>
         </div>
         <label for="telephone">Télephone</label>
-        <input type="text" name="telephone" id="telephone" maxlength="10" data-unique_phone="" placeholder="ex:0601010101" oninput="clear_error(this)">
+        <input type="text" name="telephone" id="telephone" maxlength="10" data-unique_phone="" placeholder="ex:0601010101" oninput="clear_error(this)" disabled="disabled">
         <div class="message_error">
             <span id="error_telephone"></span>
         </div>     
@@ -97,6 +98,4 @@
     <button id="skip_step" onclick="next(true)">Skip</button>
     <button id="next_step" onclick="next(false)">Suivant</button>    
 </div>
-<button onclick="remplir()">user</button>
-<button onclick="remplir_seller()">seller</button>
 @endsection

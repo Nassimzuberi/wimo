@@ -9,11 +9,20 @@
 
     <!-- Bloc de gauche servant à effectuer les recherches -->
     <div id="left-block">
-
+      @if(session()->has('success'))
+        <div class="alert alert-success">
+          {{session()->get('success')}}
+        </div>
+      @endif
+      @if(session()->has('warning'))
+        <div class="alert alert-warning">
+          {{session()->get('warning')}}
+        </div>
+      @endif
       <!-- Formulaire de recherche -->
       <form action="" method="post" class="map-form">
         <input type="text" name="search" placeholder="ex : bananas, eggs...">
-        <input type="range" name="distance" id="distance-range"> 
+        <input type="range" name="distance" id="distance-range">
         <input type="submit" value="search">
       </form>
 

@@ -1,0 +1,15 @@
+form{
+	display: inline-block;
+	left:calc(50% - 164.28px);
+	position: relative;
+}
+.pas_bon{
+    border-color:red;
+}
+.message_error{
+    color:red;
+}
+button{
+	display: block;
+	margin:10px auto;
+}
