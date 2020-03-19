@@ -1,50 +1,43 @@
-@extends('layouts.app')
+@extends('layouts.app',['additional_head' => 'paiement.cart'])
 
 @section('title') Panier @endsection
 
 @section('content')
-<div class="d-flex flex-column flex-sm-row">
-  <div class="m-sm-2 border col col-sm-9 shadow">
+<div class="container">
     <div class="table-responsive">
-    <table class="table text-center">
+    <table class="table">
       <thead>
-        <th></th>
-        <th>Nom du produit</th>
-        <th>Prix unité</th>
-        <th>Quantité</th>
-        <th>Total</th>
-        <th>Supprimer</th>
+        <th>PRODUIT</th>
+        <th>QTE</th>
+        <th>PRIX</th>
+        <th>TOTAL</th>
       </thead>
       <tbody class="my-3">
       @forelse(Cart::content() as $cart)
       <tr>
-        <td class="align-middle">
-          <img src='{{$cart->model->img}}' width="100" class="m-2"/>
+        <td class="row">
+            <img src='{{$cart->model->img}}' width="100" class="m-2"/>
+            <div>{{$cart->name}}<br><small>Vendu par {{$cart->model->seller->user->fullname()}}</small></div>
         </td>
-        <td class="align-middle">
-            <div>{{$cart->name}}</div>
-        </td>
-        <td class="align-middle">
-          {{$cart->price}} €
-        </td>
-        <td class="align-middle">
-            <select name="qty" id="qty" data-id="{{$cart->rowId}}" class="form-control">
+        <td>
+            <select name="qty" id="qty" data-id="{{$cart->rowId}}" class="form-control mb-2">
               @for($i=1; $i <= $cart->model->inventaire->quantity ; $i++)
                   <option value="{{$i}}" {{$cart->qty  == $i ? 'selected' : '' }}  >
                     {{$i}}
                   </option>
               @endfor
             </select>
+            <form method="post" action="{{route('cart.delete',$cart->rowId)}}" >
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-outline-dark"><i class="fas fa-trash-alt"></i></button>
+            </form>
         </td>
-        <td class="align-middle">
+          <td >
+              {{$cart->price}} €
+          </td>
+        <td>
           {{$cart->subtotal}} €
-        </td>
-        <td class="align-middle">
-          <form method="post" action="{{route('cart.delete',$cart->rowId)}}">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
-          </form>
         </td>
       </tr>
       @empty
@@ -52,19 +45,20 @@
       @endforelse
       </tbody>
       <caption class="text-right">
-        Sous total ({{Cart::count() == 1 ? Cart::count(). " article" : Cart::count(). " articles"}}) : <span style="color:#780404;font-weight:bold">{{Cart::subtotal()}} €</span>
+          <h4>Sous-total ({{Cart::count() == 1 ? Cart::count(). " article" : Cart::count(). " articles"}}) : <span style="color:#780404;font-weight:bold">{{Cart::subtotal()}} €</span></h4>
+          <div class="mt-2">
+              <a href="{{route('map.index')}}" class="text-shadow-pop-br link">Continuer vos achats</a><a href='{{route('checkout.index')}}' class="btn btn-dark ml-sm-2">Passer la commande</a>
+          </div>
       </caption>
     </table>
   </div>
-  </div>
-    <div class="col align-self-start my-2 p-3 border text-center shadow">
-        <h4>Sous-total ({{Cart::count() == 1 ? Cart::count(). " article" : Cart::count(). " articles"}}) : <span style="color:#780404;font-weight:bold">{{Cart::subtotal()}} €</span></h4>
-        <hr class="w-100">
-        <div class="mt-2">
-            <a href='{{route('checkout.index')}}' class="btn btn-warning">Passer la commande</a>
+    <h3 class="py-3">Nous vous recommandons aussi: </h3>
+    <div id="top">
+
     </div>
-  </div>
 </div>
+
+
 @endsection
 
 

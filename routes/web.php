@@ -36,6 +36,7 @@ Route::resource('inventaires','InventaireController');
 /****** Annonces ******/
 
 Route::resource('annonces','SaleController');
+Route::get('topsales','CartController@topsales');
 /*Les produits disponibles pour le vendeur */
 Route::get('/product/available/category/{id}','SaleController@products_available');
 

@@ -10,7 +10,7 @@
       <img src="{{asset('images/wimo-logo.png')}}" alt="logo">
     </a>
     <ul class="navbar-nav align-items-center">
-    @auth
+
         <!-- Affichage du panier -->
         <li class="nav-item" >
             <a class="nav-link" href="{{route('cart')}}">
@@ -20,6 +20,9 @@
                 <i class="fas fa-shopping-basket"></i>
             </a>
         </li>
+    @auth
+
+
         <!-- Menu déroulant de l'utilisateur -->
         <li class="nav-item">
             <a id="navbarDropdown" class="nav-link dropdown logged-user-icon floating" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

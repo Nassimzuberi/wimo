@@ -1,0 +1,15 @@
+.recommandation i{
+    cursor:pointer;
+}
+
+.recommandation .fa-arrow-right:hover{
+    transform: translate(10px, 2%);
+}
+
+.recommandation .fa-arrow-left:hover{
+    transform: translate(-10px, 2%);
+}
+
+.link{
+    text-decoration: none !important;
+}

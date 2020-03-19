@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Sale;
 use App\Sales;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -55,7 +56,12 @@ class CartController extends Controller
 
 // -- Affiche le panier
   public function show(){
+
       return view('cart.cart');
     }
 
+    public function topsales () {
+        $data = Sales::paginate(4);
+        return Sale::collection($data);
+    }
 }
