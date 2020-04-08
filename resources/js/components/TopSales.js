@@ -24,8 +24,8 @@ class TopSales extends React.Component {
         getTopSales(page).then(data => this.setState({
             data : data.data,
             loading:false,
-            current_page : data.meta.current_page,
-            last_page : data.meta.last_page,
+            current_page : data.current_page,
+            last_page : data.last_page,
         }))
     }
     render(){
