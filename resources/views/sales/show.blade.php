@@ -8,7 +8,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-4 p-3 border">
-          <img src="{{$annonce->img}}"  />
+          Salut
         </div>
         <div class="col">
 
