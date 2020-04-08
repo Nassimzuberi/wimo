@@ -10,6 +10,5 @@ $factory->define(Sales::class, function (Faker $faker) {
       "product_id" => $faker->numberBetween(1,10),
       "price_unit" => $faker->randomDigit,
       'description' => $faker->sentence(5),
-      "img" => "generic-image-placeholder.png"
     ];
 });
