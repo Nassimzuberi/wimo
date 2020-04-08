@@ -62,6 +62,6 @@ class CartController extends Controller
 
     public function topsales () {
         $data = Sales::with('product')->paginate(4);
-        return $data;
+        return response()->json($data);
     }
 }
