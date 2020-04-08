@@ -65827,11 +65827,7 @@ var TopSalesItems = function TopSalesItems(_ref) {
     /*#__PURE__*/
     react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: "/annonces/" + data.id
-<<<<<<< HEAD
-    }, data.name)))
-=======
     }, data.product.name)))
->>>>>>> 17ac960ac82cde53befde953f6f14c097b67d3dc
   );
 };
 
@@ -65885,8 +65881,8 @@ var getTopSales = function getTopSales() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\nassi\wimo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\nassi\wimo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\laragon\www\wimo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\laragon\www\wimo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
