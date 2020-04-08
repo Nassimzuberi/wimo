@@ -6,5 +6,5 @@ export const getTopSales = (page = 1) => {
         },
         method: 'get'
     }
-    return fetch('/topsales?page='+page,headerGet).then(data => data.json()).catch((error) => console.log(error))
+    return fetch('/api/topsales?page='+page,headerGet).then(data => data.json()).catch((error) => console.log(error))
 }

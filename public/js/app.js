@@ -65730,8 +65730,8 @@ function (_React$Component) {
         return _this2.setState({
           data: data.data,
           loading: false,
-          current_page: data.current_page,
-          last_page: data.last_page
+          current_page: data.meta.current_page,
+          last_page: data.meta.last_page
         });
       });
     }
@@ -65827,7 +65827,7 @@ var TopSalesItems = function TopSalesItems(_ref) {
     /*#__PURE__*/
     react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: "/annonces/" + data.id
-    }, data.product.name)))
+    }, data.name)))
   );
 };
 
@@ -65854,7 +65854,7 @@ var getTopSales = function getTopSales() {
     },
     method: 'get'
   };
-  return fetch('/topsales?page=' + page, headerGet).then(function (data) {
+  return fetch('/api/topsales?page=' + page, headerGet).then(function (data) {
     return data.json();
   })["catch"](function (error) {
     return console.log(error);
