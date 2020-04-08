@@ -8,8 +8,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-4 p-3 border">
-            {{dd($annonce->img)}}
-          <img src=""  />
+          <img src="{{asset('images/'.$annonce->img)}}"  />
         </div>
         <div class="col">
           <h3 class="text-center">{{$annonce->product->name}}</h3>

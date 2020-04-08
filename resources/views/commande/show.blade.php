@@ -11,7 +11,7 @@
     <div>{{$commande->quantity}} <a href="{{route('produit.show',$commande->produit_id)}}" > {{$commande->produit->name}}</a></div>
 
     <div class="m-sm-3">
-      <img src="{{$commande->produit->img}}" width="100">
+      <img src="{{asset('images/'.$commande->produit->img)}}" width="100">
       <div class="m-2"> <br>
         Valeur unitaire : {{$commande->produit->prix_unit}} € <br>
         {{$commande->produit->description}}
