@@ -12,20 +12,6 @@
         </div>
         <div class="col">
 
-          <form action="{{route('cart.add')}}" method="post">
-            @csrf
-            <input type='hidden' name="sales_id" value="{{$annonce->id}}">
-            <div class='row p-3 align-items-center'>
-              <label>Quantité : </label>
-              <select name="quantity" class="custom-select mx-3 w-25">
-                @for ( $i = 1 ; $i <= $annonce->inventaire->quantity ; $i++)
-                <option value="{{$i}}">{{$i}} </option>
-                @endfor
-              </select>
-              <button type="submit" class="btn btn-primary">Ajouter au panier </button>
-            </div>
-          </form>
-            @endif
 
 
           <?php
