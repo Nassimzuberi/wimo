@@ -8,13 +8,13 @@
   <h3>Ma commande n°{{$commande->id}}</h3>
   <hr>
   <div>Vous avez commandé : <div>
-    <div>{{$commande->quantity}} <a href="{{route('produit.show',$commande->produit_id)}}" > {{$commande->produit->name}}</a></div>
+    <div>{{$commande->sales->quantity}} <a href="{{route('annonces.show',$commande->sales_id)}}" > {{$commande->sales->product->name}}</a></div>
 
     <div class="m-sm-3">
-      <img src="{{asset('images/'.$commande->produit->img)}}" width="100">
+      <img src="{{asset('images/'.$commande->sales->img)}}" width="100">
       <div class="m-2"> <br>
-        Valeur unitaire : {{$commande->produit->prix_unit}} € <br>
-        {{$commande->produit->description}}
+        Valeur unitaire : {{$commande->sales->price_unit}} € <br>
+        {{$commande->sales->description}}
       </div>
     </div>
     <hr>
@@ -26,8 +26,8 @@
     @endif
   </div>
   <div> Veuillez récupérer votre commande chez le vendeur : </div>
-  <div> {{$commande->produit->user->name}} </div>
-  <div class="mb-2"> {{$commande->produit->user->email}} </div>
+  <div> {{$commande->sales->seller->user->fullname()}} </div>
+  <div class="mb-2"> {{$commande->sales->seller->user->email}} </div>
 
     @if($commande->state == 0)
       <form method="POST" action="{{route('commande.validate',$commande->id)}}">
