@@ -61,7 +61,7 @@ class CartController extends Controller
     }
 
     public function topsales () {
-        $data = Sales::paginate(4);
-        return Sale::collection($data);
+        $data = Sales::with('product')->paginate(4);
+        return $data;
     }
 }

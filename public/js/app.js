@@ -65730,8 +65730,8 @@ function (_React$Component) {
         return _this2.setState({
           data: data.data,
           loading: false,
-          current_page: data.meta.current_page,
-          last_page: data.meta.last_page
+          current_page: data.current_page,
+          last_page: data.last_page
         });
       });
     }
@@ -65740,35 +65740,51 @@ function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "recommandation"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: 'row align-items-center justify-content-center'
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fa fa-arrow-left fa-2x",
-        onClick: function onClick() {
-          return _this3.state.current_page == 1 ? _this3.updatePage(_this3.state.last_page) : _this3.updatePage(_this3.state.current_page - 1);
-        }
-      }), this.state.loading ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "spinner-border text-dark mx-5",
-        style: {
-          width: '5em',
-          height: '5em'
+      return (
+        /*#__PURE__*/
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "recommandation"
         },
-        role: "status"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "sr-only"
-      }, "Loading...")) : this.state.data.map(function (t) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TopSalesItems__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          key: t.id,
-          data: t
-        });
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: " fa fa-arrow-right fa-2x",
-        onClick: function onClick() {
-          return _this3.state.last_page == _this3.state.current_page ? _this3.updatePage() : _this3.updatePage(_this3.state.current_page + 1);
-        }
-      })));
+        /*#__PURE__*/
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: 'row align-items-center justify-content-center'
+        },
+        /*#__PURE__*/
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "fa fa-arrow-left fa-2x",
+          onClick: function onClick() {
+            return _this3.state.current_page == 1 ? _this3.updatePage(_this3.state.last_page) : _this3.updatePage(_this3.state.current_page - 1);
+          }
+        }), this.state.loading ?
+        /*#__PURE__*/
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "spinner-border text-dark mx-5",
+          style: {
+            width: '5em',
+            height: '5em'
+          },
+          role: "status"
+        },
+        /*#__PURE__*/
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "sr-only"
+        }, "Loading...")) : this.state.data.map(function (t) {
+          return (
+            /*#__PURE__*/
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TopSalesItems__WEBPACK_IMPORTED_MODULE_2__["default"], {
+              key: t.id,
+              data: t
+            })
+          );
+        }),
+        /*#__PURE__*/
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: " fa fa-arrow-right fa-2x",
+          onClick: function onClick() {
+            return _this3.state.last_page == _this3.state.current_page ? _this3.updatePage() : _this3.updatePage(_this3.state.current_page + 1);
+          }
+        })))
+      );
     }
   }]);
 
@@ -65811,7 +65827,11 @@ var TopSalesItems = function TopSalesItems(_ref) {
     /*#__PURE__*/
     react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: "/annonces/" + data.id
+<<<<<<< HEAD
     }, data.name)))
+=======
+    }, data.product.name)))
+>>>>>>> 17ac960ac82cde53befde953f6f14c097b67d3dc
   );
 };
 
