@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="mt-5">
+  <div>
     @if(session('message'))
       <div class="alert alert-success"> {{session('message')}} </div>
     @endif
@@ -32,7 +32,7 @@
 
             @endif
           </form>
-          
+<!--
           <?php
           $user = auth()->user();
           //print_r($annonce);
@@ -40,7 +40,7 @@
           if (isset($user)) {
             //$commande = CommandeController::isSaled($annonce->id, $user->id);
           }
-          
+
         ?>
 
         @if(!empty($commande))
@@ -63,7 +63,7 @@
             <input type="submit" id="submit-avis" class="btn btn-primary" value="Enregistrer">
             </form>
           </div>
-            <script> 
+            <script>
                function myFunction() {
                    var x = document.getElementById("mydiv");
                    if (x.style.display === "none") {
@@ -79,7 +79,7 @@
                      type : 'POST',
                       data : {
                       text_avis:$('#text_avis').val(),
-                      like:$('.like:checked').val()      
+                      like:$('.like:checked').val()
                       },
                        success: function(data)
                       {
@@ -91,13 +91,12 @@
                        });
 
 
-            </script> 
+            </script>
 
-                  
-          
-                 </div>
-                 </div>
-                 </div>
-                 </div>
+            -->
+        </div>
+      </div>
+    </div>
+  </div>
 
                     @endsection
