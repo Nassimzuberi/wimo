@@ -1,4 +1,4 @@
-const url = "http://localhost/wimo/public/";
+const url = "/";
 /* Retourne un booléan si un champs est vide ou pas. */
 function input_text_empty(input){
     return input.value.length < 1;
@@ -36,7 +36,7 @@ function check_form_user(){
                 document.getElementById(`error_password`).innerHTML="Ce champ est requis.";
             else
                 document.getElementById(`error_${inputs[i]}`).innerHTML="Ce champ est requis.";
-            result = false; 
+            result = false;
         }
     }
     if(check_gender()){
@@ -76,7 +76,7 @@ function check_unique_phone(){
         }
     };
     ajax.open("GET", `${url}phone_seller/${document.getElementById("telephone").value}/`,false);
-    ajax.send();    
+    ajax.send();
 }
 
 /* Vérification du format du téléphone */
