@@ -8,6 +8,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-4 p-3 border">
+            {{dd($annonce->img)}}
           <img src=""  />
         </div>
         <div class="col">
