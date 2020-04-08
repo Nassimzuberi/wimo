@@ -8,10 +8,14 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-4 p-3 border">
+          <img src={{$annonce->img}}  />
         </div>
         <div class="col">
-
+          <h3 class="text-center">{{$annonce->product->name}}</h3>
+          <div>{{$annonce->description}} </div>
+          <div>Vendu par {{$annonce->seller->user->fullname()}}</div>
           @if($annonce->inventaire->quantity <= 0)
+          <small class="text-danger">Rupture de stock </small>
           @else
           <form action="{{route('cart.add')}}" method="post">
             @csrf
