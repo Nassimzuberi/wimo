@@ -12,7 +12,7 @@
 <form method="post" action="{{route('comptes.store')}}" id="register">
     @csrf
     <div id="user" class="init">
-        <label for="first_name">Prénom</label>
+        <label for="first_name" style="color:red">Prénom</label>
         <input id="first_name" type="text" name="first_name" oninput="clear_error(this)">
         <div class="message_error">
             <span id="error_first_name"></span>
