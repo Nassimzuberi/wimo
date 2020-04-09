@@ -21,7 +21,9 @@ class AccountController extends Controller
      */
     public function index()
     {
-
+        return view('account.account',[
+            'seller' => Auth::user()->seller,
+        ]);
     }
 
     /**
@@ -67,9 +69,7 @@ class AccountController extends Controller
      */
     public function show()
     {
-        return view('account.account',[
-            'seller' => Auth::user()->seller,
-        ]);
+        
     }
 
     /**
