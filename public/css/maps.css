@@ -21,13 +21,20 @@ input {
 
 
 #left-block{
-  position:fixed;
-  width:20em;
-  height:100%;
-  left:0;
-  background-color:white;
-  box-shadow: 0px 1px 5px lightgray;
-  z-index:99;
+    display:flex;
+    flex-direction: column;
+    flex: 0 0 380px;
+    min-width: 0px;
+    height:calc(100vh - 60px);
+    left:0;
+    background-color:white;
+    -webkit-box-shadow: 4px 3px 40px 5px rgba(0,0,0,0.37);
+    box-shadow: 4px 3px 40px 5px rgba(0,0,0,0.37);
+
+    z-index:99;
+    overflow:hidden;
+
+
 }
 
 .search-form{
@@ -96,8 +103,7 @@ input {
 
 #mapid {
   height: calc(100vh - 60px);
-  width:calc(100vw - 20em);
-  left:20em;
+  width:100%;
   z-index: 1;
 
 }
