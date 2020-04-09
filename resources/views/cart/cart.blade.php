@@ -27,11 +27,14 @@
                   </option>
               @endfor
             </select>
-            <form method="post" action="{{route('cart.delete',$cart->rowId)}}" >
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-outline-dark"><i class="fas fa-trash-alt"></i></button>
-            </form>
+            <a class="link" href="#" onclick="document.getElementById('delete_sale').submit()">
+                Supprimer
+                <form method="post" id="delete_sale" action="{{route('cart.delete',$cart->rowId)}}" >
+                    @csrf
+                    @method('DELETE')
+                </form>
+            </a>
+
         </td>
           <td >
               {{$cart->price}} €

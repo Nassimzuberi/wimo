@@ -25,6 +25,7 @@
         "sass-loader": "^7.1.0"
     },
     "dependencies": {
+        "animate.css": "^3.7.2",
         "bootstrap": "^4.4.1",
         "leaflet": "^1.6.0",
         "loadable": "^1.0.0",

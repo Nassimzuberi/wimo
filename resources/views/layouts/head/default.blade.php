@@ -11,4 +11,11 @@
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Montserrat:600&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('css/header/style.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/header/styles.css')}}">
+<style>
+    .dropdown-menu{
+        border : 0px;
+        border-radius:10px;
+        filter:drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.2));
+    }
+</style>
