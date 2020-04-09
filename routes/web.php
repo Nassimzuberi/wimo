@@ -65,6 +65,11 @@ Route::get('users/{user}/commandes','AccountController@commandes')->name('user.c
 Route::post('commande/{commande}/reception','CommandeController@reception')->name('commande.validate');
 
 //Routes de la carte
-Route::get('/','MapController@show')->name('map.index');
+
+Route::get('/','MapController@index')->name('map.index');
+
 //Route pour les avis
 Route::post('/sales/{sales_id}', ['uses' => 'CommentController@store', 'as' => 'comment.store']);
+
+Route::post('map','MapController@search')->name('map.search');
+

@@ -1,7 +1,11 @@
 @extends('layouts.app')
 @section('content')
 <script type="text/javascript">
+<<<<<<< HEAD:resources/views/account/seller/add_announcement.blade.php
 	let url = "http://localhost/wimo/public/";
+=======
+	const url = "http://wimo.test/";
+>>>>>>> anis:resources/views/add_announcement.blade.php
 	function load_product(category_id){
 		let ajax = new XMLHttpRequest();
 		let select = document.getElementById('product');
@@ -52,7 +56,7 @@
 
 	<label for="description">Description de votre annonce:</label><br>
 	<textarea name="description" id="description" rows="4" cols="50">
-		
+
 	</textarea><br>
 	<span id="inventaire">L'inventaire de votre produit:</span><br>
 	<input type="text" name="inventory">

@@ -11,7 +11,7 @@ class SellerTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class,10)->create()->each(function ($user){
+        factory(App\User::class,30)->create()->each(function ($user){
           $user->seller()->save(factory(App\Seller::class)->make());
           $user->seller->sales()->save(factory(App\Sales::class)->make());
           foreach($user->seller->sales as $sale){
