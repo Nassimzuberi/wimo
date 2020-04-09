@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Seller;
 use App\Http\Controllers\SaleController;
+use Geocoder;
 
 class SellerController extends Controller
 {
@@ -41,16 +42,23 @@ class SellerController extends Controller
      */
     public function store(Request $request)
     {
-        Seller::create([
-            'address' => json_encode([
+        $geocoder=Geocoder::getCoordinatesForAddress($request["num"].' '.$request["voie"].' '.$request["cp"].' '.$request["commune"]);
+        $position=json_encode(['lat' => $geocoder["lat"],
+            'long' => $geocoder["lng"],
+            ]);
+
+        Seller::create(
+            ['address' => json_encode([
             'num' => $request["num"],
             'voie' => $request["voie"],
             'cp'=> $request["cp"],
-            'commune'=>$request["commune"]
-        ]),
+            'commune'=>$request["commune"]]
+        ),
+        'position' => $position,
         'user_id' => Auth::id(),
-        'phone_number'=> $request["telephone"]
+        'phone_number'=> $request["telephone"],
         ]);
+
         return redirect('/comptes')->with('status','Inscription réussie');
     }
 

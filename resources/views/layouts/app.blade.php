@@ -25,10 +25,17 @@
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:600&display=swap" rel="stylesheet">
 
+    <style>
+            .dropdown-menu{
+        border : 0px;
+        border-radius:10px;
+        filter:drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.2));
+      }
+    </style>
     @yield('extra-script')
-    
 
-    <!-- Favicon --> 
+
+    <!-- Favicon -->
 
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('/images/apple-icon-57x57.png')}}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('/images/apple-icon-60x60.png')}}">
@@ -59,7 +66,7 @@
       <header>
       <nav class="navbar navbar-expand navbar-light bg-white " style="height:60px;" >
 
-          
+
           <ul class="navbar-nav mr-auto mt-lg-0">
             <li class="nav-item dark">
               <a class="nav-link text-shadow-pop-br" href="{{route('map.index')}}"> map </a>
@@ -69,7 +76,7 @@
             <img class="" src="{{asset('images/wimo-logo.png')}}" alt="" style="height:33px; filter: drop-shadow(4px 4px 0px #1CE6BE);">
         </a>
           <ul class="navbar-nav align-items-center" style="flex-direction:row;">
-            
+
           @auth
           <li class="nav-item" >
             <a class="nav-link" href="{{route('cart')}}">  <span class="basket-numer" style="font-family: 'Montserrat', sans-serif; font-weight:300;">{{Cart::count()}}</span> <i class="fas fa-shopping-basket" style="transition: 0.2s"></i></A>
@@ -105,7 +112,7 @@
       </nav>
     </header>
 
-   
+
 
         <main>
             @yield('content')
@@ -114,5 +121,5 @@
     </div>
     @yield('extra-js')
   </body>
-  
+
   </html>

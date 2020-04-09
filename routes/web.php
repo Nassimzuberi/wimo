@@ -18,6 +18,7 @@ Route::resource('comptes','AccountController');
 Route::resource('vendeurs','SellerController');
 Route::resource('annonces','SaleController');
 Route::resource('inventaires','InventaireController');
+
 /*Les produits disponibles pour le vendeur */
 Route::get('/product/available/category/{id}','SaleController@products_available');
 Auth::routes();
@@ -43,4 +44,4 @@ Route::resource('user','UserController');
 
 //Routes de la carte
 Route::get('map','MapController@index')->name('map.index');
-Route::post('map','MapController@search')->name('map.index');
+Route::post('map','MapController@search')->name('map.search');
