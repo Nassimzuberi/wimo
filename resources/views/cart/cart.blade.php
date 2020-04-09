@@ -41,18 +41,19 @@
         </td>
       </tr>
       @empty
-        <tr class="table-secondary" ><td colspan="6">Panier vide</td></tr>
+        <tr class="table-secondary" ><td colspan="6">Panier vide </td></tr>
       @endforelse
       </tbody>
       <caption class="text-right">
           <h4>Sous-total ({{Cart::count() == 1 ? Cart::count(). " article" : Cart::count(). " articles"}}) : <span style="color:#780404;font-weight:bold">{{Cart::subtotal()}} €</span></h4>
           <div class="mt-2">
-              <a href="{{route('map.index')}}" class="text-shadow-pop-br link">Continuer vos achats</a><a href='{{route('checkout.index')}}' class="btn btn-dark ml-sm-2">Passer la commande</a>
+              <a href="{{route('map.index')}}" class="text-shadow-pop-br link">Continuer vos achats</a>
+              <a href='{{route('checkout.index')}}' class="btn btn-dark ml-sm-2">Passer la commande</a>
           </div>
       </caption>
     </table>
   </div>
-    <h3 class="py-3">Nous vous recommandons aussi: </h3>
+    <h3 class="py-3 text-center">Nous vous recommandons aussi: </h3>
     <div id="top">
 
     </div>
