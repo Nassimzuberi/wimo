@@ -33,10 +33,13 @@ Route::get('/mail_account/{mail}','AccountController@mail_account');
 
 Route::resource('inventaires','InventaireController');
 
+<<<<<<< HEAD
 /****** Annonces ******/
 
 Route::resource('annonces','SaleController');
 
+=======
+>>>>>>> anis
 /*Les produits disponibles pour le vendeur */
 Route::get('/product/available/category/{id}','SaleController@products_available');
 
@@ -66,6 +69,11 @@ Route::get('users/{user}/commandes','AccountController@commandes')->name('user.c
 Route::post('commande/{commande}/reception','CommandeController@reception')->name('commande.validate');
 
 //Routes de la carte
+<<<<<<< HEAD
 Route::get('map','MapController@show')->name('map.index');
 //Route pour les avis
 Route::post('/sales/{sales_id}', ['uses' => 'CommentController@store', 'as' => 'comment.store']);
+=======
+Route::get('map','MapController@index')->name('map.index');
+Route::post('map','MapController@search')->name('map.search');
+>>>>>>> anis
