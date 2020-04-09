@@ -12,11 +12,7 @@
 <form method="post" action="{{route('comptes.store')}}" id="register">
     @csrf
     <div id="user" class="init">
-<<<<<<< HEAD
         <label for="first_name">Prénom</label>
-=======
-        <label for="first_name" style="color:yellow">Prénom</label>
->>>>>>> 04985ce17032ff425a0fa1f16514e63257d82128
         <input id="first_name" type="text" name="first_name" oninput="clear_error(this)">
         <div class="message_error">
             <span id="error_first_name"></span>
