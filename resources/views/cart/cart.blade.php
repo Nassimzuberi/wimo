@@ -41,7 +41,7 @@
         </td>
       </tr>
       @empty
-        <tr class="table-secondary" ><td colspan="6">Panier vide</td></tr>
+        <tr class="table-secondary" ><td colspan="6">Panier vide </td></tr>
       @endforelse
       </tbody>
       <caption class="text-right">
