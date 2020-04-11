@@ -23,8 +23,8 @@ Route::get('magasin','SellerController@my_store');
 Route::get('/phone_seller/{phone}','SellerController@phone_seller');
 
 /****** Comptes ******/
-
 Route::resource('comptes','AccountController');
+
 /*Interroge la base de donnée si une adresse mail existe*/
 Route::get('/mail_account/{mail}','AccountController@mail_account');
 
@@ -39,9 +39,6 @@ Route::resource('annonces','SaleController');
 /*Les produits disponibles pour le vendeur */
 Route::get('/product/available/category/{id}','SaleController@products_available');
 
-/**** Utilisateurs ****/
-
-Route::resource('user','UserController');
 
 /**** Authentification *****/
 

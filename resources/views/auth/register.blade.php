@@ -1,90 +1,86 @@
-<!-- 
-    register est le blade qui contient les links et scripts supplémentaires 
--->
-@extends('layouts.app',['additional_head'=>'register.register'])
+@extends('layouts.app')
+@section('title')
+Inscription
+@endsection
 @section('content')
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Inscription</div>
                 <div class="card-body">
-                    
+                    <form method="post" action="{{ route('register') }}">
+                        @csrf
+                        <div class="form-group">
+                            <label for="first_name">Prénom</label>
+                            <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{old('first_name')}}">
+                            @error('first_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror                            
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Nom</label>
+                            <input id="last_name" type="text" name="last_name" class="form-control @error('last_name') is-invalid @enderror" value="{{old('last_name')}}">
+                            @error('last_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror                          
+                        </div>
+                        <div class="form-group">
+                            <label for="birthday">Date de naissance</label>
+                            <input type="date" name="birthday" id="birthday" class="form-control @error('birthday') is-invalid @enderror" value="{{old('birthday')}}">
+                            @error('birthday')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror                      
+                        </div>
+                        <div class="form-group">
+                            <label>Sexe</label>
+                            <input type="radio" name="gender" value="Man" id="man" checked="checked">
+                            <label for="man">Homme</label>
+                            <input type="radio" name="gender" value="Woman" id="woman">
+                            <label for="woman">Femme</label>
+                            @error('gender')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="email">email</label>
+                            <input type="text" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{old('email')}}">
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Mot de passe</label>
+                            <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror">
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">   
+                            <label for="password_confirmation">Mot de passe de confirmation</label>
+                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">
+                                Valider
+                            </button>
+                        </div>
+                    </form>                  
                 </div>
             </div>
         </div>
     </div>
 </div>
-<form method="post" action="{{ route('register') }}">
-    @csrf
-    <div id="user" class="init">
-        <label for="first_name">Prénom</label>
-        <input id="first_name" type="text" class="form-control" name="first_name" oninput="clear_error(this)">
-        <div class="message_error">
-            <span id="error_first_name"></span>
-        </div>
-        <label for="last_name">Nom</label>
-        <input id="last_name" type="text" name="last_name" oninput="clear_error(this)">
-        <div class="message_error">
-            <span id="error_last_name"></span>
-        </div>
-        <label for="birthday">Date de naissance</label>
-        <input type="date" name="birthday"  id="birthday" oninput="clear_error(this)">
-        <div class="message_error">
-            <span id="error_birthday"></span>
-        </div>
-        <span>Sexe</span>
-        <input type="radio" name="gender" value="Man" id="man" oninput="clear_error(this)" checked="checked">
-        <label for="man">Homme</label>
-        <input type="radio" name="gender" value="Woman" id="woman" oninput="clear_error(this)">
-        <label for="woman">Femme</label>
-        <div class="message_error">
-            <span id="error_gender"></span>
-        </div>
-        <label for="email">email</label>
-        <input type="text" name="email" data-unique_mail="" id="email" oninput="clear_error(this)">
-        <div class="message_error">
-            <span id="error_email"></span>
-        </div>
-        <label for="password">Mot de passe</label>
-        <input type="password" name="password" id="password" oninput="clear_error(this)"><br>
-        <label for="password_confirmation">Mot de passe de confirmation</label>
-        <input type="password" name="password_confirmation" id="password_confirmation" oninput="clear_error(this)">
-        <div class="message_error">
-            <span id="error_password"></span>
-        </div>       
-    </div>
-    <div id="seller" class="init">
-        <p>
-            Adresse de votre point de vente <br>
-            et un numéro afin que les acheteurs puissent vous joindre
-        </p>
-        <label for="num">Numéro de la voie</label>
-        <input type="text" id="num" name="num" placeholder="ex:1" oninput="clear_error(this)" disabled="disabled">
-        <div class="message_error">
-            <span id="error_num"></span>
-        </div> 
-        <label for="voie">Nom de la voie</label>
-        <input id="voie" type="text" name="voie" placeholder="ex:rue du chemin vert" oninput="clear_error(this)" disabled="disabled">
-        <div class="message_error">
-            <span id="error_voie"></span>
-        </div>    
-        <label for="cp">Code postal</label>
-        <input id="cp" type="text" name="cp" maxlength="5" placeholder="ex:94380" oninput="clear_error(this)" disabled="disabled">
-        <div class="message_error">
-            <span id="error_cp"></span>        
-        </div>
-        <label for="commune">Commune / Ville</label>
-        <input type="text" id="commune" name="commune" placeholder="ex:Bonneuil-sur-Marne" oninput="clear_error(this)" disabled="disabled">
-        <div class="message_error">
-            <span id="error_commune"></span>
-        </div>
-        <label for="telephone">Télephone</label>
-        <input type="text" name="telephone" id="telephone" maxlength="10" data-unique_phone="" placeholder="ex:0601010101" oninput="clear_error(this)" disabled="disabled">
-        <div class="message_error">
-            <span id="error_telephone"></span>
-        </div>     
-    </div>   
-</form>
 @endsection

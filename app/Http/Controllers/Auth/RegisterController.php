@@ -31,7 +31,10 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    //protected $redirectTo = RouteServiceProvider::SELLER_REGISTER;
+    //protected $redirectTo = RouteServiceProvider::HOME;
+    protected function redirectTo(){
+        return redirect()->route('')
+    }
 
     /**
      * Create a new controller instance.
@@ -78,17 +81,5 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-    }
-    public function register(Request $request){
-        $user = User::create([
-            'first_name' => $request->first_name,
-            'last_name'=> $request->last_name,
-            'birthday'=>$request->birthday,
-            'gender'=>$request->gender,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-        event(new Registered($user));
-        $this->guard()->login($user);
-    }    
+    }   
 }
