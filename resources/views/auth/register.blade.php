@@ -4,16 +4,23 @@
 @extends('layouts.app',['additional_head'=>'register.register'])
 @section('content')
 
-<h2 id="header_step">Mes informations</h2>
-<p id="instruction_step">
-    Formulaire où vous devez remplir votre profil.
-</p>
-
-<form method="post" action="{{route('comptes.store')}}" id="register">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Inscription</div>
+                <div class="card-body">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<form method="post" action="{{ route('register') }}">
     @csrf
     <div id="user" class="init">
         <label for="first_name">Prénom</label>
-        <input id="first_name" type="text" class="form-control" name="first_name" oninput="clear_error(this)" required="required">
+        <input id="first_name" type="text" class="form-control" name="first_name" oninput="clear_error(this)">
         <div class="message_error">
             <span id="error_first_name"></span>
         </div>
@@ -78,24 +85,6 @@
         <div class="message_error">
             <span id="error_telephone"></span>
         </div>     
-    </div>
-    <div class="init" id="final">
-        <p>
-            Bienvenue sur wimo. <br>Vous allez être redirigé automatiquement vers la page d'accueil.
-        </p>
-        <div id="loader">
-        </div>
-    </div>
-    <input type="hidden" name="register_seller" id="register_seller">    
+    </div>   
 </form>
-<div id="steps">
-    <div class="step actual_step" id="step_0"></div>
-    <div class="step" id="step_1"></div>
-    <div class="step" id="step_2"></div>
-</div>
-<div id="buttons">
-    <button id="previous_step" onclick="previous()">precedent</button>
-    <button id="skip_step" onclick="next(true)">Skip</button>
-    <button id="next_step" onclick="next(false)">Suivant</button>    
-</div>
 @endsection
