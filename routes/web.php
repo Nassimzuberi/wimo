@@ -42,7 +42,7 @@ Route::get('/product/available/category/{id}','SaleController@products_available
 
 /**** Authentification *****/
 
-Auth::routes(['verify' => true]);
+Auth::routes();
 
 //Route pour le panier
 Route::delete('/cart/delete/{rowId}','CartController@deleteToCart')->name('cart.delete');
