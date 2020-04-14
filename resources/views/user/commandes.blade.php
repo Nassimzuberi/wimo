@@ -60,6 +60,11 @@
            @else
              <button class="btn btn-secondary"> Donnez un avis</button>
            @endif
+             <div class="my-3">
+                 <p>Un problème ? <a href="{{route('tickets.create')}}">Signalez le</a></p>
+
+             </div>
+
          </div>
        </div>
    </div>

@@ -11,11 +11,11 @@
             <img class="" src="{{asset('images/wimo-logo.png')}}" alt="" style="height:33px; filter: drop-shadow(4px 4px 0px #1CE6BE);">
         </a>
         <ul class="navbar-nav align-items-center" style="flex-direction:row;">
-
+            <li class="nav-item" >
+                <a class="nav-link" href="{{route('cart')}}">  <span class="basket-numer" style="font-family: 'Montserrat', sans-serif; font-weight:300;">{{Cart::count()}}</span> <i class="fas fa-shopping-basket" style="transition: 0.2s"></i></A>
+            </li>
             @auth
-                <li class="nav-item" >
-                    <a class="nav-link" href="{{route('cart')}}">  <span class="basket-numer" style="font-family: 'Montserrat', sans-serif; font-weight:300;">{{Cart::count()}}</span> <i class="fas fa-shopping-basket" style="transition: 0.2s"></i></A>
-                </li>
+
                 <li class="nav-item">
                     <a id="navbarDropdown" class="nav-link dropdown logged-user-icon floating" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         <img src="{{ asset('/images/user-icons/'.Auth::id().'.jpg') }}" alt="user-icon" id="user-icon" width='50'> <span class="caret"></span>
@@ -26,6 +26,9 @@
                         </a>
                         <a class="dropdown-item" href="{{ url('/comptes') }}">
                             compte
+                        </a>
+                        <a class="dropdown-item" href="{{ url('/users/tickets') }}">
+                            tickets
                         </a>
                         <a style="color:tomato" class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();

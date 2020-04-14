@@ -14,7 +14,6 @@ class TopSales extends React.Component {
         }
     }
     componentDidMount() {
-        console.log("MOUNT")
         this.updatePage()
     }
     updatePage(page = null){

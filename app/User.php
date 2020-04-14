@@ -6,7 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends \TCG\Voyager\Models\User implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -46,5 +46,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function commandes(){
         return $this->hasMany('App\Commande');
+    }
+    public function tickets(){
+        return $this->hasMany('App\Ticket');
     }
 }

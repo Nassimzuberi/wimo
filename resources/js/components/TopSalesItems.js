@@ -5,7 +5,7 @@ const TopSalesItems = ({data}) => {
     return (
         <div className={'mx-2'}>
             <img src={"/images/"+ data.img} width={100}/>
-            <div className={"text-center"}><a href={"/annonces/" + data.id} >{data.name}</a></div>
+            <div className={"text-center"}><a href={"/annonces/" + data.id} className={"link "}>{data.name}</a></div>
         </div>
     )
 }
