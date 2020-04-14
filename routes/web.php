@@ -74,3 +74,13 @@ Route::post('/sales/{sales_id}', ['uses' => 'CommentController@store', 'as' => '
 
 
 
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+    Route::get('tickets','TicketController@index');
+});
+
+// Route pour les tickets
+Route::resource('tickets','TicketController');
+Route::get('users/tickets','TicketController@my_tickets');
