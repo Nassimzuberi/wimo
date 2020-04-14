@@ -51,15 +51,15 @@ $factory->define(Seller::class, function (Faker $faker) {
     $commune = "Paris";
     $num = rand(1,50);
 
-    $geocoder=Geocoder::getCoordinatesForAddress($num.' '.$voie.' '.$cp.' '.$commune);
+   /* $geocoder=Geocoder::getCoordinatesForAddress($num.' '.$voie.' '.$cp.' '.$commune);
     $position=json_encode([
         "lat"=> $geocoder["lat"],
         "long"=> $geocoder["lng"],
-    ]);
+    ]); */
 
     return [
         'address' => json_encode(["cp" => $cp,"voie"=>$voie,"commune"=> $commune,"num"=> $num]),
         'phone_number' => "0612345678",
-        'position' => $position
+        // 'position' => $position
     ];
 });

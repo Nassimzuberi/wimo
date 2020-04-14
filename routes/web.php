@@ -73,14 +73,12 @@ Route::post('/','MapController@search')->name('map.search');
 Route::post('/sales/{sales_id}', ['uses' => 'CommentController@store', 'as' => 'comment.store']);
 
 
-
-
-
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
     Route::get('tickets','TicketController@index');
+    Route::post('tickets/{ticket}/edit','TicketController@update')->name('tickets.update');
 });
 
-// Route pour les tickets
-Route::resource('tickets','TicketController');
-Route::get('users/tickets','TicketController@my_tickets');
+Route::get('users/tickets', 'TicketController@my_tickets');
+Route::get('tickets/create', 'TicketController@create')->name('tickets.create');
+Route::post('tickets/create', 'TicketController@store')->name('tickets.store');

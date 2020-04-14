@@ -17,7 +17,7 @@ class CreateTicketsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->text('text');
-            $table->text('response');
+            $table->text('response')->nullable();
             $table->integer('type');
             $table->boolean('state')->default(false);
             $table->timestamps();
