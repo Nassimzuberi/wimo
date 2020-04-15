@@ -12,7 +12,13 @@ class AdminVoyagerSeeder extends Seeder
      */
     public function run()
     {
-        $data_voyager = base_path('administration.sql');
+        if(config('app.env') == 'production'){
+            $data_voyager = base_path('administration_prod.sql');
+        }
+        else{
+            $data_voyager = base_path('administration.sql');
+
+        }
         DB::unprepared(file_get_contents($data_voyager));
     }
 }
