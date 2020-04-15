@@ -20,13 +20,6 @@ class DatabaseSeeder extends Seeder
         factory(App\Product::class, 50)->create();
         $this->call(UsersTableSeeder::class);
         $this->call(SellerTableSeeder::class);
-        $this->seed('DataTypesTableSeeder');
-        $this->seed('DataRowsTableSeeder');
-        $this->seed('MenusTableSeeder');
-        $this->seed('MenuItemsTableSeeder');
-        $this->seed('RolesTableSeeder');
-        $this->seed('PermissionsTableSeeder');
-        $this->seed('PermissionRoleTableSeeder');
-        $this->seed('SettingsTableSeeder');
+        $this->call(AdminVoyagerSeeder::class);
     }
 }
