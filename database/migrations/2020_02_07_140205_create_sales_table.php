@@ -15,7 +15,7 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->binary('img')->nullable(true);
+            $table->string('img')->nullable(true);
             $table->text('description')->nullable(true);
             $table->unsignedDecimal('price_unit')->nullable(true);
             $table->unsignedDecimal('price_weight')->nullable(true);

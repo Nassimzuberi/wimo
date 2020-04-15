@@ -13,12 +13,12 @@ class SettingsTableSeeder extends Seeder
         $setting = $this->findSetting('site.title');
         if (!$setting->exists) {
             $setting->fill([
-                'display_name' => __('voyager::seeders.settings.site.title'),
-                'value'        => __('voyager::seeders.settings.site.title'),
-                'details'      => '',
-                'type'         => 'text',
-                'order'        => 1,
-                'group'        => 'Site',
+                'display_name' => __('Wimo'),
+                'value' => __('voyager::seeders.settings.site.title'),
+                'details' => '',
+                'type' => 'text',
+                'order' => 1,
+                'group' => 'Site',
             ])->save();
         }
 

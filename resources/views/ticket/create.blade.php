@@ -6,9 +6,11 @@
         <div class="p-5  shadow">
             <h2 class="text-center my-2">Créer un ticket</h2>
             @if(session()->has('success'))
-                <div class="text-center text-success">Le ticket a bien été envoyé <br>  Nous vous repondrons dans les plus brefs delais</div>
+                <div class="text-center text-success">Le ticket a bien été envoyé <br> Nous vous repondrons dans les
+                    plus brefs delais
+                </div>
             @endif
-            <form method="post" action="{{route('tickets.store')}}" class="py-3" enctype= ‘multipart/form-data’>
+            <form method="post" action="{{route('tickets.store')}}" class="py-3" enctype="multipart/form-data">
                 @csrf
                 <label>Quel type de problème avez-vous eu ?</label>
                 <select class="form-control mb-3" name="type">
@@ -19,7 +21,7 @@
                 <label>Décrivez le problème</label>
                 <textarea name="text" class="form-control mb-3"></textarea>
                 <label>Ajouter une capture d'écran ou une photo</label>
-                <input type="file" class="form-control" name="images" multiple>
+                <input type="file" class="form-control" name="img">
                 <div>
                     <button type="submit" class="btn btn-success my-3">Envoyer</button>
                 </div>
@@ -28,4 +30,4 @@
 
     </div>
 
-    @endsection
+@endsection

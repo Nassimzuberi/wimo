@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model
 {
-    protected $fillable=['text','type','state','response'];
+    protected $fillable = ['text', 'type', 'state', 'img', 'response'];
 
     public function typeprob() {
         $tab = [

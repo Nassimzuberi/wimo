@@ -10,26 +10,29 @@
         @endif
         @foreach($tickets as $ticket)
             <div style="padding:20px;margin:20px;" class="{{$ticket->state ? 'bg-success' : 'bg-danger'}}">
-                <h5 >Ticket de <a href="{{url("admin/users/".$ticket->user->id)}}" >{{$ticket->user->fullname()}}</a>    <small>{{$ticket->typeprob()}}</small></h5>
+                <h5>Ticket de <a href="{{url("admin/users/".$ticket->user->id)}}">{{$ticket->user->fullname()}}</a>
+                    <small>{{$ticket->typeprob()}}</small></h5>
 
                 <p>{{$ticket->text}}</p>
+                @if($ticket->img)
+                    <div><img src="{{asset('storage/'.$ticket->img)}}" alt="img-ticket" width="250"></div>
+                @endif
 
                 @if($ticket->state)
                     <div>Réponse :</div>
                     <p>{{$ticket->response}}</p>
                 @else
 
-                <form method="post" action="{{route('tickets.update',$ticket->id)}}">
-                    @csrf
-                    @method('PATCH')
-                    <div class="form-group">
-                        <label>Répondre :</label>
-                        <textarea name="response" style="width:50%" class="form-control"> </textarea>
-                        <button type="submit" class="btn btn-success" >Confirmer</button>
-                    </div>
+                    <form method="post" action="{{route('tickets.update',$ticket->id)}}">
+                        @csrf
+                        <div class="form-group">
+                            <label>Répondre :</label>
+                            <textarea name="response" style="width:100%" class="form-control"> </textarea>
+                            <button type="submit" class="btn btn-success">Confirmer</button>
+                        </div>
 
-                </form>
-                    @endif
+                    </form>
+                @endif
 
             </div>
             @endforeach
