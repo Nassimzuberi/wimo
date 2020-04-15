@@ -28,7 +28,7 @@
     @endisset
     <li>
         <!-- Lien qui désactive le compte de l'utilisateur -->
-        <a href="javascript:desactiver_compte_wimo()">Désactiver mon compte</a>
+        <a href="javascript:close_account('user')">Désactiver mon compte</a>
         <form method="post" id="destroy_user" action="{{route('comptes.destroy',Auth::user())}}">
             @csrf
             @method('DELETE')

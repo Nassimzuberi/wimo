@@ -44,17 +44,7 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        $controleur = new RegisterController();
-        $controleur->register($request);
-        /* 
-            Si l'utilisateur s'est inscrit pour devenir vendeur,
-            on appelle le controlleur Seller.
-        */
-        if(isset($request->register_seller)){
-            $controleur = new SellerController();
-            return $controleur->store($request);
-        }
-        return redirect()->route('comptes.show',Auth::user())->with('status','Inscription réussie');
+        return redirect()->route('comptes.index',Auth::user())->with('status','Inscription réussie');
     }
 
     public function mail_account($mail){
