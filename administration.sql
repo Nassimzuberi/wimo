@@ -12,9 +12,9 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Listage des données de la table wimo.data_rows : ~64 rows (environ)
-DELETE FROM "data_rows";
-/*!40000 ALTER TABLE "data_rows" DISABLE KEYS */;
-INSERT INTO "data_rows" ("id", "data_type_id", "field", "type", "display_name", "required", "browse", "read", "edit", "add", "delete", "details", "order") VALUES
+DELETE FROM data_rows;
+/*!40000 ALTER TABLE `data_rows` DISABLE KEYS */;
+INSERT INTO data_rows (id, data_type_id, field, type, display_name, required, browse, read, edit, add, delete, details, order) VALUES
 	(1, 1, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, '{}', 1),
 	(3, 1, 'email', 'text', 'Email', 1, 1, 1, 1, 1, 1, '{}', 3),
 	(4, 1, 'password', 'password', 'Password', 1, 0, 0, 1, 1, 0, '{}', 4),
@@ -22,8 +22,8 @@ INSERT INTO "data_rows" ("id", "data_type_id", "field", "type", "display_name", 
 	(6, 1, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, '{}', 6),
 	(7, 1, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7),
 	(8, 1, 'avatar', 'image', 'Avatar', 0, 1, 1, 1, 1, 1, '{}', 8),
-	(9, 1, 'user_belongsto_role_relationship', 'relationship', 'Role', 0, 1, 1, 1, 1, 0, '{"model":"TCG\\\\Voyager\\\\Models\\\\Role","table":"roles","type":"belongsTo","column":"role_id","key":"id","label":"display_name","pivot_table":"roles","pivot":"0","taggable":"0"}', 10),
-	(10, 1, 'user_belongstomany_role_relationship', 'relationship', 'Roles', 0, 1, 1, 1, 1, 0, '{"model":"TCG\\\\Voyager\\\\Models\\\\Role","table":"roles","type":"belongsToMany","column":"id","key":"id","label":"display_name","pivot_table":"user_roles","pivot":"1","taggable":"0"}', 11),
+	(9, 1, 'user_belongsto_role_relationship', 'relationship', 'Role', 0, 1, 1, 1, 1, 0, '{"model":"TCG\\Voyager\\Models\\Role","table":"roles","type":"belongsTo","column":"role_id","key":"id","label":"display_name","pivot_table":"roles","pivot":"0","taggable":"0"}', 10),
+	(10, 1, 'user_belongstomany_role_relationship', 'relationship', 'Roles', 0, 1, 1, 1, 1, 0, '{"model":"TCG\\Voyager\\Models\\Role","table":"roles","type":"belongsToMany","column":"id","key":"id","label":"display_name","pivot_table":"user_roles","pivot":"1","taggable":"0"}', 11),
 	(11, 1, 'settings', 'hidden', 'Settings', 0, 0, 0, 0, 0, 0, '{}', 12),
 	(12, 2, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, NULL, 1),
 	(13, 2, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, NULL, 2),
@@ -43,8 +43,8 @@ INSERT INTO "data_rows" ("id", "data_type_id", "field", "type", "display_name", 
 	(27, 4, 'product_id', 'text', 'Product Id', 1, 1, 1, 1, 1, 1, '{}', 3),
 	(28, 4, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 8),
 	(29, 4, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 9),
-	(30, 4, 'sale_belongsto_product_relationship', 'relationship', 'products', 0, 1, 1, 1, 1, 1, '{"model":"App\\\\Product","table":"products","type":"belongsTo","column":"product_id","key":"id","label":"name","pivot_table":"categories","pivot":"0","taggable":"0"}', 10),
-	(31, 4, 'sale_belongsto_seller_relationship', 'relationship', 'sellers', 0, 1, 1, 1, 1, 1, '{"model":"App\\\\Seller","table":"sellers","type":"belongsTo","column":"seller_id","key":"id","label":"user_id","pivot_table":"categories","pivot":"0","taggable":"0"}', 11),
+	(30, 4, 'sale_belongsto_product_relationship', 'relationship', 'products', 0, 1, 1, 1, 1, 1, '{"model":"App\\Product","table":"products","type":"belongsTo","column":"product_id","key":"id","label":"name","pivot_table":"categories","pivot":"0","taggable":"0"}', 10),
+	(31, 4, 'sale_belongsto_seller_relationship', 'relationship', 'sellers', 0, 1, 1, 1, 1, 1, '{"model":"App\\Seller","table":"sellers","type":"belongsTo","column":"seller_id","key":"id","label":"user_id","pivot_table":"categories","pivot":"0","taggable":"0"}', 11),
 	(32, 1, 'role_id', 'text', 'Role Id', 0, 1, 1, 1, 1, 1, '{}', 2),
 	(33, 1, 'first_name', 'text', 'First Name', 1, 1, 1, 1, 1, 1, '{}', 3),
 	(34, 1, 'last_name', 'text', 'Last Name', 1, 1, 1, 1, 1, 1, '{}', 4),
@@ -59,8 +59,8 @@ INSERT INTO "data_rows" ("id", "data_type_id", "field", "type", "display_name", 
 	(43, 6, 'name', 'text', 'Name', 1, 1, 1, 1, 1, 1, '{}', 2),
 	(44, 6, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 3),
 	(45, 6, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 4),
-	(46, 6, 'category_belongstomany_product_relationship', 'relationship', 'products', 0, 1, 1, 1, 1, 1, '{"model":"App\\\\Product","table":"products","type":"belongsToMany","column":"id","key":"id","label":"name","pivot_table":"tags","pivot":"1","taggable":null}', 5),
-	(47, 5, 'product_belongstomany_category_relationship', 'relationship', 'categories', 0, 1, 1, 1, 1, 1, '{"model":"App\\\\Category","table":"categories","type":"belongsToMany","column":"id","key":"id","label":"name","pivot_table":"tags","pivot":"1","taggable":null}', 5),
+	(46, 6, 'category_belongstomany_product_relationship', 'relationship', 'products', 0, 1, 1, 1, 1, 1, '{"model":"App\\Product","table":"products","type":"belongsToMany","column":"id","key":"id","label":"name","pivot_table":"tags","pivot":"1","taggable":null}', 5),
+	(47, 5, 'product_belongstomany_category_relationship', 'relationship', 'categories', 0, 1, 1, 1, 1, 1, '{"model":"App\\Category","table":"categories","type":"belongsToMany","column":"id","key":"id","label":"name","pivot_table":"tags","pivot":"1","taggable":null}', 5),
 	(48, 7, 'id', 'hidden', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
 	(49, 7, 'sales_id', 'text', 'Sales Id', 1, 1, 1, 1, 1, 1, '{}', 2),
 	(50, 7, 'quantity', 'number', 'Quantity', 1, 1, 1, 1, 1, 1, '{}', 4),
@@ -76,36 +76,36 @@ INSERT INTO "data_rows" ("id", "data_type_id", "field", "type", "display_name", 
 	(60, 8, 'sale_id', 'text', 'Sale Id', 1, 1, 1, 1, 1, 1, '{}', 2),
 	(61, 8, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 5),
 	(62, 8, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
-	(63, 7, 'commande_belongsto_sale_relationship', 'relationship', 'sales', 0, 1, 1, 1, 1, 1, '{"model":"App\\\\Sales","table":"sales","type":"belongsTo","column":"sales_id","key":"id","label":"product_id","pivot_table":"categories","pivot":"0","taggable":null}', 10),
-	(64, 7, 'commande_belongsto_user_relationship', 'relationship', 'users', 0, 1, 1, 1, 1, 1, '{"model":"App\\\\User","table":"users","type":"belongsTo","column":"user_id","key":"id","label":"email","pivot_table":"categories","pivot":"0","taggable":null}', 11),
-	(65, 8, 'inventaire_belongsto_product_relationship', 'relationship', 'products', 0, 1, 1, 1, 1, 1, '{"model":"App\\\\Sales","table":"sales","type":"belongsTo","column":"sale_id","key":"id","label":"product_id","pivot_table":"categories","pivot":"0","taggable":"0"}', 7);
-/*!40000 ALTER TABLE "data_rows" ENABLE KEYS */;
+	(63, 7, 'commande_belongsto_sale_relationship', 'relationship', 'sales', 0, 1, 1, 1, 1, 1, '{"model":"App\\Sales","table":"sales","type":"belongsTo","column":"sales_id","key":"id","label":"product_id","pivot_table":"categories","pivot":"0","taggable":null}', 10),
+	(64, 7, 'commande_belongsto_user_relationship', 'relationship', 'users', 0, 1, 1, 1, 1, 1, '{"model":"App\\User","table":"users","type":"belongsTo","column":"user_id","key":"id","label":"email","pivot_table":"categories","pivot":"0","taggable":null}', 11),
+	(65, 8, 'inventaire_belongsto_product_relationship', 'relationship', 'products', 0, 1, 1, 1, 1, 1, '{"model":"App\\Sales","table":"sales","type":"belongsTo","column":"sale_id","key":"id","label":"product_id","pivot_table":"categories","pivot":"0","taggable":"0"}', 7);
+/*!40000 ALTER TABLE `data_rows` ENABLE KEYS */;
 
 -- Listage des données de la table wimo.data_types : ~8 rows (environ)
-DELETE FROM "data_types";
-/*!40000 ALTER TABLE "data_types" DISABLE KEYS */;
-INSERT INTO "data_types" ("id", "name", "slug", "display_name_singular", "display_name_plural", "icon", "model_name", "policy_name", "controller", "description", "generate_permissions", "server_side", "details", "created_at", "updated_at") VALUES
-	(1, 'users', 'users', 'User', 'Users', 'voyager-person', 'App\\User', 'TCG\\Voyager\\Policies\\UserPolicy', 'TCG\\Voyager\\Http\\Controllers\\VoyagerUserController', NULL, 1, 0, '{"order_column":null,"order_display_column":null,"order_direction":"desc","default_search_key":null,"scope":null}', '2020-04-15 17:50:38', '2020-04-15 18:06:54'),
-	(2, 'menus', 'menus', 'Menu', 'Menus', 'voyager-list', 'TCG\\Voyager\\Models\\Menu', NULL, '', '', 1, 0, NULL, '2020-04-15 17:50:38', '2020-04-15 17:50:38'),
-	(3, 'roles', 'roles', 'Role', 'Roles', 'voyager-lock', 'TCG\\Voyager\\Models\\Role', NULL, 'TCG\\Voyager\\Http\\Controllers\\VoyagerRoleController', '', 1, 0, NULL, '2020-04-15 17:50:38', '2020-04-15 17:50:38'),
-	(4, 'sales', 'sales', 'Sale', 'Sales', NULL, 'App\\Sales', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null,"order_direction":"asc","default_search_key":null,"scope":null}', '2020-04-15 17:58:24', '2020-04-15 18:06:14'),
-	(5, 'products', 'products', 'Product', 'Products', NULL, 'App\\Product', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null,"order_direction":"asc","default_search_key":null}', '2020-04-15 18:11:32', '2020-04-15 18:11:32'),
-	(6, 'categories', 'categories', 'Category', 'Categories', NULL, 'App\\Category', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null,"order_direction":"asc","default_search_key":null}', '2020-04-15 18:12:01', '2020-04-15 18:12:01'),
-	(7, 'commandes', 'commandes', 'Commande', 'Commandes', NULL, 'App\\Commande', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null,"order_direction":"asc","default_search_key":null}', '2020-04-15 18:15:51', '2020-04-15 18:15:51'),
-	(8, 'inventaires', 'inventaires', 'Inventaire', 'Inventaires', NULL, 'App\\Inventaire', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null,"order_direction":"asc","default_search_key":null,"scope":null}', '2020-04-15 18:16:07', '2020-04-15 18:18:45');
-/*!40000 ALTER TABLE "data_types" ENABLE KEYS */;
+DELETE FROM data_types;
+/*!40000 ALTER TABLE `data_types` DISABLE KEYS */;
+INSERT INTO data_types (id, name, slug, display_name_singular, display_name_plural, icon, model_name, policy_name, controller, description, generate_permissions, server_side, details, created_at, updated_at) VALUES
+	(1, 'users', 'users', 'User', 'Users', 'voyager-person', 'App\User', 'TCG\Voyager\Policies\UserPolicy', 'TCG\Voyager\Http\Controllers\VoyagerUserController', NULL, 1, 0, '{"order_column":null,"order_display_column":null,"order_direction":"desc","default_search_key":null,"scope":null}', '2020-04-15 17:50:38', '2020-04-15 18:06:54'),
+	(2, 'menus', 'menus', 'Menu', 'Menus', 'voyager-list', 'TCG\Voyager\Models\Menu', NULL, '', '', 1, 0, NULL, '2020-04-15 17:50:38', '2020-04-15 17:50:38'),
+	(3, 'roles', 'roles', 'Role', 'Roles', 'voyager-lock', 'TCG\Voyager\Models\Role', NULL, 'TCG\Voyager\Http\Controllers\VoyagerRoleController', '', 1, 0, NULL, '2020-04-15 17:50:38', '2020-04-15 17:50:38'),
+	(4, 'sales', 'sales', 'Sale', 'Sales', NULL, 'App\Sales', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null,"order_direction":"asc","default_search_key":null,"scope":null}', '2020-04-15 17:58:24', '2020-04-15 18:06:14'),
+	(5, 'products', 'products', 'Product', 'Products', NULL, 'App\Product', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null,"order_direction":"asc","default_search_key":null}', '2020-04-15 18:11:32', '2020-04-15 18:11:32'),
+	(6, 'categories', 'categories', 'Category', 'Categories', NULL, 'App\Category', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null,"order_direction":"asc","default_search_key":null}', '2020-04-15 18:12:01', '2020-04-15 18:12:01'),
+	(7, 'commandes', 'commandes', 'Commande', 'Commandes', NULL, 'App\Commande', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null,"order_direction":"asc","default_search_key":null}', '2020-04-15 18:15:51', '2020-04-15 18:15:51'),
+	(8, 'inventaires', 'inventaires', 'Inventaire', 'Inventaires', NULL, 'App\Inventaire', NULL, NULL, NULL, 1, 0, '{"order_column":null,"order_display_column":null,"order_direction":"asc","default_search_key":null,"scope":null}', '2020-04-15 18:16:07', '2020-04-15 18:18:45');
+/*!40000 ALTER TABLE `data_types` ENABLE KEYS */;
 
 -- Listage des données de la table wimo.menus : ~1 rows (environ)
-DELETE FROM "menus";
-/*!40000 ALTER TABLE "menus" DISABLE KEYS */;
-INSERT INTO "menus" ("id", "name", "created_at", "updated_at") VALUES
+DELETE FROM menus;
+/*!40000 ALTER TABLE `menus` DISABLE KEYS */;
+INSERT INTO menus (id, name, created_at, updated_at) VALUES
 	(1, 'admin', '2020-04-15 17:50:39', '2020-04-15 17:50:39');
-/*!40000 ALTER TABLE "menus" ENABLE KEYS */;
+/*!40000 ALTER TABLE `menus` ENABLE KEYS */;
 
 -- Listage des données de la table wimo.menu_items : ~18 rows (environ)
-DELETE FROM "menu_items";
-/*!40000 ALTER TABLE "menu_items" DISABLE KEYS */;
-INSERT INTO "menu_items" ("id", "menu_id", "title", "url", "target", "icon_class", "color", "parent_id", "order", "created_at", "updated_at", "route", "parameters") VALUES
+DELETE FROM menu_items;
+/*!40000 ALTER TABLE `menu_items` DISABLE KEYS */;
+INSERT INTO menu_items (id, menu_id, title, url, target, icon_class, color, parent_id, order, created_at, updated_at, route, parameters) VALUES
 	(1, 1, 'Dashboard', '', '_self', 'voyager-boat', NULL, NULL, 1, '2020-04-15 17:50:39', '2020-04-15 17:50:39', 'voyager.dashboard', NULL),
 	(2, 1, 'Media', '', '_self', 'voyager-images', NULL, NULL, 5, '2020-04-15 17:50:39', '2020-04-15 18:09:40', 'voyager.media.index', NULL),
 	(3, 1, 'Users', '', '_self', 'voyager-person', NULL, 14, 2, '2020-04-15 17:50:39', '2020-04-15 18:09:27', 'voyager.users.index', NULL),
@@ -124,12 +124,12 @@ INSERT INTO "menu_items" ("id", "menu_id", "title", "url", "target", "icon_class
 	(16, 1, 'Categories', '', '_self', NULL, NULL, 13, 2, '2020-04-15 18:12:01', '2020-04-15 18:19:22', 'voyager.categories.index', NULL),
 	(17, 1, 'Commandes', '', '_self', NULL, NULL, 13, 5, '2020-04-15 18:15:52', '2020-04-15 18:19:27', 'voyager.commandes.index', NULL),
 	(18, 1, 'Inventaires', '', '_self', NULL, NULL, 13, 4, '2020-04-15 18:16:07', '2020-04-15 18:19:27', 'voyager.inventaires.index', NULL);
-/*!40000 ALTER TABLE "menu_items" ENABLE KEYS */;
+/*!40000 ALTER TABLE `menu_items` ENABLE KEYS */;
 
 -- Listage des données de la table wimo.permissions : ~50 rows (environ)
-DELETE FROM "permissions";
-/*!40000 ALTER TABLE "permissions" DISABLE KEYS */;
-INSERT INTO "permissions" ("id", "key", "table_name", "created_at", "updated_at") VALUES
+DELETE FROM permissions;
+/*!40000 ALTER TABLE `permissions` DISABLE KEYS */;
+INSERT INTO permissions (id, key, table_name, created_at, updated_at) VALUES
 	(1, 'browse_admin', NULL, '2020-04-15 17:50:39', '2020-04-15 17:50:39'),
 	(2, 'browse_bread', NULL, '2020-04-15 17:50:39', '2020-04-15 17:50:39'),
 	(3, 'browse_database', NULL, '2020-04-15 17:50:39', '2020-04-15 17:50:39'),
@@ -180,12 +180,12 @@ INSERT INTO "permissions" ("id", "key", "table_name", "created_at", "updated_at"
 	(48, 'edit_inventaires', 'inventaires', '2020-04-15 18:16:07', '2020-04-15 18:16:07'),
 	(49, 'add_inventaires', 'inventaires', '2020-04-15 18:16:07', '2020-04-15 18:16:07'),
 	(50, 'delete_inventaires', 'inventaires', '2020-04-15 18:16:07', '2020-04-15 18:16:07');
-/*!40000 ALTER TABLE "permissions" ENABLE KEYS */;
+/*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
 
 -- Listage des données de la table wimo.permission_role : ~81 rows (environ)
-DELETE FROM "permission_role";
-/*!40000 ALTER TABLE "permission_role" DISABLE KEYS */;
-INSERT INTO "permission_role" ("permission_id", "role_id") VALUES
+DELETE FROM permission_role;
+/*!40000 ALTER TABLE `permission_role` DISABLE KEYS */;
+INSERT INTO permission_role (permission_id, role_id) VALUES
 	(1, 1),
 	(1, 3),
 	(2, 1),
@@ -267,21 +267,21 @@ INSERT INTO "permission_role" ("permission_id", "role_id") VALUES
 	(49, 3),
 	(50, 1),
 	(50, 3);
-/*!40000 ALTER TABLE "permission_role" ENABLE KEYS */;
+/*!40000 ALTER TABLE `permission_role` ENABLE KEYS */;
 
 -- Listage des données de la table wimo.roles : ~3 rows (environ)
-DELETE FROM "roles";
-/*!40000 ALTER TABLE "roles" DISABLE KEYS */;
-INSERT INTO "roles" ("id", "name", "display_name", "created_at", "updated_at") VALUES
+DELETE FROM roles;
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO roles (id, name, display_name, created_at, updated_at) VALUES
 	(1, 'admin', 'Administrator', '2020-04-15 17:50:39', '2020-04-15 17:50:39'),
 	(2, 'user', 'Normal User', '2020-04-15 17:50:39', '2020-04-15 17:50:39'),
 	(3, 'moderator', 'Moderateur', '2020-04-15 17:50:39', '2020-04-15 17:50:39');
-/*!40000 ALTER TABLE "roles" ENABLE KEYS */;
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 
 -- Listage des données de la table wimo.settings : ~10 rows (environ)
-DELETE FROM "settings";
-/*!40000 ALTER TABLE "settings" DISABLE KEYS */;
-INSERT INTO "settings" ("id", "key", "display_name", "value", "details", "type", "order", "group") VALUES
+DELETE FROM settings;
+/*!40000 ALTER TABLE `settings` DISABLE KEYS */;
+INSERT INTO settings (id, key, display_name, value, details, type, order, group) VALUES
 	(1, 'site.title', 'Wimo', 'Wimo', '', 'text', 1, 'Site'),
 	(2, 'site.description', 'Site Description', 'Site Description', '', 'text', 2, 'Site'),
 	(3, 'site.logo', 'Site Logo', '', '', 'image', 3, 'Site'),
@@ -292,17 +292,17 @@ INSERT INTO "settings" ("id", "key", "display_name", "value", "details", "type",
 	(8, 'admin.loader', 'Admin Loader', '', '', 'image', 3, 'Admin'),
 	(9, 'admin.icon_image', 'Admin Icon Image', '', '', 'image', 4, 'Admin'),
 	(10, 'admin.google_analytics_client_id', 'Google Analytics Client ID (used for admin dashboard)', NULL, '', 'text', 1, 'Admin');
-/*!40000 ALTER TABLE "settings" ENABLE KEYS */;
+/*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 
 -- Listage des données de la table wimo.translations : ~0 rows (environ)
-DELETE FROM "translations";
-/*!40000 ALTER TABLE "translations" DISABLE KEYS */;
-/*!40000 ALTER TABLE "translations" ENABLE KEYS */;
+DELETE FROM translations;
+/*!40000 ALTER TABLE `translations` DISABLE KEYS */;
+/*!40000 ALTER TABLE `translations` ENABLE KEYS */;
 
 -- Listage des données de la table wimo.user_roles : ~0 rows (environ)
-DELETE FROM "user_roles";
-/*!40000 ALTER TABLE "user_roles" DISABLE KEYS */;
-/*!40000 ALTER TABLE "user_roles" ENABLE KEYS */;
+DELETE FROM user_roles;
+/*!40000 ALTER TABLE `user_roles` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_roles` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
