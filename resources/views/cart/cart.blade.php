@@ -5,11 +5,11 @@
 @section('content')
 <div class="container">
     <div class="table-responsive">
-    <table class="table">
+    <table class="table mt-5 p-sm-0">
       <thead>
-        <th>PRODUIT</th>
-        <th>QTE</th>
-        <th>PRIX</th>
+        <th>@lang('app.product')</th>
+        <th>@lang('app.quantity')</th>
+        <th>@lang('app.price')</th>
         <th>TOTAL</th>
       </thead>
       <tbody class="my-3">
@@ -44,22 +44,19 @@
         </td>
       </tr>
       @empty
-        <tr class="table-secondary" ><td colspan="6">Panier vide </td></tr>
+        <tr class="table-secondary text-center" ><td colspan="6">@lang('app.emptycart')</td></tr>
       @endforelse
       </tbody>
       <caption class="text-right">
-          <h4>Sous-total ({{Cart::count() == 1 ? Cart::count(). " article" : Cart::count(). " articles"}}) : <span style="color:#780404;font-weight:bold">{{Cart::subtotal()}} €</span></h4>
+          <h4>@lang('app.subtotal') ({{Cart::count() == 1 ? Cart::count(). " article" : Cart::count(). " articles"}}) : <span style="color:#780404;font-weight:bold">{{Cart::subtotal()}} €</span></h4>
           <div class="mt-2">
-              <a href="{{route('map.index')}}" class="text-shadow-pop-br link">Continuer vos achats</a>
-              <a href='{{route('checkout.index')}}' class="btn btn-dark ml-sm-2">Passer la commande</a>
+              <a href="{{route('map.index')}}" class="btn btn-link text-dark text-decoration-none">@lang('app.continue')</a>
+              <a href='{{route('checkout.index')}}' class="btn btn-dark ml-sm-2">@lang('app.checkout')</a>
           </div>
       </caption>
     </table>
   </div>
-    <h3 class="py-3 text-center">Nous vous recommandons aussi: </h3>
-    <div id="top">
 
-    </div>
 </div>
 
 

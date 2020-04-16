@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Policies\AccountPolicy;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\Auth\RegisterController;
+use Intervention\Image\Facades\Image;
 
 class AccountController extends Controller
 {
@@ -59,33 +61,44 @@ class AccountController extends Controller
      */
     public function show()
     {
-        
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\User  $user
+     * @param User $compte
+     * @param $compte
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(User $compte)
     {
+        $this->authorize('edit', $compte);
+
         return view('account.edit_profil');
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User  $user
+     * @param \Illuminate\Http\Request $request
+     * @param $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, User $compte)
     {
+        $this->authorize('edit', $compte);
         Auth::user()->first_name = $request["first_name"];
         Auth::user()->last_name = $request["last_name"];
         Auth::user()->birthday = $request["birthday"];
         Auth::user()->save();
+        if($request->img) {
+            $img = $request->img->storeAs('user-icons', Auth::id(). '.jpg','my_images');
+            $imgResize = Image::make('images/'.$img);
+            $imgResize->resize(250,250, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save('images/user-icons/'.Auth::id(). '.jpg');
+        }
         return redirect('/comptes')->with(['status'=>'Profil mis à jour']);
     }
 
@@ -110,7 +123,7 @@ class AccountController extends Controller
         return redirect('/');
     }
     public function commandes(User $user,Request $request){
-      $id = $user->id;
+        $this->authorize('edit', $user);
       switch($request->filter){
         case 1 :
           $commande =$user->commandes()->where('state',0)->orderBy('created_at','desc');
@@ -123,6 +136,6 @@ class AccountController extends Controller
           break;
       }
       $commandes = $commande->paginate(5);
-        return view('user.commandes',compact('commandes','id'));
+        return view('account.commandes',compact('commandes','id'));
     }
 }
