@@ -136,6 +136,6 @@ class AccountController extends Controller
           break;
       }
       $commandes = $commande->paginate(5);
-        return view('account.commandes',compact('commandes','id'));
+        return view('account.commandes',compact('commandes'));
     }
 }
