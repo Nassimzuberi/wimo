@@ -21,7 +21,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 	(5, 1, 'remember_token', 'text', 'Remember Token', 0, 0, 0, 0, 0, 0, '{}', 5),
 	(6, 1, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 0, 0, 0, '{}', 6),
 	(7, 1, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 7),
-	(8, 1, 'avatar', 'image', 'Avatar', 0, 1, 1, 1, 1, 1, '{}', 8),
+	(8, 1, 'avatar', 'hidden', 'Avatar', 0, 1, 1, 1, 1, 1, '{}', 8),
 	(9, 1, 'user_belongsto_role_relationship', 'relationship', 'Role', 0, 1, 1, 1, 1, 0, '{"model":"TCG\\\\Voyager\\\\Models\\\\Role","table":"roles","type":"belongsTo","column":"role_id","key":"id","label":"display_name","pivot_table":"roles","pivot":"0","taggable":"0"}', 10),
 	(10, 1, 'user_belongstomany_role_relationship', 'relationship', 'Roles', 0, 1, 1, 1, 1, 0, '{"model":"TCG\\\\Voyager\\\\Models\\\\Role","table":"roles","type":"belongsToMany","column":"id","key":"id","label":"display_name","pivot_table":"user_roles","pivot":"1","taggable":"0"}', 11),
 	(11, 1, 'settings', 'hidden', 'Settings', 0, 0, 0, 0, 0, 0, '{}', 12),
@@ -35,7 +35,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 	(19, 3, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 4),
 	(20, 3, 'display_name', 'text', 'Display Name', 1, 1, 1, 1, 1, 1, NULL, 5),
 	(21, 4, 'id', 'hidden', 'Id', 1, 1, 1, 0, 0, 0, '{}', 1),
-	(22, 4, 'img', 'image', 'Img', 0, 1, 1, 1, 1, 1, '{}', 4),
+	(22, 4, 'img', 'hidden', 'Img', 0, 1, 1, 1, 1, 1, '{}', 4),
 	(23, 4, 'description', 'text', 'Description', 0, 1, 1, 1, 1, 1, '{}', 5),
 	(24, 4, 'price_unit', 'number', 'Price Unit', 0, 1, 1, 1, 1, 1, '{}', 6),
 	(25, 4, 'price_weight', 'number', 'Price Weight', 0, 1, 1, 1, 1, 1, '{}', 7),
@@ -78,7 +78,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 	(62, 8, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
 	(63, 7, 'commande_belongsto_sale_relationship', 'relationship', 'sales', 0, 1, 1, 1, 1, 1, '{"model":"App\\\\Sales","table":"sales","type":"belongsTo","column":"sales_id","key":"id","label":"product_id","pivot_table":"categories","pivot":"0","taggable":null}', 10),
 	(64, 7, 'commande_belongsto_user_relationship', 'relationship', 'users', 0, 1, 1, 1, 1, 1, '{"model":"App\\\\User","table":"users","type":"belongsTo","column":"user_id","key":"id","label":"email","pivot_table":"categories","pivot":"0","taggable":null}', 11),
-	(65, 8, 'inventaire_belongsto_product_relationship', 'relationship', 'products', 0, 1, 1, 1, 1, 1, '{"model":"App\\\\Sales","table":"sales","type":"belongsTo","column":"sale_id","key":"id","label":"product_id","pivot_table":"categories","pivot":"0","taggable":"0"}', 7);
+	(65, 8, 'inventaire_belongsto_sales_relationship', 'relationship', 'sales', 0, 1, 1, 1, 1, 1, '{"model":"App\\\\Sales","table":"sales","type":"belongsTo","column":"sale_id","key":"id","label":"product_id","pivot_table":"categories","pivot":"0","taggable":"0"}', 7);
 /*!40000 ALTER TABLE `data_rows` ENABLE KEYS */;
 
 -- Listage des données de la table wimo.data_types : ~8 rows (environ)
@@ -284,13 +284,13 @@ DELETE FROM `settings`;
 INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`, `order`, `group`) VALUES
 	(1, 'site.title', 'Wimo', 'Wimo', '', 'text', 1, 'Site'),
 	(2, 'site.description', 'Site Description', 'Site Description', '', 'text', 2, 'Site'),
-	(3, 'site.logo', 'Site Logo', '', '', 'image', 3, 'Site'),
+	(3, 'site.logo', 'Site Logo', '', '', 'hidden', 3, 'Site'),
 	(4, 'site.google_analytics_tracking_id', 'Google Analytics Tracking ID', NULL, '', 'text', 4, 'Site'),
-	(5, 'admin.bg_image', 'Admin Background Image', '', '', 'image', 5, 'Admin'),
+	(5, 'admin.bg_image', 'Admin Background Image', '', '', 'hidden', 5, 'Admin'),
 	(6, 'admin.title', 'Admin Title', 'Wimo', '', 'text', 1, 'Admin'),
 	(7, 'admin.description', 'Admin Description', 'Administration', '', 'text', 2, 'Admin'),
-	(8, 'admin.loader', 'Admin Loader', '', '', 'image', 3, 'Admin'),
-	(9, 'admin.icon_image', 'Admin Icon Image', '', '', 'image', 4, 'Admin'),
+	(8, 'admin.loader', 'Admin Loader', '', '', 'hidden', 3, 'Admin'),
+	(9, 'admin.icon_image', 'Admin Icon Image', '', '', 'hidden', 4, 'Admin'),
 	(10, 'admin.google_analytics_client_id', 'Google Analytics Client ID (used for admin dashboard)', NULL, '', 'text', 1, 'Admin');
 /*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 
