@@ -19,7 +19,8 @@
         "spatie/geocoder": "^3.7",
         "stripe/stripe-php": "^7.20",
         "tcg/voyager": "^1.4",
-        "ext-gd": "*"
+        "ext-gd": "*",
+        "ext-exif": "*"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
