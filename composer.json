@@ -18,7 +18,8 @@
         "laravel/ui": "^1.1",
         "spatie/geocoder": "^3.7",
         "stripe/stripe-php": "^7.20",
-        "tcg/voyager": "^1.4"
+        "tcg/voyager": "^1.4",
+        "ext-gd": "*"
     },
     "require-dev": {
         "facade/ignition": "^1.4",

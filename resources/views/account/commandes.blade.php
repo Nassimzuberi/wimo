@@ -10,9 +10,9 @@
   <div class="row justify-content-center align-items-center">
     <div class="my-2 my-sm-0">Afficher : </div>
     <div>
-    <a href="{{url("/users/$id/commandes")}}" class="btn @if( request()->get('filter') == null) btn-dark @else btn-outline-dark @endif m-sm-2">Tout</a>
-    <a href="{{url("/users/$id/commandes?filter=1")}}" class="btn @if( request()->get('filter') == 1) btn-primary @else btn-outline-primary @endif m-sm-2">Non récupéré</a>
-    <a href="{{url("/users/$id/commandes?filter=2")}}" class="btn @if( request()->get('filter') == 2) btn-success @else btn-outline-success @endif m-sm-2">Récupéré</a>
+    <a href="{{url("/users/".Auth::id()."/commandes")}}" class="btn @if( request()->get('filter') == null) btn-dark @else btn-outline-dark @endif m-sm-2">Tout</a>
+    <a href="{{url("/users/".Auth::id()."/commandes?filter=1")}}" class="btn @if( request()->get('filter') == 1) btn-primary @else btn-outline-primary @endif m-sm-2">Non récupéré</a>
+    <a href="{{url("/users/".Auth::id()."/commandes?filter=2")}}" class="btn @if( request()->get('filter') == 2) btn-success @else btn-outline-success @endif m-sm-2">Récupéré</a>
     </div>
  </div>
  <div class="container">

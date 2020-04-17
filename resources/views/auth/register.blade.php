@@ -9,7 +9,7 @@ Inscription
             <div class="card">
                 <div class="card-header">Inscription</div>
                 <div class="card-body">
-                    <form method="post" action="{{ route('register') }}">
+                    <form method="post" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="first_name">Prénom</label>
@@ -18,7 +18,7 @@ Inscription
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                            @enderror                            
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="last_name">Nom</label>
@@ -27,7 +27,16 @@ Inscription
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                            @enderror                          
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="img">Image de Profil</label>
+                            <input id="img" type="file" name="img" class="form-control @error('img') is-invalid @enderror" value="{{old('img')}}">
+                            @error('img')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="birthday">Date de naissance</label>
@@ -36,7 +45,7 @@ Inscription
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                            @enderror                      
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Sexe</label>
@@ -68,7 +77,7 @@ Inscription
                                 </span>
                             @enderror
                         </div>
-                        <div class="form-group">   
+                        <div class="form-group">
                             <label for="password_confirmation">Mot de passe de confirmation</label>
                             <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
                         </div>
@@ -77,7 +86,7 @@ Inscription
                                 Valider
                             </button>
                         </div>
-                    </form>                  
+                    </form>
                 </div>
             </div>
         </div>

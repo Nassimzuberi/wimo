@@ -13,7 +13,7 @@ return [
     'user' => [
         'add_default_role_on_register' => true,
         'default_role'                 => 'user',
-        'default_avatar'               => 'users/default.png',
+        'default_avatar'               => 'images/user-icon.png',
         'redirect'                     => '/admin',
     ],
 
@@ -181,7 +181,7 @@ return [
     |
     */
 
-    'primary_color' => '#22A7F0',
+    'primary_color' => '#1CE6BE',
 
     'show_dev_tips' => true, // Show development tip "How To Use:" in Menu and Settings
 

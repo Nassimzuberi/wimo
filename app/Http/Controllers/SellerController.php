@@ -31,7 +31,7 @@ class SellerController extends Controller
      */
     public function create()
     {
-        return view('register_seller');
+        return view('auth.register_seller');
     }
     /* Retourne le vendeur en fonction de son numéro de téléphone */
     public function phone_seller($phone){
