@@ -44,10 +44,10 @@
         </td>
       </tr>
       @empty
-        <tr class="table-secondary text-center" ><td colspan="6">@lang('app.emptycart')</td></tr>
+        <tr class="table-secondary text-center animated flipInX" ><td colspan="6">@lang('app.emptycart')</td></tr>
       @endforelse
       </tbody>
-      <caption class="text-right">
+      <caption class="text-center text-sm-right">
           <h4>@lang('app.subtotal') ({{Cart::count() == 1 ? Cart::count(). " article" : Cart::count(). " articles"}}) : <span style="color:#780404;font-weight:bold">{{Cart::subtotal()}} €</span></h4>
           <div class="mt-2">
               <a href="{{route('map.index')}}" class="btn btn-link text-dark text-decoration-none">@lang('app.continue')</a>

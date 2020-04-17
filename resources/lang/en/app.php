@@ -22,12 +22,14 @@ return [
     'tourist' => 'Tourist',
     'seller' => 'Seller',
     'moderator' => 'Moderator',
-    'edit_profil' => 'Edit my profil',
+    'edit_profil' => 'Edit my profile',
     'edit_password' => 'Edit my password',
     'become_seller' => 'Become a seller',
     'signal' => 'Signal a issue',
     'delete_account' => 'Delete my account',
     'my_market' => 'My market',
     'delete_seller' => 'Delete my seller account',
+    'my_profile' => 'My profile',
+    'command' => 'My orders',
 
 ];

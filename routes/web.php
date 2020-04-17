@@ -13,7 +13,7 @@
 Route::group(['middleware'=>'locale'],function ()
 {
     /* Routage vers la page d'accueil */
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::view('','home');
 
     /***** Vendeurs ******/
 
@@ -67,8 +67,8 @@ Route::group(['middleware'=>'locale'],function ()
 
 //Routes de la carte
 
-    Route::get('/','MapController@index')->name('map.index');
-    Route::post('/','MapController@search')->name('map.search');
+    Route::get('/map','MapController@index')->name('map.index');
+    Route::post('/map','MapController@search')->name('map.search');
 
 //Route pour les avis
     Route::post('/sales/{sales_id}', ['uses' => 'CommentController@store', 'as' => 'comment.store']);

@@ -1,0 +1,7 @@
+#presentation{
+    min-height: 50vh;
+}
+ .image{
+    min-height: 10vh;
+    background: url("https://image.freepik.com/vecteurs-libre/mangez-infographie-arc-ciel_23-2148495370.jpg") fixed;
+}

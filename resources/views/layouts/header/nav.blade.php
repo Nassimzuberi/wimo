@@ -25,9 +25,6 @@
                             en
                         </a>
                     @endif
-
-
-
                 </div>
             </li>
             <li class="nav-item" >
@@ -40,13 +37,11 @@
                         <img src="{{asset(file_exists(public_path().'/images/user-icons/'.Auth::id().'.jpg') ? '/images/user-icons/'.Auth::id().'.jpg' : '/images/user-icon.png')}}" alt="user-icon" id="user-icon" width='50'> <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right user-commands" aria-labelledby="navbarDropdown">
+
                         <a class="dropdown-item" href="{{ url('/comptes') }}">
                             @lang('menu.account')
                         </a>
 
-                        <a class="dropdown-item" href="{{ route('user.commandes',Auth::id()) }}">
-                            @lang('menu.deliveries')
-                        </a>
                         @if(Auth::user()->role_id === 1 || Auth::user()->role_id === 3)
                             <a class="dropdown-item" href="{{url('/admin')}}" target="noopener">@lang('menu.admin')</a>
                         @endif
@@ -56,6 +51,7 @@
                             @lang('menu.logout')
                             <form method="post" id="logout-form" action="{{route('logout.soft')}}"> @csrf </form>
                         </a>
+
                     </div>
                 </li>
 
