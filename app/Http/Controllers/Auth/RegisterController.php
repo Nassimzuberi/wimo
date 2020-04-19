@@ -81,9 +81,7 @@ class RegisterController extends Controller
             if(array_key_exists('img',$data)) {
                 $img = $data['img']->storeAs('user-icons', $user->id . '.jpg','my_images');
                 $imgResize = Image::make('images/'.$img);
-                $imgResize->resize(250,250, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->save('images/user-icons/'.$user->id. '.jpg');
+                $imgResize->resize(250,250)->save('images/user-icons/'.$user->id. '.jpg');
             }
         }
 

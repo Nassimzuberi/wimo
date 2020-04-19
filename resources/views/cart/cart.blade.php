@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <div class="table-responsive">
-    <table class="table mt-5 p-sm-0">
+    <table class="table mt-5 p-sm-0" style="overflow:hidden">
       <thead>
         <th>@lang('app.product')</th>
         <th>@lang('app.quantity')</th>

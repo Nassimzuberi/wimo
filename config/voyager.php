@@ -13,7 +13,7 @@ return [
     'user' => [
         'add_default_role_on_register' => true,
         'default_role'                 => 'user',
-        'default_avatar'               => 'images/user-icon.png',
+        'default_avatar'               => 'user-icon.png',
         'redirect'                     => '/admin',
     ],
 
