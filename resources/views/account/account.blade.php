@@ -9,7 +9,7 @@
 
             <div class="text-center" style="margin:15px;background-color:#ffffff;">
                 <div style="height:150px;background-size:cover;"></div>
-                <div><img class="rounded-circle" style="margin-top:-70px;" src="{{asset(file_exists(public_path().'/images/user-icons/'.Auth::id().'.jpg') ? '/images/user-icons/'.Auth::id().'.jpg' : '/images/user-icon.png')}}" height="150px" />
+                <div><img class="rounded-circle" style="margin-top:-70px;" src="{{asset("storage/" . Auth::user()->avatar)}}" height="150px" />
                     <h3>{{Auth::user()->fullname()}}</h3>
                     <p>
                         <small style="padding:20px;padding-bottom:0;padding-top:5px;">Statut :

@@ -7,8 +7,12 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 class Sales extends Pivot
 {
 	protected $table = "sales";
+    protected $attributes = [
+        'img' => 'sales-default.png',
+    ];
+
    protected $fillable = [
-   		'description','price_weight','price_unit','seller_id','product_id',
+   		'description','price_weight','price_unit','seller_id','product_id', 'img'
    	];
 
 		public function seller(){

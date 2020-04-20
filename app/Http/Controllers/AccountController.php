@@ -93,9 +93,11 @@ class AccountController extends Controller
         Auth::user()->birthday = $request["birthday"];
         Auth::user()->save();
         if($request->img) {
-            $img = $request->img->storeAs('user-icons', Auth::id(). '.jpg','my_images');
-            $imgResize = Image::make('images/'.$img);
-            $imgResize->resize(250,250)->save('images/user-icons/'.Auth::id(). '.jpg');
+            $img = $request->img->store('users','public');
+            $imgResize = Image::make('storage/'.$img);
+            $imgResize->resize(250,250)->save('storage/'.$img);
+            Auth::user()->avatar = $img;
+            Auth::user()->save();
         }
         return redirect('/comptes')->with(['status'=>'Profil mis à jour']);
     }
