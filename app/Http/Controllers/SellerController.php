@@ -50,24 +50,23 @@ class SellerController extends Controller
      */
     public function store(Request $request)
     {
-        $geocoder=Geocoder::getCoordinatesForAddress($request["num"].' '.$request["voie"].' '.$request["cp"].' '.$request["commune"]);
-        $position=json_encode(['lat' => $geocoder["lat"],
-            'long' => $geocoder["lng"],
+        
+        $position=json_encode(
+            [
+                'lat' => $request["latitude"],
+                'long' => $request["longitude"],
             ]);
 
         Seller::create(
-            ['address' => json_encode([
-            'num' => $request["num"],
-            'voie' => $request["voie"],
-            'cp'=> $request["cp"],
-            'commune'=>$request["commune"]]
-        ),
-        'position' => $position,
-        'user_id' => Auth::id(),
-        'phone_number'=> $request["telephone"],
+            [
+                'name_shop' => $request['name_shop'] ?? NULL,
+                'address' => $request['address'],
+                'position' => $position,
+                'user_id' => Auth::id(),
+                'phone_number'=> $request["telephone"],
         ]);
 
-        return redirect()->route('comptes.show',Auth::user())->with('status','Inscription réussie');
+        return redirect()->route('comptes.index',Auth::user())->with('status','Inscription réussie');
 
     }
 
