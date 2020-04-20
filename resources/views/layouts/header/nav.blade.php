@@ -34,7 +34,7 @@
 
                 <li class="nav-item">
                     <a id="navbarDropdown" class="nav-link dropdown logged-user-icon floating" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        <img src="{{asset(file_exists(public_path().'/images/user-icons/'.Auth::id().'.jpg') ? '/images/user-icons/'.Auth::id().'.jpg' : '/images/user-icon.png')}}" alt="user-icon" id="user-icon" width='50'> <span class="caret"></span>
+                        <img src="{{asset('storage/'. Auth::user()->avatar)}}" alt="user-icon" id="user-icon" width='50'> <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right user-commands" aria-labelledby="navbarDropdown">
 

@@ -285,11 +285,11 @@ INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`,
 	(2, 'site.description', 'Site Description', 'Site Description', '', 'text', 2, 'Site'),
 	(3, 'site.logo', 'Site Logo', '', '', 'image', 3, 'Site'),
 	(4, 'site.google_analytics_tracking_id', 'Google Analytics Tracking ID', NULL, '', 'text', 4, 'Site'),
-	(5, 'admin.bg_image', 'Admin Background Image', '', '', 'image', 5, 'Admin'),
+	(5, 'admin.bg_image', 'Admin Background Image', 'bg.jpg', '', 'image', 5, 'Admin'),
 	(6, 'admin.title', 'Admin Title', 'Wimo', '', 'text', 1, 'Admin'),
 	(7, 'admin.description', 'Admin Description', 'Administration', '', 'text', 2, 'Admin'),
 	(8, 'admin.loader', 'Admin Loader', '', '', 'image', 3, 'Admin'),
-	(9, 'admin.icon_image', 'Admin Icon Image', '', '', 'image', 4, 'Admin'),
+	(9, 'admin.icon_image', 'Admin Icon Image', 'wimo-logo.png', '', 'image', 4, 'Admin'),
 	(10, 'admin.google_analytics_client_id', 'Google Analytics Client ID (used for admin dashboard)', NULL, '', 'text', 1, 'Admin');
 /*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 

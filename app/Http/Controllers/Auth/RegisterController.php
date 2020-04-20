@@ -58,7 +58,7 @@ class RegisterController extends Controller
             'gender'=>['required'],
             'email' => ['required', 'string', 'email', 'max:191', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'img' => ['image','max:512']
+            'img' => ['image']
         ]);
     }
 
@@ -79,9 +79,10 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ])){
             if(array_key_exists('img',$data)) {
-                $img = $data['img']->storeAs('user-icons', $user->id . '.jpg','my_images');
-                $imgResize = Image::make('images/'.$img);
-                $imgResize->resize(250,250)->save('images/user-icons/'.$user->id. '.jpg');
+                $img = $data['img']->store('users','public');
+                $imgResize = Image::make('storage/'.$img);
+                $imgResize->resize(250,250)->save('storage/'.$img);
+                $user->update(['avatar' => $img]);
             }
         }
 

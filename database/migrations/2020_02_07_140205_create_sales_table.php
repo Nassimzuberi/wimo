@@ -15,7 +15,7 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('img')->nullable(true);
+            $table->string('img')->default("sales-default.png");
             $table->text('description')->nullable(true);
             $table->unsignedDecimal('price_unit')->nullable(true);
             $table->unsignedDecimal('price_weight')->nullable(true);
