@@ -12,7 +12,7 @@ class User extends \TCG\Voyager\Models\User
     use Notifiable;
 
     protected $attributes = [
-        'avatar' => 'users-icon.png',
+        'avatar' => 'user-icon.png',
     ];
 
 
