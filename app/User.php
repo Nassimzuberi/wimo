@@ -11,6 +11,11 @@ class User extends \TCG\Voyager\Models\User
 {
     use Notifiable;
 
+    protected $attributes = [
+        'avatar' => 'users-icon.png',
+    ];
+
+
     /**
      * The attributes that are mass assignable.
      *
