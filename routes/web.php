@@ -19,14 +19,9 @@ Route::group(['middleware'=>'locale'],function ()
 
     Route::resource('vendeurs','SellerController');
     Route::get('magasin','SellerController@my_store');
-    /*Interroge la base de donnée si un téléphone portable existe*/
-    Route::get('/phone_seller/{phone}','SellerController@phone_seller');
 
     /****** Comptes ******/
     Route::resource('comptes','AccountController');
-
-    /*Interroge la base de donnée si une adresse mail existe*/
-    Route::get('/mail_account/{mail}','AccountController@mail_account');
 
     /****** Inventaires */
 
