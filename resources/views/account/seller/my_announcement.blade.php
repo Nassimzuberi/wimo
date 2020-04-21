@@ -1,6 +1,6 @@
 @extends('layouts.app',['additional_head'=>'account.seller'])
 @section('content')
-<a href="{{url('magasin')}}">Mon magasin</a>
+<a href="{{route('vendeurs.show',Auth::user()->seller->id)}}">Mon magasin</a>
 <h1>Mes annonces</h1>
 <a href="{{route('annonces.create')}}">Ajouter une annonce</a>
 <table class="table table-hover">
