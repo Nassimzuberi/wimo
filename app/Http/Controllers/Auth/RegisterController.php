@@ -59,7 +59,11 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:191', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'img' => ['image']
-        ]);
+        ],
+        [
+            'email.unique' => "L'adresse mail est déjà utilisé."
+        ]
+        );
     }
 
     /**

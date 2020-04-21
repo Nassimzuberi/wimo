@@ -64,16 +64,12 @@ class SellerController extends Controller
                 'longitude' =>[
                     'required'
                 ],
-                'latitude'=>[
-                    'required'
-                ],
             ],
             [
-                'address.required'=> 'Une adresse est requise.',
-                'phone_number.min'=>'Le numéro de téléphone est court.',
-                'phone_number.unique'=> 'Le numéro de téléphone est déjà utilisé.',
+                'address.required' => 'Une adresse est requise.',
+                'phone_number.min' => 'Le numéro de téléphone est court.',
+                'phone_number.unique' => 'Le numéro de téléphone est déjà utilisé.',
                 'longitude.required' => "L'adresse est introuvable",
-                'latitude.required' => "L'adresse est introuvable",
             ]
         );
     }

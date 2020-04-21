@@ -73,7 +73,7 @@ function search_adress(input){
 		}
 	};
 
-	ajax.open("GET",`${url}${input.value}&${type_search}&${autocomplete}`);
+	ajax.open("GET",`${url}${input.value}&${type_search}`);
 	ajax.send();
 }
 

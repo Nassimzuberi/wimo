@@ -15,13 +15,13 @@
             <input id="name_shop" type="text" name="name_shop" value="{{old('name_shop')}}" class="form-control @error('name_shop') is-invalid @enderror" autofocus>
             @error('name_shop')
                 <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                    <strong>{{ $message }}</strong>
                 </span>
             @enderror
         </div>
         <div class="form-group">
             <label for="address">Adresse:</label>
-            <input id="address" type="text" name="address" class="form-control address @error('address') is-invalid @enderror @error('longitude') is-invalid @enderror" onfocus="auto_search(this)" oninput="search_adress(this)" value="{{old('address')}}" required="required">
+            <input id="address" type="text" name="address" class="form-control address @error('address') is-invalid @enderror @error('longitude') is-invalid @enderror" onfocus="auto_search(this)" oninput="search_adress(this)" value="{{old('address')}}" required="required" autocomplete="off">
             <div class="list-group position-absolute" style="z-index: 1"></div>
             @error('address')
                 <span class="invalid-feedback" role="alert">
@@ -29,11 +29,6 @@
                 </span>
             @enderror
             @error('longitude')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-            @error('latitude')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
