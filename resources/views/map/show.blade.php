@@ -55,32 +55,32 @@
       @endif
       <!-- Formulaire de recherche -->
         <div class="map-form">
-      <form action="" method="post">
-        @csrf
-        <div class="seach-line">
-        <input type="text" name="search-string" value="{{old('search-string')}}" placeholder="ex : bananas, eggs...">
-        <button type="submit" value="search">
-          <i class="fa fa-search" aria-hidden="true"></i>
-        </div>
-        </button>
-        <!--<input
-          type="range"
-          name="distance"
-          id="distance-range"
-          min=""
-          max=""
-          > -->
+          <form action="" method="post">
+            @csrf
+            <div class="seach-line">
+            <input type="text" name="search-string" value="{{old('search-string')}}" placeholder="ex : bananas, eggs...">
+            <button type="submit" value="search">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </div>
+            </button>
+            <!--<input
+              type="range"
+              name="distance"
+              id="distance-range"
+              min=""
+              max=""
+              > -->
 
-      </form>
+          </form>
         </div>
 
       <!-- Affichage des produits recherchés -->
       <div id="search-results" class="animated fadeInUp">
 @foreach($sales as $sale)
         <!-- Résultat -->
-        <div class="result">
+        <div class="result" onclick="redirectToProduct('{{$sale->id}}')">
 
-                <img src="{{ asset('storage/'.$sale->seller->user->avatar)}}" alt="user-icon" class="result-user-icon">
+                <img src="{{ Storage::disk()->url($sale->seller->user->avatar)}}" alt="user-icon" class="result-user-icon">
 
             <div class="result-infos">
          <p><span class="product-name">{{$sale->product->name}}</span><br>
@@ -88,7 +88,7 @@
         <!-- <a href="{{route('annonces.show',$sale->id)}}">{{$sale->product->name}}  {{$sale->seller->user->first_name}} {{$sale->seller->user->last_name}}</a>-->
           </div>
 
-        <div class="result-image" style="background-image: url({{asset('storage/'.$sale->img)}})">
+        <div class="result-image" style="background-image: url({{Storage::disk()->url($sale->img)}})">
 
         </div>
 
@@ -110,6 +110,11 @@ dfsdfuib
 
   <script type="text/javascript">
 
+      //Redirect sur la page d'annonce
+
+      function redirectToProduct(id){
+          window.location.href="/annonces/" +id;
+      }
     // Obtention de la géolocalisation de l'utilisateur
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(function(position) {

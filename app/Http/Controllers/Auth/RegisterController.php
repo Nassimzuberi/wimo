@@ -7,7 +7,9 @@ use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
 class RegisterController extends Controller
@@ -81,12 +83,14 @@ class RegisterController extends Controller
             'gender'=>$data["gender"],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'api_token' => Str::random(80)
         ])){
             if(array_key_exists('img',$data)) {
-                $img = $data['img']->store('users','public');
-                $imgResize = Image::make('storage/'.$img);
-                $imgResize->resize(250,250)->save('storage/'.$img);
-                $user->update(['avatar' => $img]);
+                if(config('app.env') === 'production'){
+                    $user->update(['avatar' => Storage::disk()->putFile('users',$data['img'],'public')]);
+                } else {
+                    $user->update(['avatar' => $data['img']->store('users','public')]);
+                }
             }
         }
 

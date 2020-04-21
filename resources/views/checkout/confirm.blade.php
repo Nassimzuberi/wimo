@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Votre commande a bien été validé.</h1>
+
+    <div class="container pt-5">
+        <h1 class="text-center ">Votre commande a bien été validé.</h1>
+
+        <p class="text-center">Wimo vous remercie !</p>
+    </div>
+
 @endsection

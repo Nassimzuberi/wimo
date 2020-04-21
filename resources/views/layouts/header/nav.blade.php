@@ -34,7 +34,7 @@
 
                 <li class="nav-item">
                     <a id="navbarDropdown" class="nav-link dropdown logged-user-icon floating" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        <img src="{{asset('storage/'. Auth::user()->avatar)}}" alt="user-icon" id="user-icon" width='50'> <span class="caret"></span>
+                        <img src="{{Storage::disk()->url(Auth::user()->avatar)}}" alt="user-icon" id="user-icon" width='50'> <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right user-commands" aria-labelledby="navbarDropdown">
 
@@ -56,11 +56,11 @@
                 </li>
 
             @else
-                <li class="nav-item">
+                <li class="nav-item block">
                     <a class="nav-link text-shadow-pop-br" href="{{route('login')}}">@lang('menu.signin')</a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item block">
                     <a class="nav-link text-shadow-pop-br" href="{{route('register')}}">@lang('menu.signup') </a>
                 </li>
             @endauth

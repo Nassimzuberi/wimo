@@ -15,7 +15,7 @@
 
                 <p>{{$ticket->text}}</p>
                 @if($ticket->img)
-                    <div><img src="{{asset('storage/'.$ticket->img)}}" alt="img-ticket" width="250"></div>
+                    <div><img src="{{Storage::disk()->url($ticket->img)}}" alt="img-ticket" width="250"></div>
                 @endif
 
                 @if($ticket->state)

@@ -1,14 +1,15 @@
 @extends('layouts.app')
 
+@section('title') {{$annonce->product->name}} @endsection
 @section('content')
-  <div >
+  <div class="pt-5" >
     @if(session('message'))
       <div class="alert alert-success"> {{session('message')}} </div>
     @endif
     <div class="container">
       <div class="row">
-        <div class="col-sm-4 p-3 border">
-          <img src="{{asset('images/'.$annonce->img)}}"  />
+        <div class="col-sm-4 p-3 text-center">
+          <img src="{{Storage::disk()->url($annonce->img)}}"  />
         </div>
         <div class="col">
           <h3 class="text-center">{{$annonce->product->name}}</h3>

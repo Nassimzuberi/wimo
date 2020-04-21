@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 */
 Route::get('topsales','CartController@topsales');
 Route::apiResource('sales','api\SaleController');
+Route::post('login','api\LoginController@login');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
