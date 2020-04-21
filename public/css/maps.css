@@ -73,6 +73,7 @@ input {
     }
 
     .result{
+        cursor:pointer;
       display:flex;
       align-items: center;
       margin-top:10px;
@@ -81,7 +82,8 @@ input {
       width:100%;
       background-color:white;
       padding-left:13px;
-      filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.2))
+      filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.2));
+
     }
         .result:hover{
           background-color: #1CE6BE;

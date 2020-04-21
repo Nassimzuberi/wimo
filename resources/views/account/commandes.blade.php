@@ -40,7 +40,7 @@
                             @endif
                         </div>
                         <div class="d-flex flex-sm-row flex-column text-center text-sm-left">
-                            <div><img src="{{$commande->sales->img}}" width="150"></div>
+                            <div><img src="{{asset('storage/'.$commande->sales->img)}}" width="150"></div>
                             <div class="col">
                                 <small>Commande effectué le {{$commande->created_at->format('d-m-Y')}}</small>
                                 <h4>{{$commande->quantity}} {{$commande->sales->product->name}}</h4>

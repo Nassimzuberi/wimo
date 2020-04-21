@@ -56,11 +56,11 @@
                 </li>
 
             @else
-                <li class="nav-item">
+                <li class="nav-item block">
                     <a class="nav-link text-shadow-pop-br" href="{{route('login')}}">@lang('menu.signin')</a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item block">
                     <a class="nav-link text-shadow-pop-br" href="{{route('register')}}">@lang('menu.signup') </a>
                 </li>
             @endauth
