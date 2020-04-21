@@ -14,7 +14,7 @@
             @endif
             <div class="text-center" style="margin:15px;background-color:#ffffff;">
                 <div style="height:150px;background-size:cover;"></div>
-                <div><img class="rounded-circle" style="margin-top:-70px;" src="{{Storage::disk()->url(Auth::user()->avatar)}}" height="150px" />
+                <div><img class="rounded-circle" style="margin-top:-70px;" src="{{Storage::disk('s3')->url(Auth::user()->avatar)}}" height="150px" />
                     <h3>{{Auth::user()->fullname()}}</h3>
                     <p>
                         <small style="padding:20px;padding-bottom:0;padding-top:5px;">Statut :
