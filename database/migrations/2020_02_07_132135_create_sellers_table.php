@@ -15,9 +15,10 @@ class CreateSellersTable extends Migration
     {
         Schema::create('sellers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->json('address');
+            $table->text('name_shop')->nullable(true);
+            $table->text('address');
             $table->json('position')->nullable(true);
-            $table->string('phone_number',10);
+            $table->string('phone_number',10)->unique();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

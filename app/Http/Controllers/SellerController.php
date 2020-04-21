@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Seller;
 use App\Http\Controllers\SaleController;
-use Geocoder;
+use Illuminate\Support\Facades\Validator;
 
 class SellerController extends Controller
 {
@@ -33,13 +33,41 @@ class SellerController extends Controller
     {
         return view('auth.register_seller');
     }
-    /* Retourne le vendeur en fonction de son numéro de téléphone */
-    public function phone_seller($phone){
-        return Seller::where('phone_number',$phone)->get();
-    }
 
     public function my_store(){
         return view('account.seller.my_store');
+    }
+
+    /* Les règles de validation */
+    public function validator(array $data){
+        return Validator::make(
+            $data,
+            [
+                'name_shop' => [
+                    'string',
+                    'max:191'
+                ],
+                'address' => [
+                    'required',
+                    'string',
+                    'max:191'
+                ],
+                'phone_number' => [
+                    'required',
+                    'unique:sellers',
+                    'regex:/^[0]\d{9}/',
+                ],
+                'longitude' =>[
+                    'required'
+                ],
+            ],
+            [
+                'address.required' => 'Une adresse est requise.',
+                'phone_number.regex' => 'Le numéro de téléphone est incorrect.',
+                'phone_number.unique' => 'Le numéro de téléphone est déjà utilisé.',
+                'longitude.required' => "L'adresse est introuvable",
+            ]
+        );
     }
 
     /**
@@ -50,24 +78,24 @@ class SellerController extends Controller
      */
     public function store(Request $request)
     {
-        $geocoder=Geocoder::getCoordinatesForAddress($request["num"].' '.$request["voie"].' '.$request["cp"].' '.$request["commune"]);
-        $position=json_encode(['lat' => $geocoder["lat"],
-            'long' => $geocoder["lng"],
+        $this->validator($request->all())->validate();
+        
+        $position=json_encode(
+            [
+                'lat' => $request["latitude"],
+                'long' => $request["longitude"],
             ]);
 
         Seller::create(
-            ['address' => json_encode([
-            'num' => $request["num"],
-            'voie' => $request["voie"],
-            'cp'=> $request["cp"],
-            'commune'=>$request["commune"]]
-        ),
-        'position' => $position,
-        'user_id' => Auth::id(),
-        'phone_number'=> $request["telephone"],
+            [
+                'name_shop' => $request['name_shop'] ?? NULL,
+                'address' => $request['address'],
+                'position' => $position,
+                'user_id' => Auth::id(),
+                'phone_number'=> $request["phone_number"],
         ]);
 
-        return redirect()->route('comptes.show',Auth::user())->with('status','Inscription réussie');
+        return redirect()->route('comptes.index',Auth::user())->with('status','Inscription réussie');
 
     }
 

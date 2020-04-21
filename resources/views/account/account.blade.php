@@ -6,7 +6,12 @@
 
         @include('layouts.account.nav')
 
-
+            {{-- Notification de succès --}}
+            @if(session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
             <div class="text-center" style="margin:15px;background-color:#ffffff;">
                 <div style="height:150px;background-size:cover;"></div>
                 <div><img class="rounded-circle" style="margin-top:-70px;" src="{{asset("storage/" . Auth::user()->avatar)}}" height="150px" />
@@ -49,12 +54,6 @@
                         @method('DELETE')
                     </form>
                 </a>
-                {{-- Notification de succès --}}
-                @if(session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                @endif
             </div>
 
         </div>
