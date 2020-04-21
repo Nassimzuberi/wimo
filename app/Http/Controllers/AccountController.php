@@ -50,10 +50,6 @@ class AccountController extends Controller
         return redirect()->route('comptes.index',Auth::user())->with('status','Inscription réussie');
     }
 
-    public function mail_account($mail){
-        return User::where('email',$mail)->get();
-    }
-
     /**
      * Display the specified resource.
      *
