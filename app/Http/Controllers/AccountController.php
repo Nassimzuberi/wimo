@@ -92,7 +92,7 @@ class AccountController extends Controller
         if($request->img) {
             Storage::delete(Auth::user()->avatar);
             if(config('app.env') === 'production'){
-                Auth::user()->avatar = Storage::disk()->putFile('users', $request->img, 'public');
+                Auth::user()->avatar = $request->img->store('users');
             } else{
                 Auth::user()->avatar = $request->img->store('users', 'public');
             }

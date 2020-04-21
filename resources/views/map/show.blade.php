@@ -88,7 +88,7 @@
         <!-- <a href="{{route('annonces.show',$sale->id)}}">{{$sale->product->name}}  {{$sale->seller->user->first_name}} {{$sale->seller->user->last_name}}</a>-->
           </div>
 
-        <div class="result-image" style="background-image: url({{Storage::disk()->url($sale->img)}})">
+        <div class="result-image" style="background-image: url({{Storage::url($sale->img)}})">
 
         </div>
 

@@ -87,7 +87,7 @@ class RegisterController extends Controller
         ])){
             if(array_key_exists('img',$data)) {
                 if(config('app.env') === 'production'){
-                    $user->update(['avatar' => Storage::disk()->putFile('users',$data['img'],'public')]);
+                    $user->update(['avatar' => $data['img']->store('users')]);
                 } else {
                     $user->update(['avatar' => $data['img']->store('users','public')]);
                 }
