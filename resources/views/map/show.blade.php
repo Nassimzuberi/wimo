@@ -80,7 +80,7 @@
         <!-- Résultat -->
         <div class="result" onclick="redirectToProduct('{{$sale->id}}')">
 
-                <img src="{{ asset('storage/'.$sale->seller->user->avatar)}}" alt="user-icon" class="result-user-icon">
+                <img src="{{ Storage::disk()->url($sale->seller->user->avatar)}}" alt="user-icon" class="result-user-icon">
 
             <div class="result-infos">
          <p><span class="product-name">{{$sale->product->name}}</span><br>
@@ -88,7 +88,7 @@
         <!-- <a href="{{route('annonces.show',$sale->id)}}">{{$sale->product->name}}  {{$sale->seller->user->first_name}} {{$sale->seller->user->last_name}}</a>-->
           </div>
 
-        <div class="result-image" style="background-image: url({{asset('storage/'.$sale->img)}})">
+        <div class="result-image" style="background-image: url({{Storage::disk()->url($sale->img)}})">
 
         </div>
 

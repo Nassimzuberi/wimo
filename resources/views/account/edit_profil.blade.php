@@ -12,7 +12,7 @@
                 @csrf
                 @method('PUT')
                 <div class="my-2">
-                    <img src="{{asset('storage/'. Auth::user()->avatar)}}" alt="user-img" class="rounded" width="20%">
+                    <img src="{{Storage::disk()->url(Auth::user()->avatar)}}" alt="user-img" class="rounded" width="20%">
                 </div>
                 <input type="file" class="form-control" name="img">
                 <label>Prénom</label>

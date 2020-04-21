@@ -8,6 +8,7 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\Auth\RegisterController;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 class AccountController extends Controller
@@ -93,10 +94,13 @@ class AccountController extends Controller
         Auth::user()->birthday = $request["birthday"];
         Auth::user()->save();
         if($request->img) {
-            $img = $request->img->store('users','public');
-            $imgResize = Image::make('storage/'.$img);
-            $imgResize->resize(250,250)->save('storage/'.$img);
-            Auth::user()->avatar = $img;
+            Storage::delete(Auth::user()->avatar);
+            if(config('app.env') === 'production'){
+                Auth::user()->avatar = $request->img->store('users');
+            } else{
+                Auth::user()->avatar = $request->img->store('users', 'public');
+            }
+
             Auth::user()->save();
         }
         return redirect('/comptes')->with(['status'=>'Profil mis à jour']);

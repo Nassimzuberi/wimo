@@ -9,7 +9,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-4 p-3 text-center">
-          <img src="{{asset('storage/'.$annonce->img)}}"  />
+          <img src="{{Storage::disk()->url($annonce->img)}}"  />
         </div>
         <div class="col">
           <h3 class="text-center">{{$annonce->product->name}}</h3>

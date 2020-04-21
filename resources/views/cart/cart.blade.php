@@ -16,7 +16,7 @@
       @forelse(Cart::content() as $cart)
       <tr>
         <td class="row">
-            <img src="{{asset('storage/'.$cart->model->img)}}" width="100" class="mr-2"/>
+            <img src="{{Storage::disk()->url($cart->model->img)}}" width="100" class="mr-2"/>
             <div>{{$cart->name}}<br><small>Vendu par {{$cart->model->seller->user->fullname()}}</small></div>
         </td>
         <td>
