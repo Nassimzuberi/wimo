@@ -18,7 +18,6 @@ Route::group(['middleware'=>'locale'],function ()
     /***** Vendeurs ******/
 
     Route::resource('vendeurs','SellerController');
-    Route::get('magasin','SellerController@my_store');
 
     /****** Comptes ******/
     Route::resource('comptes','AccountController');

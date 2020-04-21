@@ -17,7 +17,7 @@
         </a>
 
         @isset(Auth::user()->seller)
-            <a href="{{url('magasin')}}" class="btn btn-light @if(Route::currentRouteName() == 'comptes.edit.password' ) active @endif">
+            <a href="{{route('vendeurs.show',Auth::user()->seller->id)}}" class="btn btn-light @if(Route::currentRouteName() == 'vendeurs.show') active @endif">
                 @lang('app.my_market')
             </a>
             <a href="javascript:close_account('seller')" class="btn btn-light @if(Route::currentRouteName() == 'comptes.edit.password' ) active @endif">
