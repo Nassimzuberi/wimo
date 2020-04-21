@@ -34,10 +34,6 @@ class SellerController extends Controller
         return view('auth.register_seller');
     }
 
-    public function my_store(){
-        return view('account.seller.my_store');
-    }
-
     /* Les règles de validation */
     public function validator(array $data){
         return Validator::make(
@@ -107,7 +103,7 @@ class SellerController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('account.seller.my_store');
     }
 
     /**

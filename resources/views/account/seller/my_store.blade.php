@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('content')
-<a href="{{route('comptes.show',Auth::user())}}">Mon compte</a>
+<div class="container">
+	@include('layouts.account.nav')
+</div>
 <h1>Mon magasin</h1>
 <ul>
 	<li>
