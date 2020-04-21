@@ -33,10 +33,6 @@ class SellerController extends Controller
     {
         return view('auth.register_seller');
     }
-    /* Retourne le vendeur en fonction de son numéro de téléphone */
-    public function phone_seller($phone){
-        return Seller::where('phone_number',$phone)->get();
-    }
 
     public function my_store(){
         return view('account.seller.my_store');
@@ -58,8 +54,8 @@ class SellerController extends Controller
                 ],
                 'phone_number' => [
                     'required',
-                    'min:10',
-                    'unique:sellers'
+                    'unique:sellers',
+                    'regex:/^[0]\d{9}/',
                 ],
                 'longitude' =>[
                     'required'
@@ -67,7 +63,7 @@ class SellerController extends Controller
             ],
             [
                 'address.required' => 'Une adresse est requise.',
-                'phone_number.min' => 'Le numéro de téléphone est court.',
+                'phone_number.regex' => 'Le numéro de téléphone est incorrect.',
                 'phone_number.unique' => 'Le numéro de téléphone est déjà utilisé.',
                 'longitude.required' => "L'adresse est introuvable",
             ]
