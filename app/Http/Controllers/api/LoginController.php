@@ -14,7 +14,8 @@ class LoginController extends Controller
         $details = $request->only('email','password');
 
         if (Auth::attempt($details)){
-            return response()->json(['message' => 'success' , 'data' => User::with('commandes','seller')->where('email',$details['email'])->first()]);
+            $user = User::where('email',$details['email'])->first();
+            return response()->json(['message' => 'success' , 'data' => ['api_token' => $user->api_token , 'id' => $user->id]]);
         } else{
             return response()->json(['message' => 'Mot de passe ou identifiant incorrect','code' => 501]);
         }

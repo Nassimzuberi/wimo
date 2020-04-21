@@ -17,7 +17,6 @@
                         <div class="col-md-3 p-2 m-2 text-center"><img src="{{Storage::disk()->url($produit->model->img)}}" width="200"></div>
                         <div class="col">{{$produit->qty}} {{$produit->model->product->name}}<br>
                             Produit vendu par {{$produit->model->seller->user->fullname()}}<br>
-                            A récupérer au <a href="https://www.google.fr/maps/place/{{$produit->model->seller->address()}}" target="_blank">{{$produit->model->seller->address()}}</a>
                             <br>Sous-total : {{$produit->subtotal}} €</div>
 
                     </div>

@@ -5,6 +5,9 @@ namespace App\Http\Controllers\api;
 use App\Commande;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\User;
+use \App\Http\Resources\Commande as CommandeResource;
+
 
 class CommandeController extends Controller
 {
@@ -61,5 +64,9 @@ class CommandeController extends Controller
     public function destroy(Commande $commande)
     {
         //
+    }
+
+    public function myorder(User $user){
+        return CommandeResource::collection($user->commandes);
     }
 }

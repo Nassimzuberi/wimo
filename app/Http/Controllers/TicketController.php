@@ -40,7 +40,11 @@ class TicketController extends Controller
     {
         $ticket = Auth::user()->tickets()->create($request->all());
         if ($request->img) {
-            $ticket->img = request('img')->store('tickets', 'public');
+            if(config('app.env') === 'production'){
+                $ticket->img = request('img')->store('tickets');
+            } else {
+                $ticket->img = request('img')->store('tickets','public');
+            }
             $ticket->save();
         }
         return redirect()->route('tickets.create')->with('success', true);
