@@ -89,7 +89,7 @@ class RegisterController extends Controller
                 if(config('app.env') === 'production'){
                     $user->update(['avatar' => Storage::disk()->putFile('users',$data['img'],'public')]);
                 } else {
-                    $user->update(['avatar' => $data['img']->store('users','public']);
+                    $user->update(['avatar' => $data['img']->store('users','public')]);
                 }
             }
         }
