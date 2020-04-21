@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Seller;
 use App\Http\Controllers\SaleController;
-use Geocoder;
+use Illuminate\Support\Facades\Validator;
 
 class SellerController extends Controller
 {
@@ -42,6 +42,42 @@ class SellerController extends Controller
         return view('account.seller.my_store');
     }
 
+    /* Les règles de validation */
+    public function validator(array $data){
+        return Validator::make(
+            $data,
+            [
+                'name_shop' => [
+                    'string',
+                    'max:191'
+                ],
+                'address' => [
+                    'required',
+                    'string',
+                    'max:191'
+                ],
+                'phone_number' => [
+                    'required',
+                    'min:10',
+                    'unique:sellers'
+                ],
+                'longitude' =>[
+                    'required'
+                ],
+                'latitude'=>[
+                    'required'
+                ],
+            ],
+            [
+                'address.required'=> 'Une adresse est requise.',
+                'phone_number.min'=>'Le numéro de téléphone est court.',
+                'phone_number.unique'=> 'Le numéro de téléphone est déjà utilisé.',
+                'longitude.required' => "L'adresse est introuvable",
+                'latitude.required' => "L'adresse est introuvable",
+            ]
+        );
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -50,6 +86,7 @@ class SellerController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validator($request->all())->validate();
         
         $position=json_encode(
             [
@@ -63,7 +100,7 @@ class SellerController extends Controller
                 'address' => $request['address'],
                 'position' => $position,
                 'user_id' => Auth::id(),
-                'phone_number'=> $request["telephone"],
+                'phone_number'=> $request["phone_number"],
         ]);
 
         return redirect()->route('comptes.index',Auth::user())->with('status','Inscription réussie');
