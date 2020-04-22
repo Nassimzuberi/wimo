@@ -1,7 +1,9 @@
 @extends('layouts.app')
 @section('content')
+
+    <div class="pt-5">
 @include('layouts.account.nav')
-<div class="container">
+<div class="container mt-5">
 
 	<ul class="nav nav-tabs" role="tablist">
 		<li class="nav-item">
@@ -39,15 +41,15 @@
 						</p>
 						<p>
 							<i class="fas fa-phone-square"></i>
-							{{$magasin->phone_number}}						
+							{{$magasin->phone_number}}
 						</p>
-					</div>			
+					</div>
 				</div>
 				<div class="col-md-9">
 					<a href="">Modifier les informations</a>
 					<a href="">Désactiver mon compte</a>
-				</div>				
-			</div>	
+				</div>
+			</div>
 		</div>
 		<div id="produit" class="container tab-pane fade"><br>
 			<h3>Mes produits</h3>
@@ -57,4 +59,5 @@
 		</div>
 	</div>
 </div>
+    </div>
 @endsection
