@@ -103,7 +103,7 @@ class SellerController extends Controller
      */
     public function show($id)
     {
-        return view('account.seller.my_store');
+        return view('account.seller.my_store',['magasin' => Auth::user()->seller]);
     }
 
     /**
