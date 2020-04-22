@@ -8,6 +8,11 @@
         Renseignez les informations de votre local, boutique, magasin, ferme ou point de vente.
     </p>
 
+    <!--
+        inclure un formulaire universelle pour le vendeurs
+        @include('layouts.forms.seller',['method'=>'POST','action'=>'vendeurs.store'])
+    -->
+
     <form method="POST" action="{{route('vendeurs.store')}}" class="container">
         @csrf
         <div class="form-group">

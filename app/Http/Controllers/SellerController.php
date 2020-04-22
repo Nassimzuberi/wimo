@@ -12,7 +12,7 @@ class SellerController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('phone_seller');
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -91,7 +91,7 @@ class SellerController extends Controller
                 'phone_number'=> $request["phone_number"],
         ]);
 
-        return redirect()->route('comptes.index',Auth::user())->with('status','Inscription réussie');
+        return redirect()->route('vendeurs.show',Auth::user()->seller->id)->with('status','Inscription réussie');
 
     }
 
@@ -103,7 +103,7 @@ class SellerController extends Controller
      */
     public function show($id)
     {
-        return view('account.seller.my_store',['magasin' => Auth::user()->seller]);
+        return view('account.seller.my_store',['magasin' => Seller::find($id)]);
     }
 
     /**
@@ -114,7 +114,7 @@ class SellerController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('account.seller.edit_store',['magasin' => Seller::find($id)]);
     }
 
     /**
@@ -143,6 +143,6 @@ class SellerController extends Controller
             $controleur->destroy($annonce->id,false);
         }
         Auth::user()->seller->delete();
-        return back()->with('status','Votre compte est désactivé');
+        return redirect()->route('comptes.index')->with('status','Votre compte est désactivé');
     }
 }
