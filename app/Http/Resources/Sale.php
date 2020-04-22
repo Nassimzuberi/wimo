@@ -16,7 +16,7 @@ class Sale extends JsonResource
     {
         return[
           'id' => $this->id,
-          'quantity' => $this->inventaire->quantity,
+          'quantity' => 10,
           'name' => $this->product->name,
           'img' => $this->img,
           'seller' => $this->seller,
