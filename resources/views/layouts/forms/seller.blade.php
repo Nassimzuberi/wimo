@@ -1,4 +1,4 @@
-<form method="POST" action="@isset($parameter_action){{ route($route,$parameter_action) }}@else{{ route($action) }}@endisset" class="container">
+<form method="POST" action="@isset($parameter_action){{ route($route,$parameter_action) }}@else{{ route($route) }}@endisset" class="container">
     @csrf
     <!-- Pour la methode PUT -->
     @isset($verb)
