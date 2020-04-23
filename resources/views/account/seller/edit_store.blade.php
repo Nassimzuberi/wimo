@@ -1,4 +1,4 @@
-@extends('layouts.app',['additional_head'=>'account.head'])
+@extends('layouts.app',['additional_head'=>'register.seller'])
 @section('content')
 
 <div class="pt-5">
@@ -20,6 +20,7 @@
 	</nav>
 		<div class="row">
 			<div class="col-md-3">
+				<h5>Information actuelle</h5>
 				<div class="card">
 					<div class="card-header text-center">
 						@isset($magasin->name_shop)
@@ -41,7 +42,17 @@
 					</div>
 				</div>					
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-5">
+				<h5>Renseigner les informations à modifier:</h5>
+				@include(
+					'layouts.forms.seller',
+					[
+						'route'=>'vendeurs.update',
+						'verb'=>'PUT',
+						'parameter_action' => $magasin->id,
+						'magasin' => $magasin
+					]
+				)
 			</div>
 		</div>
 	</div>

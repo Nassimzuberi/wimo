@@ -34,11 +34,13 @@ class SellerController extends Controller
         return view('auth.register_seller');
     }
 
-    /* Les règles de validation */
-    public function validator(array $data){
-        return Validator::make(
-            $data,
-            [
+    /** 
+     *  Les règles de validation
+     *  @param mixed $option: L'option de validation la vérification des données
+     *  @param array $data: Données du formulaire
+    */
+    public function validator(array $data,$option=NULL){
+        $rule = [
                 'name_shop' => [
                     'string',
                     'max:191'
@@ -48,15 +50,19 @@ class SellerController extends Controller
                     'string',
                     'max:191'
                 ],
-                'phone_number' => [
+                'phone_number'=> [
                     'required',
-                    'unique:sellers',
                     'regex:/^[0]\d{9}/',
                 ],
                 'longitude' =>[
                     'required'
                 ],
-            ],
+            ];
+        if((is_bool($option) && !$option) || !is_bool($option)){
+            $rule['phone_number'][]='unique:sellers';
+        }
+        return Validator::make(
+            $data,$rule,
             [
                 'address.required' => 'Une adresse est requise.',
                 'phone_number.regex' => 'Le numéro de téléphone est incorrect.',
@@ -91,7 +97,10 @@ class SellerController extends Controller
                 'phone_number'=> $request["phone_number"],
         ]);
 
-        return redirect()->route('vendeurs.show',Auth::user()->seller->id)->with('status','Inscription réussie');
+        return redirect()->route(
+            'vendeurs.show',
+            Auth::user()->seller->id
+        )->with('status','Inscription réussie');
 
     }
 
@@ -126,7 +135,11 @@ class SellerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validator(
+            $request->all(),
+            $request["phone_number"]==Seller::find($id)->phone_number
+        )->validate();
+        return redirect()->route('vendeurs.show',$id)->with('status','Magasin mis à jour.');
     }
 
     /**
