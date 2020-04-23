@@ -10,10 +10,12 @@ class Seller extends Model
    	  'name_shop','address','phone_number','user_id','position'
    	];
 
-   	public function address(){
-   	    $data = json_decode($this->address);
-   	    $full = $data->num." ".$data->voie. ", ". $data->cp." ". $data->commune;
-   	    return $full;
+    /* 
+      Conversion du json en Objet les informations de la position du vendeur.
+      Ajout du nouvel attribut coordinates dans la Classe ou Model Seller 
+    */
+   	public function setCoordinates(){
+      $this->coordinates = json_decode($this->position);
     }
     public function user(){
       return $this->belongsTo('App\User');

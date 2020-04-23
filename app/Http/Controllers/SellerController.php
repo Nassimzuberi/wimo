@@ -62,7 +62,8 @@ class SellerController extends Controller
             $rule['phone_number'][]='unique:sellers';
         }
         return Validator::make(
-            $data,$rule,
+            $data,
+            $rule,
             [
                 'address.required' => 'Une adresse est requise.',
                 'phone_number.regex' => 'Le numéro de téléphone est incorrect.',
@@ -86,7 +87,8 @@ class SellerController extends Controller
             [
                 'lat' => $request["latitude"],
                 'long' => $request["longitude"],
-            ]);
+            ]
+        );
 
         Seller::create(
             [
@@ -112,7 +114,9 @@ class SellerController extends Controller
      */
     public function show($id)
     {
-        return view('account.seller.my_store',['magasin' => Seller::find($id)]);
+        $magasin = Seller::find($id);
+        $magasin->setCoordinates();
+        return view('account.seller.my_store',['magasin' => $magasin]);
     }
 
     /**
@@ -123,7 +127,9 @@ class SellerController extends Controller
      */
     public function edit($id)
     {
-        return view('account.seller.edit_store',['magasin' => Seller::find($id)]);
+        $magasin = Seller::find($id);
+        $magasin->setCoordinates();
+        return view('account.seller.edit_store',['magasin' => $magasin]);
     }
 
     /**
@@ -135,10 +141,24 @@ class SellerController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $magasin = Seller::find($id);
+        /* Vérification des données */
+        
         $this->validator(
             $request->all(),
-            $request["phone_number"]==Seller::find($id)->phone_number
+            $request["phone_number"]==$magasin->phone_number
         )->validate();
+
+        $magasin->name_shop = $request["name_shop"];
+        $magasin->address = $request["address"];
+        $magasin->position = json_encode(
+            [
+                'lat' => $request["latitude"],
+                'long' => $request["longitude"],
+            ]
+        );
+        $magasin->save();
+        
         return redirect()->route('vendeurs.show',$id)->with('status','Magasin mis à jour.');
     }
 

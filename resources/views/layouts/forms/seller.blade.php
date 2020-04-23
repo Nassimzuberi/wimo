@@ -54,7 +54,7 @@
             </span>
         @enderror
     </div>
-    <input type="hidden" id="latitude" name="latitude" value="">
-    <input type="hidden" id="longitude" name="longitude" value="">
+    <input type="hidden" id="latitude" name="latitude" value="@isset($magasin){{$magasin->coordinates->lat}}@endisset">
+    <input type="hidden" id="longitude" name="longitude" value="@isset($magasin){{$magasin->coordinates->long}}@endisset">
     <input type="submit" value="Envoyer">
 </form>
