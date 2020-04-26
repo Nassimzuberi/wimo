@@ -4,20 +4,25 @@
 <div class="pt-5">
 	@include('layouts.account.nav')
 	<div class="container mt-5">
-
-	<nav aria-label="breadcrumb">
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item">
-				<a href="{{route('vendeurs.show',$magasin->id)}}">
-					Mon magasin
-				</a>
-			</li>
-			<li class="breadcrumb-item text-primary">
-				Gestion de mon magasin
-			</li>
-			<li class="breadcrumb-item active" aria-current="page">Modifier mes informations</li>
-		</ol>
-	</nav>
+		@include(
+			'layouts.account.seller_nav',
+			[
+				'id' => $magasin->id
+			]
+		)
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<a href="{{route('vendeurs.show',$magasin->id)}}">
+						Mon magasin
+					</a>
+				</li>
+				<li class="breadcrumb-item text-primary">
+					Gestion de mon magasin
+				</li>
+				<li class="breadcrumb-item active" aria-current="page">Modifier mes informations</li>
+			</ol>
+		</nav>
 		<div class="row">
 			<div class="col-md-3">
 				<h5>Information actuelle</h5>

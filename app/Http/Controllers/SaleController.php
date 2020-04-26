@@ -55,7 +55,7 @@ class SaleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($seller_id)
+    public function create(Request $request,$seller_id)
     {
         $categories = Category::all();
 
