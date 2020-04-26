@@ -18,6 +18,7 @@ Route::group(['middleware'=>'locale'],function ()
     /***** Vendeurs ******/
 
     Route::resource('vendeurs','SellerController');
+    Route::resource('vendeurs.annonces','SaleController')->shallow();
 
     /****** Comptes ******/
     Route::resource('comptes','AccountController');
@@ -28,7 +29,7 @@ Route::group(['middleware'=>'locale'],function ()
 
     /****** Annonces ******/
 
-    Route::resource('annonces','SaleController');
+    //Route::resource('annonces','SaleController');
 
     /*Les produits disponibles pour le vendeur */
     Route::get('/product/available/category/{id}','SaleController@products_available');

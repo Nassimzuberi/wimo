@@ -33,33 +33,7 @@
         {{ session('status') }}
     </div>
 @endif
-<a href="{{route('annonces.index')}}">Mes annonces</a>
-<form method="post" action="{{route('annonces.store')}}">
+<form method="post" action="{{route('vendeurs.annonces.store',$seller_id)}}">
 	@csrf
-	<label>Categorie du produit:</label>
-	<select onchange="load_product(this.value)">
-		<option value="NULL" selected></option>
-		@foreach($categories as $category)
-			<option value="{{$category->id}}">{{$category->name}}</option>
-		@endforeach
-	</select><br>
-	<label for="product">Produits:</label>
-	<select id="product" name="product_id">
-	</select><br>
-	<label>Prix à l'unite ou poids:</label>
-	<input id="unit" type="radio" name="type" value="price_unit" oninput="type_inventory(`à l'unité`)">
-	<label for="unit">Unité</label>
-	<input id="poids" type="radio" name="type" value="price_weight" oninput="type_inventory(`au poids`)">
-	<label for="poids">Poids au kilogramme</label><br>
-	<label for="prix">Prix:</label>
-	<input id="prix" type="text" name="price"><br>
-
-	<label for="description">Description de votre annonce:</label><br>
-	<textarea name="description" id="description" rows="4" cols="50">
-
-	</textarea><br>
-	<span id="inventaire">L'inventaire de votre produit:</span><br>
-	<input type="text" name="inventory">
-	<input type="submit">
 </form>
 @endsection

@@ -58,6 +58,7 @@ class SellerController extends Controller
                     'required'
                 ],
             ];
+        /* Si l'option est un booléen alors on est dans l'édition du magasin. */  
         if((is_bool($option) && !$option) || !is_bool($option)){
             $rule['phone_number'][]='unique:sellers';
         }

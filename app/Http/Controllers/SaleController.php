@@ -21,11 +21,17 @@ class SaleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($seller_id)
     {
-        $annonces = Auth::user()->seller->sales;
-        $products = Product::all();
-        return view('account.seller.my_announcement',compact('annonces','products'));
+        /* Les produits du vendeurs */
+        $annonces =  Sales::where('seller_id',$seller_id)->get();
+        return view(
+            'account.seller.my_announcement',
+            [
+                'seller_id' => $seller_id,
+                'annonces' => $annonces
+            ]
+        );
     }
     /*
         Retourne les produits que le vendeur peut vendre
@@ -49,10 +55,17 @@ class SaleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($seller_id)
     {
         $categories = Category::all();
-        return view('account.seller.add_announcement',compact('categories'));
+
+        return view(
+            'account.seller.add_announcement',
+            [
+                'seller_id' => $seller_id,
+                'categories' => $categories
+            ]
+        );
     }
 
     /**
