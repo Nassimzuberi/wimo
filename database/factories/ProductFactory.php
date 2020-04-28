@@ -6,7 +6,7 @@ use App\Product;
 use Faker\Generator as Faker;
 
 $factory->define(Product::class, function (Faker $faker) {
-  $faker->addProvider(new \FakerRestaurant\Provider\en_US\Restaurant($faker));
+  $faker->addProvider(new \FakerRestaurant\Provider\fr_FR\Restaurant($faker));
     return [
         'name' => $faker->fruitName(),
     ];
