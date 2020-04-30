@@ -59,7 +59,10 @@ class SaleController extends Controller
             $this->tabpanel[$category->name] = [];
         }
         foreach($products as $product){
-            $this->tabpanel[$product->categories[0]->name][]=$product;
+            $prod_cat = $product->categories;
+            foreach($prod_cat as $cat){
+                $this->tabpanel[$cat->name][]=$product;
+            }
         }
     }  
 
