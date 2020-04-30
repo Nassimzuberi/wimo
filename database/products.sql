@@ -4,7 +4,7 @@
 -- Déchargement des données de la table `products`
 --
 
-INSERT INTO `products` (`name`, `image`, `created_at`, `updated_at`) VALUES
+INSERT INTO 'products' ('name', 'image', 'created_at', 'updated_at') VALUES
 ( 'Goyave', 'Goyave.jpg', '2020-04-28 01:06:00', '2020-04-28 13:50:24'),
 ( 'Cerise', 'Cerise.jpg', '2020-04-28 01:06:00', '2020-04-28 13:51:54'),
 ( 'Melon', 'Melon.jpg', '2020-04-28 01:06:00', '2020-04-28 13:57:13'),
