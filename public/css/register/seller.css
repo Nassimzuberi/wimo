@@ -1,3 +1,13 @@
+.tab-pane{
+	max-height:45vh;
+}
+.product{
+	width:9.5rem;
+}
+.product img{
+	width:100%;
+}
+
 .product:hover,.product-select{
 	background-color: #3490dc;
 	color: #ffffff;
@@ -12,4 +22,8 @@ h5 span{
 h5 span+span{
 	color: red;
 	text-decoration: none;
+}
+
+.nav-link img{
+	height: 16px;
 }

@@ -12,9 +12,11 @@ use Auth;
 class SaleController extends Controller
 {
 
+    public $tabpanel;
     public function __construct()
     {
         $this->middleware('auth')->except('show');
+        $this->tabpanel = [];
     }
     /**
      * Display a listing of the resource.
@@ -50,20 +52,32 @@ class SaleController extends Controller
     }
 
 
+    public function initTabPanelCategories(){
+        $categories = Category::all();
+        $products = Product::all();
+        foreach ($categories as $category) {
+            $this->tabpanel[$category->name] = [];
+        }
+        foreach($products as $product){
+            $this->tabpanel[$product->categories[0]->name][]=$product;
+        }
+    }  
+
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request,$seller_id)
+    public function create($seller_id)
     {
-        $categories = Category::all();
-
+        
+        $this->initTabPanelCategories();
         return view(
             'account.seller.add_announcement',
             [
                 'seller_id' => $seller_id,
-                'categories' => $categories
+                'tabpanel' => $this->tabpanel,
             ]
         );
     }

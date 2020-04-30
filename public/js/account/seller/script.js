@@ -7,7 +7,7 @@ function delete_announce(id){
 
 var product_select = null;
 var product_select_name = "";
-var list_id = "fruits";
+var list_id = "Fruit";
 
 
 /* Ajouter le produit selectionné dans le formulaire */
@@ -38,8 +38,23 @@ function change_addon(type_quantity){
 	document.getElementById("addon-quantity").innerHTML = type_quantity;
 }
 
+function init_placeholder(catgeroy){
+	let message = "";
+	switch(catgeroy){
+		case "Fruit" : message = "un fruit"; break;
+		case "Légume" : message = "un légume"; break;
+		case "Épice" : message = "une épice"; break;
+		case "Plante_aromatique": message = "une plante aromatique"; break;
+		case "Céréale": message = "un céréale";break;
+		case "Champignon": message = "un champignon";break;
+
+	}
+	document.getElementById('search_bar').placeholder = "Rechercher "+message;
+}
+
 function init_filter(id){
 	list_id = id;
+	init_placeholder(id);
 }
 
 function filter_product(search){
