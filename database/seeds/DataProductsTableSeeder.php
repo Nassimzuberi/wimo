@@ -12,7 +12,13 @@ class DataProductsTableSeeder extends Seeder
      */
     public function run()
     {
-       $sql = base_path('database\products.sql');
-       DB::unprepared(file_get_contents($sql));
+		if(config('app.env') == 'production'){
+			$data_products = base_path('database/products.sql');
+		}
+		else{
+			$data_products = base_path('database\products.sql');
+
+		}
+       DB::unprepared(file_get_contents($data_products));
     }
 }
