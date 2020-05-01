@@ -51,7 +51,7 @@
 
 					<!-- Les produits -->
 
-					@foreach($tabpanel as $categorie => $products)
+					@foreach($sectionCategory as $categorie => $products)
 						<div class="overflow-auto tab-pane fade @if($categorie == 'Fruit') show active @endif" id="v-pills-{{str_replace(' ','_',$categorie)}}" role="tabpanel" aria-labelledby="v-pills-{{str_replace(' ','_',$categorie)}}-tab">
 							<div class="d-flex flex-wrap bg-light" id="{{str_replace(' ','_',$categorie)}}">
 								@foreach($products as $product)

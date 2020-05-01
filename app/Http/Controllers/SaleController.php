@@ -12,11 +12,11 @@ use Auth;
 class SaleController extends Controller
 {
 
-    public $tabpanel;
+    public $sectionCategory;
     public function __construct()
     {
         $this->middleware('auth')->except('show');
-        $this->tabpanel = [];
+        $this->section = [];
     }
     /**
      * Display a listing of the resource.
@@ -52,16 +52,16 @@ class SaleController extends Controller
     }
 
 
-    public function initTabPanelCategories(){
+    public function initSectionCategory(){
         $categories = Category::all();
         $products = Product::all();
         foreach ($categories as $category) {
-            $this->tabpanel[$category->name] = [];
+            $this->sectionCategory[$category->name] = [];
         }
         foreach($products as $product){
             $prod_cat = $product->categories;
             foreach($prod_cat as $cat){
-                $this->tabpanel[$cat->name][]=$product;
+                $this->sectionCategory[$cat->name][]=$product;
             }
         }
     }  
@@ -75,12 +75,13 @@ class SaleController extends Controller
     public function create($seller_id)
     {
         
-        $this->initTabPanelCategories();
+        $this->initSectionCategory();
+
         return view(
             'account.seller.add_announcement',
             [
                 'seller_id' => $seller_id,
-                'tabpanel' => $this->tabpanel,
+                'sectionCategory' => $this->sectionCategory,
             ]
         );
     }
@@ -106,10 +107,6 @@ class SaleController extends Controller
             'seller_id'=>Auth::user()->seller->id,
             'product_id'=>$request["product_id"],
         ])->get()[0]->id;
-
-        /* Appel au controlleur concerné pour la création de l'inventaire */
-        $inventory = new InventaireController();
-        $inventory->store($request,$id_announce);
 
         return back()->with('status','Annonce ajoutée');
     }
