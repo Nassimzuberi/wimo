@@ -12,10 +12,10 @@ class DepartementsTableSeeder extends Seeder
     public function run()
     {
     	if(config('app.env') == 'production'){
-			$departement = base_path('database/departement.sql');
+			$departement = base_path('database/postgres/departement.sql');
 		}
 		else{
-			$departement = base_path('database\departement.sql');
+			$departement = base_path('database\mysql\departement.sql');
 
 		}
        DB::unprepared(file_get_contents($departement));
