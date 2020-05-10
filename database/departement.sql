@@ -26,24 +26,24 @@ SET time_zone = "+00:00";
 -- Table structure for table `departement`
 --
 
-CREATE TABLE IF NOT EXISTS `departement` (
-  `departement_id` int(11) NOT NULL AUTO_INCREMENT,
-  `departement_code` varchar(3) CHARACTER SET utf8 DEFAULT NULL,
-  `departement_nom` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `departement_nom_uppercase` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `departement_slug` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `departement_nom_soundex` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`departement_id`),
-  KEY `departement_slug` (`departement_slug`),
-  KEY `departement_code` (`departement_code`),
-  KEY `departement_nom_soundex` (`departement_nom_soundex`)
+CREATE TABLE IF NOT EXISTS departement (
+  departement_id int(11) NOT NULL AUTO_INCREMENT,
+  departement_code varchar(3) CHARACTER SET utf8 DEFAULT NULL,
+  departement_nom varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  departement_nom_uppercase varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  departement_slug varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  departement_nom_soundex varchar(20) DEFAULT NULL,
+  PRIMARY KEY (departement_id),
+  KEY departement_slug (departement_slug),
+  KEY departement_code (departement_code),
+  KEY departement_nom_soundex (departement_nom_soundex)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=102 ;
 
 --
 -- Dumping data for table `departement`
 --
 
-INSERT INTO `departement` (`departement_id`, `departement_code`, `departement_nom`, `departement_nom_uppercase`, `departement_slug`, `departement_nom_soundex`) VALUES
+INSERT INTO departement (departement_id, departement_code, departement_nom, departement_nom_uppercase, departement_slug, departement_nom_soundex) VALUES
 (1, '01', 'Ain', 'AIN', 'ain', 'A500'),
 (2, '02', 'Aisne', 'AISNE', 'aisne', 'A250'),
 (3, '03', 'Allier', 'ALLIER', 'allier', 'A460'),
