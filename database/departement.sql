@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS departement (
-  departement_id int(11) NOT NULL AUTO_INCREMENT,
+  departement_id int NOT NULL AUTO_INCREMENT,
   departement_code varchar(3) CHARACTER SET utf8 DEFAULT NULL,
   departement_nom varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   departement_nom_uppercase varchar(255) CHARACTER SET utf8 DEFAULT NULL,
