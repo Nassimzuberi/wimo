@@ -1,6 +1,15 @@
-.tab-pane{
+.tab-pane,#countries,#departements{
 	max-height:45vh;
 }
+
+#countries{
+	width: 39vw;
+}
+
+#countries , #departements{
+	z-index: 1;
+}
+
 .product{
 	width:9.5rem;
 }
@@ -12,7 +21,7 @@
 	background-color: #3490dc;
 	color: #ffffff;
 }
-.product:hover{
+.product:hover,#countries div:hover,#departements div:hover{
 	cursor: pointer;
 
 }
@@ -26,4 +35,14 @@ h5 span+span{
 
 .nav-link img{
 	height: 16px;
+}
+td img{
+	height: 35px;
+}
+div#current_sale{
+	width: 19rem;
+}
+
+div#current_sale + form{
+	display: inline-block;
 }

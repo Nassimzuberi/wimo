@@ -15,7 +15,7 @@
           <h3 class="text-center">{{$annonce->product->name}}</h3>
           <div>{{$annonce->description}} </div>
           <div>Vendu par {{$annonce->seller->user->fullname()}}</div>
-          @if($annonce->inventaire->quantity <= 0)
+          @if($annonce->quantity <= 0)
           <small class="text-danger">Rupture de stock </small>
           @else
           <form action="{{route('cart.add')}}" method="post">
@@ -24,7 +24,7 @@
             <div class='row p-3 align-items-center'>
               <label>Quantité : </label>
               <select name="quantity" class="custom-select mx-3 w-25">
-                @for ( $i = 1 ; $i <= $annonce->inventaire->quantity ; $i++)
+                @for ( $i = 1 ; $i <= $annonce->quantity ; $i++)
                 <option value="{{$i}}">{{$i}} </option>
                 @endfor
               </select>

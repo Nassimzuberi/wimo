@@ -1,6 +1,6 @@
 /* id de l'input qui est focus par l'utilisateur */
 var type_search = "type=housenumber";
-
+var input_focus_id;
 window.addEventListener("click",(event)=>{
 	/* Vide le tableau de suggestion d'adresse */
 	if(!(	event.target.classList.contains("address") ||

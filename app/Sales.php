@@ -12,7 +12,15 @@ class Sales extends Pivot
     ];
 
    protected $fillable = [
-   		'description','price_weight','price_unit','seller_id','product_id', 'img'
+      'description',
+      'price',
+      'quantity',
+      'price_mesure',
+      'quantity_mesure',
+      'seller_id','product_id', 
+      'img',
+      'origine',
+      'stock'
    	];
 
 		public function seller(){
@@ -20,9 +28,5 @@ class Sales extends Pivot
 		}
    	public function product(){
    		return $this->belongsTo('App\Product');
-   	}
-
-   	public function inventaire(){
-   		return $this->hasOne("App\Inventaire",'sale_id');
    	}
 }

@@ -1,23 +1,100 @@
-@extends('layouts.app')
+@extends(
+	'layouts.app',
+	[
+		'additional_head'=>'account.seller'
+	]
+)
 @section('content')
-<a href="{{route('annonces.index')}}">Mes annonces</a>
-	<h1>Modification de l'annonce: {{$annonce->product->name}}</h1>
-	<form method="post" action="{{route('annonces.update',$id)}}">
-		@csrf
-		@method('PUT')
-		<label for="description">Description de l'annonce</label><br>
-		<textarea id="description" name="description" rows="4" cols="50">
-			{{$annonce->description}}
-		</textarea><br>
-		<label>Prix au poids ou à l'unité:</label>			
-		<input id="poids" type="radio" name="type" value="price_weight" @if(!is_null($annonce->price_weight)) checked @endif>
-		<label for="poids">Poids au kilogramme</label>
-		
-		<input id="unit" type="radio" name="type" value="price_unit" @if(!is_null($annonce->price_unit)) checked @endif>
-		<label for="unit">Unité</label><br>
-		<label for="prix">Prix</label>
-		<input id="prix" type="text" name="price" value="{{!is_null($annonce->price_weight) ? $annonce->price_weight : $annonce->price_unit}}">
+	@include('layouts.account.nav')
+	@include(
+		'layouts.account.seller_nav',
+		[
+			'id' => $seller_id
+		]
+	)
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="{{route('vendeurs.annonces.index',$seller_id)}}">
+					Mes produits
+				</a>
+			</li>
+			<li class="breadcrumb-item active" aria-current="page">
+				Modifier mon produit
+			</li>
+		</ol>
+	</nav>
+	<div class="container">
+	<div class="card d-inline-block align-top" id="current_sale">
+		<div class="card-header text-center">
+			{{$annonce->product->name}}
+		</div>
+		<img class="card-img" src="{{asset('images/products/'.$annonce->product->image)}}" alt="{{$annonce->product->name}}">
+		<div class="card-body">
+			<!-- L'origine du produit -->
+			<p class="card-text">
+				<b>Origine:</b> {{$annonce->origine}}
+			</p>
 
-		<input type="submit">
-	</form>
+			<!-- Prix produit -->
+			<p class="card-text">
+				@if($annonce->price_mesure == "kilogramme")
+					<b>Prix:</b> {{ $annonce->price." € / Kg" }}
+
+				<!-- Prix par gramme -->
+				@elseif($annonce->price_mesure == "gramme")
+					<b>Prix:</b> {{ $annonce->price." € / gr" }}
+
+				<!-- Prix par pièce -->
+				@else
+					<b>Prix:</b> {{$annonce->price." € / pièce/unité"}}
+
+				@endif
+			</p>
+
+			<!-- Description du produit -->
+			<p class="card-text">
+				<b>Description:</b><br>
+				@isset($annonce->description)
+					{{ $annonce->description }}
+				@else
+					Aucune description.
+				@endisset
+			</p>
+
+			<!-- L'état du stock du produit -->
+			@if($annonce->stock == "disponible" )
+				<p class="card-text text-center text-success">
+					<i class="fas fa-check-circle"></i>
+					Produit disponible
+				</p>
+			@elseif($annonce->stock == "bientôt disponible" )
+				<p class="card-text text-center text-info">
+					<i class="fas fa-info-circle"></i>
+					Produit bientôt disponible<br>
+				</p>
+			@elseif($annonce->stock == "bientôt épuisé" )
+				<p class="card-text text-center text-warning">
+					<i class="fas fa-exclamation-circle"></i>
+					Produit bientôt épuisé
+					Quantité restant: {{$annonce->quantity}}
+				</p>
+			@else
+				<p class="card-text text-center text-danger">
+					<i class="far fa-times-circle"></i>
+					Produit épuisé
+				</p>
+			@endif
+		</div>
+	</div>
+	@include(
+		'layouts.forms.sale',
+		[
+			'route' => 'annonces.update',
+			'parameter_action' => $annonce->id,
+			'verb' => 'PUT',
+			'annonce' => $annonce
+		]
+	)		
+	</div>
 @endsection

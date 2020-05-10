@@ -23,10 +23,6 @@ Route::group(['middleware'=>'locale'],function ()
     /****** Comptes ******/
     Route::resource('comptes','AccountController');
 
-    /****** Inventaires */
-
-    Route::resource('inventaires','InventaireController');
-
     /****** Annonces ******/
 
     //Route::resource('annonces','SaleController');
