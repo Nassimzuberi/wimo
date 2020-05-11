@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS departement (
   departement_id SERIAL NOT NULL,
-  departement_code varchar(3) CHARACTER SET utf8 DEFAULT NULL,
-  departement_nom varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  departement_nom_uppercase varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  departement_slug varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  departement_code varchar(3) SET utf8 DEFAULT NULL,
+  departement_nom varchar(255) SET utf8 DEFAULT NULL,
+  departement_nom_uppercase varchar(255) SET utf8 DEFAULT NULL,
+  departement_slug varchar(255) SET utf8 DEFAULT NULL,
   departement_nom_soundex varchar(20) DEFAULT NULL,
   PRIMARY KEY (departement_id),
   KEY departement_slug (departement_slug),
