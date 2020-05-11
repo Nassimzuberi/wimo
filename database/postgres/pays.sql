@@ -22,24 +22,24 @@ SET time_zone = "+00:00";
 -- Table structure for table `pays`
 --
 
-CREATE TABLE IF NOT EXISTS `pays` (
-  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
-  `code` int(3) NOT NULL,
-  `alpha2` varchar(2) NOT NULL,
-  `alpha3` varchar(3) NOT NULL,
-  `nom_en_gb` varchar(45) NOT NULL,
-  `nom_fr_fr` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `alpha2` (`alpha2`),
-  UNIQUE KEY `alpha3` (`alpha3`),
-  UNIQUE KEY `code_unique` (`code`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=242 ;
+CREATE TABLE IF NOT EXISTS pays (
+  id smallserial NOT NULL ,
+  code smallint NOT NULL,
+  alpha2 varchar(2) NOT NULL,
+  alpha3 varchar(3) NOT NULL,
+  nom_en_gb varchar(45) NOT NULL,
+  nom_fr_fr varchar(45) NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY alpha2 (alpha2),
+  UNIQUE KEY alpha3 (alpha3),
+  UNIQUE KEY code_unique (code)
+) DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `pays`
 --
 
-INSERT INTO `pays` (`id`, `code`, `alpha2`, `alpha3`, `nom_en_gb`, `nom_fr_fr`) VALUES
+INSERT INTO pays (id, code, alpha2, alpha3, nom_en_gb, nom_fr_fr) VALUES
 (1, 4, 'AF', 'AFG', 'Afghanistan', 'Afghanistan'),
 (2, 8, 'AL', 'ALB', 'Albania', 'Albanie'),
 (3, 10, 'AQ', 'ATA', 'Antarctica', 'Antarctique'),
