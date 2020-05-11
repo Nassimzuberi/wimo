@@ -18,9 +18,9 @@ CREATE TABLE IF NOT EXISTS departement (
   departement_slug varchar(255) DEFAULT NULL,
   departement_nom_soundex varchar(20) DEFAULT NULL,
   PRIMARY KEY (departement_id),
-  KEY departement_slug (departement_slug),
-  KEY departement_code (departement_code),
-  KEY departement_nom_soundex (departement_nom_soundex)
+  UNIQUE(departement_slug),
+  UNIQUE(departement_code),
+  UNIQUE(departement_nom_soundex)
 );
 
 --
