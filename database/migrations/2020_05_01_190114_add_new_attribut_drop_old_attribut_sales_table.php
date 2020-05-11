@@ -16,8 +16,8 @@ class AddNewAttributDropOldAttributSalesTable extends Migration
         Schema::table('sales', function (Blueprint $table) {
             $table->unsignedDecimal('price_unit',6,2)->change();
             $table->unsignedDecimal('price_weight',5,2)->change();
-            $table->enum('price_mesure',['pièce','kilogramme','gramme']);
-            $table->enum('quantity_mesure',['pièce','kilogramme','gramme']);
+            $table->enum('price_mesure',['pièce','kilogramme','gramme'])->nullable(true);
+            $table->enum('quantity_mesure',['pièce','kilogramme','gramme'])->nullable(true);
             $table->enum('stock',['disponible','bientôt disponible','épuisé','bientôt épuisé'])->nullable(true);
             $table->string('origine')->nullable(true);
             $table->renameColumn('price_unit','price');
