@@ -38,7 +38,7 @@
 		<div class="d-none flex-wrap overflow-auto position-absolute bg-white border" id="countries">
 			@foreach($countries as $country)
 				<div class="border py-2 px-3 flex-fill text-center country" onclick="set_country(this)" onmouseover="this.classList.toggle('bg-primary')" onmouseout="this.classList.toggle('bg-primary')">
-					<span class="flag-icon flag-icon-{{strtollower($country->alpha2)}}" ></span>
+					<span class="flag-icon flag-icon-{{strtolower($country->alpha2)}}" ></span>
 					<span class="country_name">{{$country->nom_fr_fr}}</span>
 				</div>
 			@endforeach
