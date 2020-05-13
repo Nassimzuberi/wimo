@@ -220,6 +220,14 @@ class SaleController extends Controller
             $annonce->stock = $request["stock"];
             $annonce->description = $request["description"] ?? NULL;
             $annonce->save();
+            if(array_key_exists('image',$request->all())) {
+                if(config('app.env') === 'production'){
+                    $annonce->update(['img' => $request['image']->store('sales')]);
+                }
+                else {
+                    $annonce->update(['img' => 'sales-default.png']);
+                }
+            }
         }
 
         return redirect()->route("vendeurs.annonces.index",Auth::user()->seller->id)->with('status','Annonce modifiée.');
