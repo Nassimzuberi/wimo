@@ -29,7 +29,7 @@
 		<div class="card-header text-center">
 			{{$annonce->product->name}}
 		</div>
-		<img class="card-img" src="{{asset('images/products/'.$annonce->product->image)}}" alt="{{$annonce->product->name}}">
+		<img class="card-img" src="@if(config('app.env')=='production'){{Storage::url($annonce->img)}}@else{{asset('images/products/'.$annonce->product->image)}}@endif" alt="{{$annonce->product->name}}">
 		<div class="card-body">
 			<!-- L'origine du produit -->
 			<p class="card-text">
