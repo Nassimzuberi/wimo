@@ -18,7 +18,9 @@ class SaleController extends Controller
     {
         $this->middleware('auth');
         $this->sectionCategory = [];
+        /* Liste des pays pour les origines des produits */
         $this->countries = DB::table('pays')->select('alpha2','nom_fr_fr')->get();
+        /* Liste des départements français pour les produits d'origine nationale. */
         $this->departements = DB::table('departement')->select('departement_code','departement_nom')->get();
 
     }
@@ -101,9 +103,15 @@ class SaleController extends Controller
             'origine.string'=>'Veuillez bien saisir l\'origine.',            
         ];
 
+        /* 
+            On vérifie que le vendeur a bien sélectionné son produit lors de l'enregistrement.
+            Lors du "update" d'un produit, la sélection du produit n'est pas nécessaire
+            puisque ça été réalisé auparavant.
+         */
         if($type_action == "store")
             $rules['produit']=['required'];
 
+        /* En fonction de l'origine on vérifie s'il existe dans la bdd */
         if(array_key_exists('origine_geo', $data)){
             if($data["origine_geo"]=="world")
                 $rules['origine'] = ['required','string','exists:pays,nom_fr_fr'];
@@ -141,7 +149,7 @@ class SaleController extends Controller
         /* Stockage de l'image dans le cloud si en production sinon en developpement stockage en local */
         if(array_key_exists('image',$request->all())) {
             if(config('app.env') === 'production'){
-                $product->update(['img' => $request['img']->store('sales')]);
+                $product->update(['img' => $request['image']->store('sales')]);
             } else {
                 $product->update(['img' => 'sales-default.png']);
             }

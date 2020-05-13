@@ -23,14 +23,6 @@ Route::group(['middleware'=>'locale'],function ()
     /****** Comptes ******/
     Route::resource('comptes','AccountController');
 
-    /****** Annonces ******/
-
-    //Route::resource('annonces','SaleController');
-
-    /*Les produits disponibles pour le vendeur */
-    Route::get('/product/available/category/{id}','SaleController@products_available');
-
-
     /**** Authentification *****/
 
     Auth::routes();
