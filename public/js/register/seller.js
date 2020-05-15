@@ -52,7 +52,7 @@ function search_adress(input){
 			let text = ``;
 			if(adresses.features.length > 0){
 				for(i in adresses.features){
-					text += `<a href="javascript:set_adress('${adresses.features[i].properties.label.replace("'","@39")}');set_position(${adresses.features[i].geometry.coordinates})"
+					text += `<a href="javascript:set_adress('${adresses.features[i].properties.label.replace("'","@39")}')"
 								class="list-group-item d-flex list-group-item-action justify-content-between align-items-center">
 									<div class="d-flex flex-column">
 										<strong class="label-search">${adresses.features[i].properties.label}</strong>

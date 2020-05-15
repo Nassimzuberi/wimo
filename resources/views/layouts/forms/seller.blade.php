@@ -15,14 +15,14 @@
     </div>
     <div class="form-group">
         <label for="address">Adresse:</label>
-        <input id="address" type="text" name="address" class="form-control address @error('address') is-invalid @enderror @error('longitude') is-invalid @enderror" onfocus="auto_search(this)" oninput="search_adress(this)" value="@isset($magasin){{ $magasin->address }}@else{{ old('address') }}@endisset" required="required" autocomplete="off">
+        <input id="address" type="text" name="address" class="form-control address @error('address') is-invalid @enderror @error('adresse_valid') is-invalid @enderror" onfocus="auto_search(this)" oninput="search_adress(this)" value="@isset($magasin){{ $magasin->address }}@else{{ old('address') }}@endisset" required="required" autocomplete="off">
         <div class="list-group position-absolute" style="z-index: 1"></div>
         @error('address')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
         @enderror
-        @error('longitude')
+        @error('adresse_valid')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
@@ -54,7 +54,5 @@
             </span>
         @enderror
     </div>
-    <input type="hidden" id="latitude" name="latitude" value="@isset($magasin){{$magasin->coordinates->lat}}@endisset">
-    <input type="hidden" id="longitude" name="longitude" value="@isset($magasin){{$magasin->coordinates->long}}@endisset">
     <input type="submit" value="Envoyer">
 </form>

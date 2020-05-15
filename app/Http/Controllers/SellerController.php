@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use GuzzleHttp;
 use App\Seller;
 use App\Http\Controllers\SaleController;
 use Illuminate\Support\Facades\Validator;
@@ -34,6 +35,59 @@ class SellerController extends Controller
         return view('auth.register_seller');
     }
 
+    /* Appel à l'api pour chercher une adresse en France */
+    public function call_api_adress($adress){
+        $request ='https://api-adresse.data.gouv.fr/search/?q='.$adress;
+        
+        $client = new GuzzleHttp\Client();
+        $response = $client->get($request);
+        $content = $response->getBody()->getContents();
+        return json_decode($content);
+    }
+
+    public function check_adress($adress){
+        
+        $result = $this->call_api_adress($adress);
+        $taille_result = count($result->features);
+
+        /* Aucun résultat de la part de l'api, donc cela signifie que l'adresse ne figure pas dans la base
+            de donnée des adresses en France.
+        */
+
+
+        if($taille_result < 0){
+            return false;
+        }
+
+        /* 
+            Plusieurs résultats dans la liste d'adresse, signifie que l'adresse n'est pas assez précise
+            pour suggérer une seule adresse qui se rapporte à l'adresse du vendeur. 
+        */
+
+        else if($taille_result > 1)
+            return false;
+
+        /*
+            Un seul résultat dans la bdd, correspond à l'adresse de l'utilisateur
+        */
+
+        else{
+            $tab_adress = explode(" ",$adress);
+            $tab_result = explode(" ",$result->features[0]->properties->label);
+            
+            /* Une différente taille des résultats signifie que les adresses sont différentes */
+            if(count($tab_adress) != count($tab_result))
+                return false;
+
+            /* Vérification des éléments de chaque adresse pour vérifier s'ils sont similaire */
+            for($i = 0 ; $i < count($tab_adress); $i++){
+                if( strtoupper($tab_adress[$i]) != strtoupper($tab_result[$i]))
+                    return false;
+            }
+            return true;
+        }
+    }
+
     /** 
      *  Les règles de validation
      *  @param mixed $option: L'option de validation la vérification des données
@@ -41,28 +95,26 @@ class SellerController extends Controller
     */
     public function validator(array $data,$option=NULL){
         $rule = [
-                'name_shop' => [
-                    'string',
-                    'max:191'
-                ],
-                'address' => [
-                    'required',
-                    'string',
-                    'max:191'
-                ],
-                'phone_number'=> [
-                    'required',
-                    'regex:/^[0]\d{9}/',
-                ],
-                'longitude' =>[
-                    'required'
-                ],
+                'name_shop' => 'string|max:191',
+                'address' => 'required|string|max:191',
+                'phone_number'=> 'required|regex:/^[0]\d{9}/',
+                'adresse_valid'=> 'required',
             ];
         /* Si l'option est un booléen alors on est dans l'édition du magasin. */
         /* Et que le vendeur possède un nouveau téléphone. */  
         if((is_bool($option) && !$option) || !is_bool($option)){
-            $rule['phone_number'][]='unique:sellers';
+            $rule['phone_number'] = $rule['phone_number'].'|'.'unique:sellers,phone_number';
         }
+
+        /* 
+            On rajoute "adresse_valid" au tableau $data pour confirmer la validation de l'adresse.
+            Sans la validation, le formulaire d'inscription n'est pas valide.
+        */
+        if($this->check_adress($data["address"])){
+            $data['adresse_valid']=true;
+        }
+
+
         return Validator::make(
             $data,
             $rule,
@@ -70,7 +122,7 @@ class SellerController extends Controller
                 'address.required' => 'Une adresse est requise.',
                 'phone_number.regex' => 'Le numéro de téléphone est incorrect.',
                 'phone_number.unique' => 'Le numéro de téléphone est déjà utilisé.',
-                'longitude.required' => "L'adresse est introuvable",
+                'adresse_valid.required' => "L'adresse est introuvable",
             ]
         );
     }
@@ -85,13 +137,17 @@ class SellerController extends Controller
     {
         $this->validator($request->all())->validate();
         
+        /* Récupération des coordonnées géographique*/
+        $position_adress = $this->call_api_adress($request["address"])->features[0]->geometry->coordinates;
+
+        /* encodage des coordonnées */
         $position=json_encode(
             [
-                'lat' => $request["latitude"],
-                'long' => $request["longitude"],
+                'lat' => $position_adress[1],
+                'long' => $position_adress[0]
             ]
         );
-
+        
         Seller::create(
             [
                 'name_shop' => $request['name_shop'] ?? NULL,

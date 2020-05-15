@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Policies\AccountPolicy;
 use App\User;
 use Auth;
+use GuzzleHttp;
 use Illuminate\Http\Request;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -15,7 +16,7 @@ class AccountController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('mail_account','create','store');
+        $this->middleware('auth')->except('create','store');
     }
     /**
      * Display a listing of the resource.
