@@ -34,11 +34,6 @@ function set_adress(adresse){
 	document.getElementById(input_focus_id).nextElementSibling.innerHTML = '';
 }
 
-function set_position(long,lat){
-	document.getElementById("latitude").value = lat;
-	document.getElementById("longitude").value = long;
-}
-
 function search_adress(input){
 	let ajax = new XMLHttpRequest();
 	let url = "https://api-adresse.data.gouv.fr/search/?q=";
