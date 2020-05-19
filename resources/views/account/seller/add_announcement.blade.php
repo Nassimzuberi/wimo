@@ -4,9 +4,12 @@
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item">
-				<a href="{{route('vendeurs.annonces.index',$seller_id)}}">
-					Mes produits
+				<a href="{{route('vendeurs.show',$seller_id)}}">
+					Mon magasin
 				</a>
+			</li>
+			<li class="breadcrumb-item text-primary">
+				Gestion de mes produits
 			</li>
 			<li class="breadcrumb-item active" aria-current="page">
 				Ajouter un produit

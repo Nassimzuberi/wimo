@@ -15,13 +15,14 @@ Route::group(['middleware'=>'locale'],function ()
     /* Routage vers la page d'accueil */
     Route::view('','home');
 
+    /****** Comptes ******/
+    Route::resource('comptes','AccountController');
+
+
     /***** Vendeurs ******/
 
     Route::resource('vendeurs','SellerController');
     Route::resource('vendeurs.annonces','SaleController')->shallow();
-
-    /****** Comptes ******/
-    Route::resource('comptes','AccountController');
 
     /**** Authentification *****/
 

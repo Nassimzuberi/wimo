@@ -6,6 +6,21 @@
 )
 @section('content')
 	@include('layouts.account.nav',[ 'seller_id' => $seller_id])
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="{{route('vendeurs.show',$seller_id)}}">
+					Mon magasin
+				</a>
+			</li>
+			<li class="breadcrumb-item text-primary">
+				Gestion des mes produits
+			</li>
+			<li class="breadcrumb-item active" aria-current="page">
+				Mes produits
+			</li>
+		</ol>
+	</nav>
 	<h1>Mes produits</h1>
 	<a href="{{route('vendeurs.annonces.create',$seller_id)}}" class="btn btn-success">
 		<i class="fas fa-plus-circle"></i>
@@ -35,7 +50,6 @@
 					<td colspan="6" class="text-center">
 						<p>
 							Vous n'avez aucun produit en vente.<br>
-							Pour ajouter un produit cliquez sur le bouton "Ajouter un produit":<br>
 							<a href="{{route('vendeurs.annonces.create',$seller_id)}}" class="btn btn-success">
 								<i class="fas fa-plus-circle"></i>
 								Ajouter un produit
