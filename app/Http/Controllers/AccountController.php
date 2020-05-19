@@ -25,9 +25,9 @@ class AccountController extends Controller
      */
     public function index()
     {
-        return view('account.account',[
-            'seller' => Auth::user()->seller,
-        ]);
+        if(isset(Auth::user()->seller)){
+            return view('account.account',['seller_id' =>Auth::user()->seller->id]);
+        }
     }
 
     /**
@@ -123,6 +123,8 @@ class AccountController extends Controller
         Auth::user()->delete();
         return redirect('/');
     }
+
+    /* Cette fct doit être dans le controller commande */
     public function commandes(User $user,Request $request){
         $this->authorize('edit', $user);
       switch($request->filter){

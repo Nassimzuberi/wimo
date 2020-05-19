@@ -1,8 +1,11 @@
 @extends('layouts.app')
 @section('content')
-    <div class="pt-5">
 
-        @include('layouts.account.nav')
+    @isset($seller_id)
+        @include('layouts.account.nav',['seller_id'=> $seller_id])
+    @else
+        @include('layouts.accont.nav')
+    @endisset
 
         <div class="container p-5 align-items-center text-center ">
 
@@ -29,7 +32,6 @@
                 <input type="submit" value="Valider" class="btn btn-success">
             </form>
         </div>
-    </div>
 
 
 @endsection

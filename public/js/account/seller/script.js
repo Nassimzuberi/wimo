@@ -1,7 +1,7 @@
 /*Affiche un pop up si le vendeur veut supprimer une annonce */
-function delete_announce(id){
+function delete_announce(button){
 	if(confirm('Supprimer cette annonce ?')){
-		document.getElementById(id).submit();
+		button.nextElementSibling.submit();
 	}
 }
 

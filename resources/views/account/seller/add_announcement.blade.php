@@ -1,12 +1,6 @@
 @extends('layouts.app',['additional_head'=>'account.seller'])
 @section('content')
-	@include('layouts.account.nav')
-	@include(
-		'layouts.account.seller_nav',
-		[
-			'id' => $seller_id
-		]
-	)
+	@include('layouts.account.nav',['seller_id' => $seller_id])
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item">

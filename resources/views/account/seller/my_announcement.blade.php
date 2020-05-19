@@ -5,13 +5,7 @@
 	]
 )
 @section('content')
-	@include('layouts.account.nav')
-	@include(
-		'layouts.account.seller_nav',
-		[
-			'id' => $seller_id
-		]
-	)
+	@include('layouts.account.nav',[ 'seller_id' => $seller_id])
 	<h1>Mes produits</h1>
 	<a href="{{route('vendeurs.annonces.create',$seller_id)}}" class="btn btn-success">
 		<i class="fas fa-plus-circle"></i>
@@ -24,8 +18,8 @@
             {{ session('status') }}
         </div>
     @endif	
-	<table class="table table-hover">
-		<thead>
+	<table class="table table-bordered" style="width:56rem">
+		<thead class="thead-dark">
 			<tr>
 				<th>Produit</th>
 				<th>Catégorie</th>
@@ -104,28 +98,33 @@
 						</td>
 
 						<td>
-							<!-- Lien pour modifier un produit -->
-							<a href="{{route('annonces.edit',$annonce->id)}}" class="btn btn-warning">
-								<i class="far fa-edit"></i>
-								Modifier le produit
-							</a>
-
-							<!-- Bouton pour gérer son stock de produit -->
-							<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#stock{{$annonce->id}}">
-								<i class="far fa-edit"></i>
-								Gérer le stock
-							</button>
-
-							<!-- Supprimer un produit -->
-							<a href="javascript:delete_announce('delete{{$annonce->id}}')" class="btn btn-danger">
-								<i class="far fa-trash-alt"></i>
-								Supprimer le produit
-							</a>
-							<!-- Formulaire pour supprimer une annonce -->
-							<form method="post" action="{{route('annonces.destroy',$annonce->id)}}" id="delete{{$annonce->id}}">
-								@csrf
-								@method('DELETE')
-							</form>
+							<div class="dropdown">
+								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    								Actions
+  								</button>
+  								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<!-- Lien pour modifier un produit -->
+									<a href="{{route('annonces.edit',$annonce->id)}}" class="dropdown-item">
+										<i class="far fa-edit"></i>
+										Modifier le produit
+									</a>
+									<!-- Bouton pour gérer son stock de produit -->
+									<button class=" dropdown-item" data-toggle="collapse" data-target="#stock{{$annonce->id}}">
+										<i class="far fa-edit"></i>
+										Gérer le stock
+									</button>
+									<!-- Supprimer un produit -->
+									<button onclick="delete_announce(this)" class=" dropdown-item text-danger">
+										<i class="far fa-trash-alt"></i>
+										Supprimer le produit
+									</button>
+									<!-- Formulaire pour supprimer une annonce -->
+									<form method="post" action="{{route('annonces.destroy',$annonce->id)}}">
+										@csrf
+										@method('DELETE')
+									</form>  									
+  								</div>
+							</div>
 						</td>
 					</tr>
 					<!-- Ligne concernant la quantité disponible du produit -->
@@ -194,5 +193,8 @@
 			@endif
 		</tbody>
 	</table>
-
+	<!-- Tableau de top vente --> 
+	<div>
+		
+	</div>
 @endsection

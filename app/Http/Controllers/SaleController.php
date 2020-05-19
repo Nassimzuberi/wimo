@@ -17,6 +17,7 @@ class SaleController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        /* Les categories de chaque produit */
         $this->sectionCategory = [];
         /* Liste des pays pour les origines des produits */
         $this->countries = DB::table('pays')->select('alpha2','nom_fr_fr')->get();

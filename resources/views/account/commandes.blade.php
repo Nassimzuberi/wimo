@@ -4,8 +4,11 @@
 
 @section('content')
 
-    <div class="pt-5">
+    @isset($seller_id)
+        @include('layouts.account.nav',['seller_id'=> $seller_id])
+    @else
         @include('layouts.account.nav')
+    @endisset
 
 
 

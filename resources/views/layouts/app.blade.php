@@ -16,9 +16,6 @@
         @isset($additional_head)
             @include('layouts.head.'.$additional_head)
         @endisset
-        <!-- Favicon -->
-        <!--
-        @include('layouts.head.favicon')-->
         @yield('extra-script')
     </head>
 

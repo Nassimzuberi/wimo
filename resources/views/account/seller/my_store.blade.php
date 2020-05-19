@@ -1,8 +1,6 @@
 @extends('layouts.app',['additional_head'=>'account.head'])
 @section('content')
-
-<div class="pt-5">
-	@include('layouts.account.nav')
+	@include('layouts.account.nav',['seller_id'=>$magasin->id])
 	{{-- Notification de succès --}}
         @if(session('status'))
             <div class="alert alert-success alert-dismissible">
@@ -10,9 +8,7 @@
                 {{ session('status') }}
             </div>
         @endif
-	<div class="container mt-5">
-		<!-- Barre de navigation du vendeur -->
-		@include('layouts.account.seller_nav',['id'=>$magasin->id])
+	<div class="container">
 		<div class="row">
 			<div class="col-md-3">
 				<div class="card">
@@ -23,7 +19,8 @@
 							Mon magasin
 						@endisset
 					</div>
-					<i class="fas fa-store mx-auto mt-2" style="font-size:5em"></i>
+					<!-- Logo magasin -->
+					<span class="material-icons mx-auto" style="font-size: 8em">store</span>
 					<div class="card-body">
 						<p>
 							<i class="fas fa-map-marker-alt"></i>
@@ -71,5 +68,4 @@
 			</div>
 		</div>
 	</div>
-</div>
 @endsection
