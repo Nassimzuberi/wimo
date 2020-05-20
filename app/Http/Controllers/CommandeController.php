@@ -26,12 +26,21 @@ class CommandeController extends Controller
         /* Les commandes non réceptionnées par le client sont de state ( statut ) "0" */
         $commandes_non_reception = Auth::user()->commandes()->where('state',0)->orderBy('created_at','desc');
 
+        /* Les commandes en cours de préparation par le vendeurs */
+        $commandes_en_cours = Auth::user()->commandes()->where('state',2)->orderBy('created_at','desc');
+
+        /* Les commandes prêts à être réceptionnées par le client */
+        $commandes_prets = Auth::user()->commandes()->where('state',3)->orderBy('created_at','desc');
+
+        /* Les commandes en attente d'être pris en charge par le vendeur */
+        $commandes_attentes = Auth::user()->commandes()->where('state',4)->orderBy('created_at','desc');
+
 
         if(isset(Auth::user()->seller)){
             $seller_id = Auth::user()->seller->id;
-            return view('account.commandes',compact('seller_id','commandes_reception','commandes_non_reception'));
+            return view('account.commandes',compact('seller_id','commandes_reception','commandes_non_reception','commandes_en_cours','commandes_prets','commandes_attentes'));
         }
-        return view('account.commandes',compact('commandes_reception','commandes_non_reception'));
+        return view('account.commandes',compact('commandes_reception','commandes_non_reception','commandes_en_cours','commandes_prets','commandes_attentes'));
     }
 
     /**
