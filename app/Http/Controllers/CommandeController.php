@@ -8,14 +8,30 @@ use Auth;
 
 class CommandeController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($user_id)
     {
-        //
+        /* Les commandes réceptionnées par le client sont de state ( statut ) "1" */
+        $commandes_reception = Auth::user()->commandes()->where('state',1)->orderBy('created_at','desc');
+
+        /* Les commandes non réceptionnées par le client sont de state ( statut ) "0" */
+        $commandes_non_reception = Auth::user()->commandes()->where('state',0)->orderBy('created_at','desc');
+
+
+        if(isset(Auth::user()->seller)){
+            $seller_id = Auth::user()->seller->id;
+            return view('account.commandes',compact('seller_id','commandes_reception','commandes_non_reception'));
+        }
+        return view('account.commandes',compact('commandes_reception','commandes_non_reception'));
     }
 
     /**

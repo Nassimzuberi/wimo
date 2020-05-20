@@ -24,6 +24,9 @@ Route::group(['middleware'=>'locale'],function ()
     Route::resource('vendeurs','SellerController');
     Route::resource('vendeurs.annonces','SaleController')->shallow();
 
+    /* Les commandes du user */
+    Route::resource('comptes.commandes','CommandeController')->shallow();
+
     /**** Authentification *****/
 
     Auth::routes();
@@ -46,7 +49,9 @@ Route::group(['middleware'=>'locale'],function ()
 
 //Route des commandes
     Route::get('commande/{commande}','CommandeController@show')->name('commande.show');
-    Route::get('comptes/{user}/commandes','AccountController@commandes')->name('user.commandes');
+
+    /* Cette route n'est plus utile */
+    //Route::get('comptes/{user}/commandes','AccountController@commandes')->name('user.commandes');
     Route::post('commande/{commande}/reception','CommandeController@reception')->name('commande.validate');
 
 //Routes de la carte

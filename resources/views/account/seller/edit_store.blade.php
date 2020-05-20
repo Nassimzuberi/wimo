@@ -29,7 +29,9 @@
 				<div class="card-body">
 					<p>
 						<i class="fas fa-map-marker-alt"></i>
-						{{$magasin->address}}
+						{{$magasin->address->voie}}
+						<br>
+						{{$magasin->address->code_postal." ".$magasin->address->commune}}
 					</p>
 					<p>
 						<i class="fas fa-phone-square"></i>

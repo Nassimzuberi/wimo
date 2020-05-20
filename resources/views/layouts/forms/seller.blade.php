@@ -15,7 +15,7 @@
     </div>
     <div class="form-group">
         <label for="address">Adresse:</label>
-        <input id="address" type="text" name="address" class="form-control address @error('address') is-invalid @enderror @error('adresse_valid') is-invalid @enderror" onfocus="auto_search(this)" oninput="search_adress(this)" value="@isset($magasin){{ $magasin->address }}@else{{ old('address') }}@endisset" required="required" autocomplete="off">
+        <input id="address" type="text" name="address" class="form-control address @error('address') is-invalid @enderror @error('adresse_valid') is-invalid @enderror" onfocus="auto_search(this)" oninput="search_adress(this)" value="@isset($magasin){{ $magasin->address->voie.' '.$magasin->address->code_postal.' '.$magasin->address->commune }}@else{{ old('address') }}@endisset" required="required" autocomplete="off">
         <div class="list-group position-absolute" style="z-index: 1"></div>
         @error('address')
             <span class="invalid-feedback" role="alert">

@@ -6,7 +6,7 @@
         </a>
 	</li>
 	<li class="nav-item">
-        <a href="{{route('user.commandes',Auth::id())}}" class="nav-link @if(Route::currentRouteName() == 'user.commandes' ) active @endif">
+        <a href="{{route('comptes.commandes.index',Auth::id())}}" class="nav-link @if(Route::currentRouteName() == 'comptes.commandes.index' ) active @endif">
             <i class="fas fa-shopping-basket"></i>
             @lang('app.command')
         </a>		

@@ -17,6 +17,10 @@ class Seller extends Model
    	public function setCoordinates(){
       $this->coordinates = json_decode($this->position);
     }
+
+    public function setAdress(){
+      $this->address = json_decode($this->address);
+    }
     public function user(){
       return $this->belongsTo('App\User');
     }

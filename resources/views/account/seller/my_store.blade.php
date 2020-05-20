@@ -8,8 +8,8 @@
                 {{ session('status') }}
             </div>
         @endif
-	<div class="container">
-		<div class="card d-inline-block">
+	<div class="container d-flex flex-wrap mt-3">
+		<div class="card">
 			<div class="card-header text-center">
 				@isset($magasin->name_shop)
 					{{$magasin->name_shop}}
@@ -22,7 +22,9 @@
 			<div class="card-body">
 				<p>
 					<i class="fas fa-map-marker-alt"></i>
-					{{$magasin->address}}
+					{{$magasin->address->voie}}
+					<br>
+					{{$magasin->address->code_postal." ".$magasin->address->commune}}
 				</p>
 				<p>
 					<i class="fas fa-phone-square"></i>
@@ -30,7 +32,7 @@
 				</p>
 			</div>
 		</div>					
-		<div class="card d-inline-block">
+		<div class="card">
 			<div class="card-header text-center">
 				Gestion de mon magasin
 			</div>
@@ -61,7 +63,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="card d-inline-block">
+		<div class="card">
 			<div class="card-header text-center">
 				Gestion de mes produits
 			</div>
@@ -82,7 +84,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="card d-inline-block">
+		<div class="card">
 			<div class="card-header text-center">
 				Gestion de mes commandes
 			</div>

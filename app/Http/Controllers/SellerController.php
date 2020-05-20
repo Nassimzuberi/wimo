@@ -137,8 +137,10 @@ class SellerController extends Controller
     {
         $this->validator($request->all())->validate();
         
+        $adress = $this->call_api_adress($request["address"]);
+
         /* Récupération des coordonnées géographique*/
-        $position_adress = $this->call_api_adress($request["address"])->features[0]->geometry->coordinates;
+        $position_adress = $adress->features[0]->geometry->coordinates;
 
         /* encodage des coordonnées */
         $position=json_encode(
@@ -151,7 +153,11 @@ class SellerController extends Controller
         Seller::create(
             [
                 'name_shop' => $request['name_shop'] ?? NULL,
-                'address' => $request['address'],
+                'address' => json_encode([
+                    "voie" => $adress->features[0]->properties->name,
+                    "code_postal" => $adress->features[0]->properties->postcode,
+                    "commune" => $adress->features[0]->properties->city
+                ]),
                 'position' => $position,
                 'user_id' => Auth::id(),
                 'phone_number'=> $request["phone_number"],
@@ -174,6 +180,7 @@ class SellerController extends Controller
     {
         $magasin = Seller::find($id);
         $magasin->setCoordinates();
+        $magasin->setAdress();
         return view('account.seller.my_store',['magasin' => $magasin]);
     }
 
@@ -187,6 +194,7 @@ class SellerController extends Controller
     {
         $magasin = Seller::find($id);
         $magasin->setCoordinates();
+        $magasin->setAdress();
         return view('account.seller.edit_store',['magasin' => $magasin]);
     }
 
@@ -207,12 +215,18 @@ class SellerController extends Controller
             $request["phone_number"]==$magasin->phone_number
         )->validate();
 
+        $adress = $this->call_api_adress($request["address"]);
+
         $magasin->name_shop = $request["name_shop"];
-        $magasin->address = $request["address"];
+        $magasin->address = json_encode([
+            "voie" => $adress->features[0]->properties->name,
+            "code_postal" => $adress->features[0]->properties->postcode,
+            "commune" => $adress->features[0]->properties->city
+        ]);
         $magasin->position = json_encode(
             [
-                'lat' => $request["latitude"],
-                'long' => $request["longitude"],
+                'lat' => $adress->features[0]->geometry->coordinates[1],
+                'long' => $adress->features[0]->geometry->coordinates[0],
             ]
         );
         $magasin->save();
